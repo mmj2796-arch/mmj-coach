@@ -1,0 +1,15 @@
+{
+  "name": "MMJ Self-Coaching App",
+  "short_name": "MMJ Coach",
+  "description": "Self-coaching for UPSC, TGPSC, SSC, DSC and engineering exams: syllabus tracker, notes, practice, planner and AI help from any AI tool.",
+  "start_url": "./#today",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f3f5f9",
+  "theme_color": "#2340b8",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
