@@ -1,8 +1,8 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style></head><body>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>MMJ Self-Coaching App</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Self-coaching app for UPSC CSE, TGPSC Group-I/II/III/IV, SSC, TG DSC/TET and engineering exams: syllabus tracker, paper trends, OC cut-offs, notes at a glance, practice, planner and AI help from any AI tool.">
+<meta name="description" content="Self-coaching app for UPSC CSE, TGPSC Group-I/II/III/IV, APPSC, SSC, TG DSC/TET, engineering exams, CAT, MAT and CA: syllabus tracker, paper trends, OC cut-offs, notes at a glance, practice, planner and AI help from any AI tool.">
 <meta name="theme-color" content="#2340b8">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" href="icon-192.png">
@@ -483,7 +483,7 @@ pre code { font-family: var(--font-mono); font-size: .8rem; background: var(--sh
 .resource a { font-weight: 600; }
 .resource small { color: var(--ink-3); }
 </style>
-
+</head><body>
 <div class="app">
   <aside class="rail" aria-label="Sections">
     <a class="brand" href="#today">
@@ -3192,6 +3192,390 @@ window.PC_RESOURCES = [
   },
 ];
 </script>
+<script>/* APPSC track + Andhra Pradesh topics, and the NCERT (Class 5–12, new and old) reading map. */
+(function () {
+  window.PC_TAG_LABEL.ap = 'APPSC';
+  window.PC_TRACKS.push({ id: 'appsc', label: 'APPSC Group-I / II', short: 'APPSC', tags: ['upsc', 'upscm', 'csat', 'ap'], exam: 'appsc' });
+
+  window.PC_EXAMS.push({
+    id: 'appsc', group: 'Civil services', short: 'APPSC Group-I/II', name: 'APPSC Group-I and Group-II Services', body: 'Andhra Pradesh Public Service Commission',
+    posts: 'Group-I: Deputy Collector, DSP, Commercial Tax Officer, RTO and similar. Group-II: Deputy Tahsildar, Municipal Commissioner Gr-III, ASO, Sub-Registrar and similar',
+    badges: ['State (AP)', 'Group-I has interview', 'Negative marking'],
+    summary: 'Andhra Pradesh’s state services. National GS overlaps with UPSC and TGPSC; the Andhra Pradesh topics below are the extra module. As a Telangana local you are a non-local in AP, so check each notification’s local rules before investing time.',
+    facts: [
+      ['Status (Nov 2026)', 'No confirmed new Group-I/II notification found; reports conflict — check psc.ap.gov.in'],
+      ['Last cycles', 'Group-I and Group-II notified in 2023 (about 80–90 and about 900 posts) — verify'],
+      ['Local status', 'AP reserves most zonal and district posts for AP locals; Telangana locals compete as non-locals'],
+    ],
+    eligibility: [['Age (OC)', '18–42 in recent notices (one source says 43) — check the notification'], ['Education', 'Any degree'], ['Non-local', 'Telangana locals are non-local in AP']],
+    elig: { min: 18, max: 42, asOn: '07-01', year: 2027, note: 'Recent notices 18–42; reckoning date set per notification' },
+    stages: [
+      { name: 'Group-I Prelims (screening)', papers: [{ n: 'Paper I · General Studies', d: '120 Q · 2 h · −⅓', m: '120' }, { n: 'Paper II · General Aptitude & current affairs', d: '120 Q · 2 h · −⅓', m: '120' }], note: 'Qualifying; about 1:50 reach Mains (2023 pattern).' },
+      { name: 'Group-I Mains', papers: [{ n: 'Telugu (qualifying)', m: '150' }, { n: 'English (qualifying)', m: '150' }, { n: 'I · General Essay', m: '150' }, { n: 'II · History, Culture & Geography of India and AP', m: '150' }, { n: 'III · Polity, Constitution, Governance, Law & Ethics', m: '150' }, { n: 'IV · Economy & Development of India and AP', m: '150' }, { n: 'V · Science & Technology, Environment', m: '150' }], note: 'Merit 750 + interview 75.' },
+      { name: 'Group-II', papers: [{ n: 'Screening: GS & Mental Ability', d: '150 Q · 150 min · −⅓', m: '150' }, { n: 'Mains I · Social & cultural history of AP + Indian Constitution', m: '150' }, { n: 'Mains II · Indian & AP economy + Science & Technology', m: '150' }, { n: 'Computer proficiency test', d: 'qualifying', m: '—' }], note: 'Merit 300; no interview.' },
+    ],
+    total: 'Group-I: Mains 750 + interview 75 = **825** (2023 pattern). Group-II: Mains **300**, no interview.',
+    mindset: ['**AP-specific content decides ranks**: Andhra history, the 1953 / 1956 / 2014 milestones, AP economy and schemes.', '**Negative marking (−⅓)** in prelims, unlike TGPSC — accuracy matters.', '**Group-I Paper II is aptitude-heavy**, so your CSAT practice carries over.', 'National GS is shared with UPSC and TGPSC — one preparation serves all three.'],
+    target: ['Treat APPSC as an add-on: study the AP module (about 50 hours) once a notification appears.', 'Check the local / non-local share first — it decides how many posts are open to you.'],
+    calendar: [],
+    sources: [{ t: 'APPSC official portal', u: 'https://psc.ap.gov.in' }, { t: 'Adda247: APPSC Group-1 syllabus', u: 'https://www.adda247.com/exams/andhra-pradesh/appsc-group-1-syllabus/' }, { t: 'Aglasem: APPSC syllabus', u: 'https://career.aglasem.com/psc/appsc/syllabus' }],
+  });
+
+  const u = (id, name, w, h, pts) => ({ id, name, ex: ['ap'], w, h, pts, notes: ['ap-facts'], src: 'AP SCERT Social Studies (Classes 6–10), Telugu Akademi AP books, AP Socio-Economic Survey and budget' });
+  window.PC_SYLLABUS.push({
+    id: 'ap', name: 'Andhra Pradesh (APPSC module)',
+    blurb: 'Only the AP-specific part; national GS comes from the other subjects. Shared ground with Telangana: Satavahanas, Kakatiyas, Qutb Shahis, 1956–2014.',
+    units: [
+      u('ap-anc', 'AP history I · Satavahanas to Eastern Chalukyas', 3, 5, ['Amaravati, Nagarjunakonda (Ikshvakus), Buddhism in Andhra', 'Eastern Chalukyas of Vengi; Nannaya’s Andhra Mahabharatam', 'Kakatiyas in coastal Andhra']),
+      u('ap-med', 'AP history II · Reddis, Vijayanagara, Qutb Shahis', 2, 4, ['Reddi kingdoms (Kondaveedu)', 'Krishnadevaraya and the Ashtadiggajas', 'Qutb Shahi rule in Andhra']),
+      u('ap-mod', 'AP history III · Colonial Andhra and the freedom struggle', 3, 5, ['Northern Circars, Rampa rebellion (Alluri Sitarama Raju, 1922–24)', 'Vandemataram, Chirala–Perala, Pedanandipadu no-tax campaign', 'Reformers: Kandukuri Veeresalingam, Gurajada Apparao; library movement']),
+      u('ap-state', 'Andhra movement, AP formation and bifurcation', 3, 5, ['Andhra Mahasabha (1913), Potti Sriramulu’s fast (1952)', 'Andhra State 1953, AP 1956, Jai Andhra 1972–73', 'AP Reorganisation Act 2014, capital Amaravati']),
+      u('ap-reorg', 'Post-2014 issues: special status, Polavaram, assets', 3, 4, ['Special category status vs special assistance', 'Polavaram national project', 'Schedules IX & X, Krishna–Godavari water sharing']),
+      u('ap-geo', 'AP geography: relief, rivers, lakes, forests, minerals', 3, 5, ['Eastern Ghats, coastal plains, Rayalaseema plateau', 'Godavari, Krishna, Pennar, Vamsadhara; Kolleru & Pulicat', 'Nallamala & Seshachalam forests, red sanders; barytes, limestone; 26 districts']),
+      u('ap-eco', 'AP economy: GSDP, agriculture, aquaculture, industry', 3, 6, ['GSDP and sector shares', 'Aquaculture, horticulture, irrigation projects', 'Industrial corridors, ports, AP budget and debt']),
+      u('ap-gov', 'AP governance and welfare schemes', 3, 5, ['Village & Ward Secretariat system (2019)', 'Super Six schemes of the 2024 government (verify current status)', 'Swarna Andhra @2047 vision']),
+      u('ap-soc', 'AP society, culture, tribes and literature', 2, 4, ['Kuchipudi, Burrakatha, Kalamkari, Kondapalli & Etikoppaka toys', 'Tribes: Chenchu, Savara, Jatapu, Konda Reddi, Yanadi', 'Telugu literature: Nannaya, Tikkana, Gurajada, Sri Sri']),
+      u('ap-ca', 'AP current affairs, budget and Socio-Economic Survey', 3, 6, ['State budget and survey numbers', 'New schemes, Acts and appointments', 'Projects and events in AP news']),
+    ],
+  });
+
+  window.PC_NOTES.push({
+    id: 'ap-facts', subject: 'ap', ex: ['ap'], title: 'Andhra Pradesh at a glance',
+    intro: 'High-confidence anchor facts. Scheme amounts and survey numbers change — check the latest AP budget and Socio-Economic Survey.',
+    sections: [
+      { h: 'Milestones', items: [
+        ['Andhra State', '1 October 1953, capital Kurnool — after Potti Sriramulu died on 15 December 1952 following a 58-day fast'],
+        ['Andhra Pradesh', '1 November 1956, merging Andhra State with the Telangana region; capital Hyderabad'],
+        ['Bifurcation', 'AP Reorganisation Act 2014; residual AP from 2 June 2014; capital Amaravati'],
+        ['Districts', '26 since April 2022 (13 earlier)'],
+        ['Andhra Mahasabha', 'First held at Bapatla in 1913 — start of the demand for a separate Andhra province'],
+      ] },
+      { h: 'History and culture', items: [
+        ['Amaravati / Nagarjunakonda', 'Buddhist centres of the Satavahana and Ikshvaku periods; Vijayapuri was the Ikshvaku capital'],
+        ['Nannaya', '“Adikavi” — began the Telugu Mahabharatam at the Eastern Chalukya court of Rajaraja Narendra'],
+        ['Alluri Sitarama Raju', 'Led the Rampa (Manyam) rebellion, 1922–24'],
+        ['Kandukuri Veeresalingam', 'Social reformer — widow remarriage, women’s education (Rajahmundry)'],
+        ['Gurajada Apparao', 'Wrote the play Kanyasulkam (1892)'],
+        ['Kuchipudi', 'Classical dance named after a village in Krishna district'],
+        ['Kalamkari', 'Srikalahasti (hand-painted) and Machilipatnam/Pedana (block-printed) styles'],
+      ] },
+      { h: 'Geography and economy', items: [
+        ['Coastline', 'Second-longest of any state, after Gujarat'],
+        ['Kolleru Lake', 'Freshwater lake between the Godavari and Krishna deltas; Ramsar site'],
+        ['Pulicat Lake', 'Brackish lagoon on the AP–Tamil Nadu border; Sriharikota lies on its barrier island'],
+        ['Polavaram', 'Multipurpose project on the Godavari; national project under the 2014 Act'],
+        ['Red sanders', 'Endemic to the Seshachalam–Palakonda hills'],
+        ['Village & Ward Secretariats', 'Local service-delivery system set up in 2019'],
+      ] },
+    ],
+  });
+
+  /* NCERT reading map: [class, book, edition]. Pre-2017 = complete NCF-2005 editions (printed 2006–2017, before the
+     2022–23 chapter cuts and the 2024–25 replacement of Classes 6–8). Old = pre-2005 classics, out of print. */
+  const E = 'pre-2017 edition'; const O = 'old NCERT (pre-2005), out of print';
+  window.PC_NCERT = {
+    polity: [['6–8', 'Social and Political Life I–III', E], ['9', 'Democratic Politics I', E], ['10', 'Democratic Politics II', E], ['11', 'Indian Constitution at Work', E + ' — core'], ['11', 'Political Theory', E], ['12', 'Politics in India since Independence', E], ['12', 'Contemporary World Politics', E]],
+    gov: [['11', 'Indian Constitution at Work (ch. Local Governments)', E], ['12', 'Contemporary World Politics', E]],
+    'hist-anc': [['Old 6', 'Ancient India — Romila Thapar', O], ['Old 11', 'Ancient India — R.S. Sharma', O + ' — core'], ['6', 'Our Pasts I', E], ['12', 'Themes in Indian History I', E]],
+    'hist-med': [['Old 7', 'Medieval India — Romila Thapar', O], ['Old 11', 'Medieval India — Satish Chandra', O + ' — core'], ['7', 'Our Pasts II', E], ['12', 'Themes in Indian History II', E]],
+    culture: [['11', 'An Introduction to Indian Art (Fine Arts)', E + ' — core'], ['12', 'Themes in Indian History I–II (stupas, Vijayanagara, Bhakti)', E]],
+    'hist-mod': [['Old 12', 'Modern India — Bipan Chandra', O + ' — core'], ['Old 9–10', 'The Story of Civilization I–II — Arjun Dev (world history)', O], ['8', 'Our Pasts III', E], ['9–10', 'India and the Contemporary World I–II', E], ['11', 'Themes in World History', E], ['12', 'Themes in Indian History III', E]],
+    'geo-phy': [['5', 'EVS — Looking Around', E], ['6', 'The Earth Our Habitat', E], ['7', 'Our Environment', E], ['11', 'Fundamentals of Physical Geography', E + ' — core'], ['12', 'Fundamentals of Human Geography', E]],
+    'geo-ind': [['8', 'Resources and Development', E], ['9', 'Contemporary India I', E], ['10', 'Contemporary India II', E], ['11', 'India: Physical Environment', E + ' — core'], ['12', 'India: People and Economy', E]],
+    econ: [['9', 'Economics', E], ['10', 'Understanding Economic Development', E], ['11', 'Indian Economic Development', E + ' — core'], ['12', 'Introductory Macroeconomics', E], ['12', 'Introductory Microeconomics', E]],
+    env: [['5', 'EVS — Looking Around', E], ['7–8', 'Science (forests, conservation chapters)', E], ['12', 'Biology — Ecology unit, ch. 13–16 incl. Environmental Issues (dropped from newer prints)', E + ' — core']],
+    snt: [['6–10', 'Science', E], ['11–12', 'Biology — human physiology, genetics, biotechnology', E]],
+    soc: [['11', 'Introducing Sociology; Understanding Society', E], ['12', 'Indian Society', E + ' — core'], ['12', 'Social Change and Development in India', E]],
+    csat: [['6–10', 'Mathematics', E]],
+    quant: [['6–10', 'Mathematics', E + ' — all arithmetic & geometry basics']],
+    'tg-hist': [['6–10', 'Telangana SCERT Social Studies', 'state textbooks (no NCERT book covers Telangana)']],
+    'tg-move': [['8–10', 'Telangana SCERT Social Studies', 'Telangana movement chapters']],
+    ap: [['6–10', 'AP SCERT Social Studies', 'state textbooks for AP history and geography']],
+  };
+
+  const names = { polity: 'Polity', gov: 'Governance & IR', 'hist-anc': 'Ancient history', 'hist-med': 'Medieval history', culture: 'Art & culture', 'hist-mod': 'Modern & world history', 'geo-phy': 'Physical geography', 'geo-ind': 'Indian geography', econ: 'Economy', env: 'Environment', snt: 'Science & tech', soc: 'Society', csat: 'CSAT', quant: 'Quant', 'tg-hist': 'Telangana history', 'tg-move': 'Telangana movement', ap: 'Andhra Pradesh' };
+  window.PC_STRATEGY.push({
+    id: 'ncert', short: 'NCERT map', title: 'NCERT reading map, Class 5–12',
+    lede: 'Read the complete pre-2017 editions (NCF-2005 books printed 2006–2017) and the pre-2005 “old NCERTs”. Newer prints dropped chapters in 2022–23, and Classes 6–8 were replaced by new books in 2024–25. ncert.nic.in hosts only current editions, so get these as library or second-hand copies.',
+    body: '| Subject | Class | Book | Edition |\n|---|---|---|---|\n' + Object.keys(window.PC_NCERT).map((k) => window.PC_NCERT[k].map(([c, b, n], i) => `| ${i ? '' : names[k]} | ${c} | ${b} | ${n} |`).join('\n')).join('\n') +
+      '\n\n**Old NCERT authors to ask for:** Romila Thapar (Class 6–7), R.S. Sharma and Satish Chandra (Class 11), Bipan Chandra (Class 12), Arjun Dev (Class 9–10).',
+  });
+})();
+</script>
+<script>/* CAT, MAT and CA: tracks, exam pages, syllabus, notes, practice questions, strategy and resources.
+   Facts checked Nov 2026; dates marked tentative must be confirmed on iimcat.ac.in, mat.aima.in and icai.org. */
+(function () {
+  const L = window.PC_TAG_LABEL; L.cat = 'CAT'; L.mat = 'MAT'; L.ca = 'CA';
+  window.PC_TRACKS.push(
+    { id: 'cat', label: 'CAT (IIM MBA)', short: 'CAT', tags: ['cat'], exam: 'cat' },
+    { id: 'mat', label: 'MAT (MBA backup)', short: 'MAT', tags: ['mat'], exam: 'mat' },
+    { id: 'ca', label: 'CA (Chartered Accountancy)', short: 'CA', tags: ['ca'], exam: 'ca' },
+  );
+  const G = 'Management & CA';
+
+  window.PC_EXAMS.push({
+    id: 'cat', group: G, short: 'CAT', name: 'Common Admission Test (CAT)', body: 'Indian Institutes of Management (convenor rotates each year)',
+    posts: 'MBA/PGP admission: IIMs, FMS Delhi, MDI, IIT management schools, SPJIMR and 1,000+ B-schools',
+    badges: ['Once a year (late Nov)', 'No age limit', 'Unlimited attempts', 'Negative marking (MCQ)'],
+    summary: 'Computer-based aptitude test for MBA admission. The percentile only gets you a shortlist; final IIM offers also weigh Class 10/12/degree marks, work experience, diversity, a written test and the interview.',
+    facts: [
+      ['CAT 2026', '29 Nov 2026, convened by IIM Indore, 3 slots; result expected Dec 2026–Jan 2027'],
+      ['CAT 2027', 'Expected late Nov 2027 (notification about late July, registration Aug–Sep) — tentative'],
+      ['Format', '68 Q · 120 min · 3 sections of 40 min each; no switching between sections'],
+      ['Marking', '+3 correct · −1 wrong MCQ · no negative for TITA (type-in-the-answer)'],
+      ['Score', 'Normalised across slots; percentile valid for one admission year'],
+      ['Fee', 'About ₹2,500 (General) — check iimcat.ac.in'],
+    ],
+    eligibility: [['Age', 'No age limit'], ['Education', 'Bachelor’s degree with 50% marks (General); final-year students can apply'], ['Attempts', 'Unlimited'], ['Your profile', 'B.E. + B.Ed + work experience — eligible. As a General-category engineer you need a higher percentile at IIMs that give diversity points.']],
+    stages: [
+      { name: 'CAT (computer-based)', when: 'late Nov', papers: [{ n: 'VARC · Verbal Ability & Reading Comprehension', d: '24 Q (about 16 RC + 8 VA) · 40 min', m: '72' }, { n: 'DILR · Data Interpretation & Logical Reasoning', d: '22 Q (4–5 sets) · 40 min', m: '66' }, { n: 'QA · Quantitative Ability', d: '22 Q · 40 min', m: '66' }], note: 'Total 204 marks. About a quarter of the questions are TITA.' },
+      { name: 'IIM selection round', when: 'Feb–Apr', papers: [{ n: 'Written ability test (WAT / AWT)', d: '15–30 min essay', m: '—' }, { n: 'Personal interview', m: '—' }, { n: 'Profile score', d: 'Class 10/12/degree marks, work experience, diversity', m: '—' }], note: 'Weights differ by IIM; CAT is usually 30–60% of the final composite.' },
+    ],
+    total: 'Shortlist on CAT percentile (overall + sectional) and profile; final offer on a composite of CAT, WAT/PI and academics/work experience.',
+    tables: [
+      { title: 'Previous papers · what CAT 2021–2025 asked', cols: ['Section', 'Topic', 'Typical questions'], num: false, rows: [
+        ['QA', 'Arithmetic — percentages, profit & loss, SI/CI, ratio, mixtures, averages, time-speed-distance, time & work', '8–10'],
+        ['QA', 'Algebra — equations, inequalities, functions, logarithms, progressions', '6–8'],
+        ['QA', 'Geometry & mensuration', '3–5'],
+        ['QA', 'Number system', '2–3'],
+        ['QA', 'Modern maths — P&C, probability, sets', '1–3'],
+        ['DILR', 'Arrangements, scheduling, games & tournaments, routes & networks, Venn/sets, charts with reasoning', '4–5 sets × 4–6 Q'],
+        ['VARC', 'Reading comprehension — 4 passages (economics, philosophy, science, culture)', '16'],
+        ['VARC', 'Para jumbles (TITA), para summary, odd sentence out, sentence placement', '8'],
+      ], note: 'Approximate counts from published slot analyses; the mix shifts slightly every year.' },
+      { title: 'Score vs percentile and typical calls (General, approx.)', cols: ['Percentile', 'Raw score /204', 'Typical calls'], num: false, rows: [
+        ['99+', '85–95', 'IIM Ahmedabad, Bangalore, Calcutta, FMS — also need strong academics'],
+        ['97–99', '70–85', 'IIM Lucknow, Kozhikode, Indore, newer IIMs, MDI, IIT schools'],
+        ['95', '60–65', 'Newer IIMs (some), SPJIMR (profile-based), good private schools'],
+        ['90', '48–52', 'Some baby IIMs, many private B-schools'],
+        ['85', '40–42', 'Private B-schools with lower cut-offs'],
+      ], note: 'Coaching-institute estimates for CAT 2024–25. Published IIM “minimum” cut-offs are lower, but actual calls go to higher percentiles.' },
+    ],
+    mindset: ['**Concept and speed, not formula recall**: QA is mostly Class 8–10 arithmetic and algebra in tricky forms.', '**DILR rewards selection**: picking the 2–3 doable sets out of 4–5 is half the score.', '**RC is two-thirds of VARC**: dense passages where inference questions dominate.', '**TITA has no negative marking** — never leave one blank.', '**Sections are time-locked (40 min)** and IIMs use sectional cut-offs, so balance matters.'],
+    target: ['Aim for **97+ overall with 90+ in each section** for good IIM calls as a General candidate; **99+** for A/B/C.', 'Work experience earns points up to about 3 years at most IIMs; with 5+ years, one-year executive MBAs (mostly via GMAT/GRE) may suit better.', 'Take 20–30 full mocks with analysis; analysis matters more than the number of mocks.'],
+    calendar: [{ d: '2026-11-29', e: 'CAT 2026 exam (IIM Indore)' }, { d: '2027-07-26', e: 'CAT 2027 notification (expected)', tent: true }, { d: '2027-08-02', e: 'CAT 2027 registration opens (expected)', tent: true }, { d: '2027-11-28', e: 'CAT 2027 exam (expected, last Sunday of November)', tent: true }],
+    sources: [{ t: 'IIM CAT official site', u: 'https://iimcat.ac.in' }, { t: 'Shiksha: CAT 2026', u: 'https://www.shiksha.com/mba/cat-exam' }, { t: 'Careers360: CAT 2025 cut-offs', u: 'https://news.careers360.com/cat-2025-cutoffs-for-all-iim-out-category-wise-sectional-cutoff-percentiles-high-for-first-stage-mba-admissions-criteria-cap-2026' }],
+  }, {
+    id: 'mat', group: G, short: 'MAT', name: 'Management Aptitude Test (MAT)', body: 'All India Management Association (AIMA)',
+    posts: 'MBA/PGDM admission at about 600 B-schools (mostly mid-tier private)',
+    badges: ['Several sessions a year', 'No age limit', 'Paper or computer', 'Negative marking'],
+    summary: 'Easier and more frequent than CAT. A dated backup if CAT does not go well; IIMs do not use it.',
+    facts: [['Sessions', 'Usually four cycles a year (Feb, May–Jun, Sep, Dec), each with paper-based and computer-based dates'], ['Format', '150 Q · 120 min · 5 sections × 30 Q'], ['Marking', '+1 correct · −0.25 wrong'], ['Score', 'Composite score and percentile; valid for one year'], ['Fee', 'About ₹2,200 for one mode — check mat.aima.in']],
+    eligibility: [['Age', 'No limit'], ['Education', 'Any degree; final-year students can apply'], ['Attempts', 'Unlimited']],
+    stages: [
+      { name: 'MAT (one sitting)', papers: [{ n: 'Language Comprehension', d: '30 Q', m: '30' }, { n: 'Mathematical Skills', d: '30 Q', m: '30' }, { n: 'Data Analysis & Sufficiency', d: '30 Q', m: '30' }, { n: 'Intelligence & Critical Reasoning', d: '30 Q', m: '30' }, { n: 'Economic & Business Environment (earlier “Indian & Global Environment”)', d: '30 Q', m: '30' }], note: 'The general-awareness section has traditionally been left out of the composite percentile — confirm in the current bulletin.' },
+      { name: 'College round', papers: [{ n: 'Group discussion / interview at each B-school', m: '—' }] },
+    ],
+    total: 'Each B-school sets its own MAT percentile cut-off (commonly 60–90), followed by GD/PI.',
+    mindset: ['**Speed over depth**: 150 questions in 120 minutes — under a minute each.', '**Data sufficiency** is the signature question type; learn the five-option logic.', '**Quant is SSC/CAT-basic level**; arithmetic dominates.', '**Awareness section** covers business, economy, organisations and awards — your News diary helps.'],
+    target: ['Aim for **90+ percentile** for the better MAT-accepting schools.', 'If you are preparing for CAT, MAT needs only 2–3 timed papers for speed.'],
+    calendar: [{ d: '2026-12-01', e: 'MAT December 2026 session (exact PBT/CBT dates at mat.aima.in)', tent: true }, { d: '2027-02-01', e: 'MAT February 2027 session', tent: true }, { d: '2027-05-01', e: 'MAT May–June 2027 session', tent: true }, { d: '2027-09-01', e: 'MAT September 2027 session', tent: true }, { d: '2027-12-01', e: 'MAT December 2027 session', tent: true }],
+    sources: [{ t: 'AIMA MAT official', u: 'https://mat.aima.in' }, { t: 'Careers360: MAT exam pattern', u: 'https://bschool.careers360.com/articles/mat-exam-pattern' }],
+  }, {
+    id: 'ca', group: G, short: 'CA', name: 'Chartered Accountancy (CA) course', body: 'Institute of Chartered Accountants of India (ICAI)',
+    posts: 'Chartered Accountant — audit, tax, corporate finance; ICAI membership',
+    badges: ['3 levels', 'Full-time articleship', 'No age limit', 'Negative marking at Foundation'],
+    summary: 'Not a one-time exam but a course: Foundation (or direct entry) → Intermediate → practical training (articleship) → Final. As a B.E. graduate you can skip Foundation through direct entry if you scored 60% in your degree.',
+    facts: [
+      ['Foundation & Intermediate', 'Three sessions a year: January, May, September'],
+      ['Final', 'Twice a year, May and November (January session dropped from 2026)'],
+      ['Articleship', 'About 2 years, full-time, under the 2023 scheme; no other job allowed during it — confirm current rules at icai.org'],
+      ['Typical pass rates', 'Foundation about 25–30%; Intermediate and Final (both groups) often 10–20%'],
+      ['Time for a graduate', 'About 3–3.5 years if every level clears at the first attempt'],
+    ],
+    eligibility: [['Age', 'No limit'], ['Direct entry (skip Foundation)', 'Graduate with 60% (non-commerce) or 55% (commerce)'], ['Foundation route', 'After Class 12; for graduates below the cut-off'], ['Job clash', 'Articleship is full-time — you would have to leave or pause your current job']],
+    stages: [
+      { name: 'Foundation', when: 'Jan / May / Sep', papers: [{ n: 'P1 · Accounting', d: 'subjective · 3 h', m: '100' }, { n: 'P2 · Business Laws', d: 'subjective · 3 h', m: '100' }, { n: 'P3 · Quantitative Aptitude (Business Maths 40, Logical Reasoning 20, Statistics 40)', d: 'objective · 2 h · −0.25', m: '100' }, { n: 'P4 · Business Economics', d: 'objective · 2 h · −0.25', m: '100' }], note: 'Pass: 40% in each paper and 50% aggregate. Skipped on direct entry.' },
+      { name: 'Intermediate', when: 'Jan / May / Sep', papers: [{ n: 'Group I · P1 Advanced Accounting', m: '100' }, { n: 'Group I · P2 Corporate & Other Laws', m: '100' }, { n: 'Group I · P3 Taxation (Income-tax 50 + GST 50)', m: '100' }, { n: 'Group II · P4 Cost & Management Accounting', m: '100' }, { n: 'Group II · P5 Auditing & Ethics', m: '100' }, { n: 'Group II · P6 Financial Management & Strategic Management (50 + 50)', m: '100' }], note: 'About 30% of each paper is case-based MCQs. Pass: 40% each and 50% aggregate per group. You can sit about 8 months after registering.' },
+      { name: 'Practical training', papers: [{ n: 'ICITSS (IT + orientation)', d: 'about 4 weeks', m: '—' }, { n: 'Articleship', d: 'about 2 years, full-time, with stipend', m: '—' }, { n: 'Advanced ICITSS + Self-Paced Online Modules', d: 'qualifying', m: '—' }] },
+      { name: 'Final', when: 'May / Nov', papers: [{ n: 'Group I · P1 Financial Reporting', m: '100' }, { n: 'Group I · P2 Advanced Financial Management', m: '100' }, { n: 'Group I · P3 Advanced Auditing, Assurance & Professional Ethics', m: '100' }, { n: 'Group II · P4 Direct Tax Laws & International Taxation', m: '100' }, { n: 'Group II · P5 Indirect Tax Laws', m: '100' }, { n: 'Group II · P6 Integrated Business Solutions (case study, open book)', m: '100' }], note: 'Pass: 40% each and 50% aggregate per group, then ICAI membership.' },
+    ],
+    total: 'You qualify by passing every level (40% per paper, 50% per group) and completing articleship and the training modules — there is no rank-based selection.',
+    mindset: ['**ICAI papers follow ICAI study material**: the Board of Studies modules, RTPs and MTPs are the syllabus in practice.', '**Suggested answers show the marking**: section numbers, working notes and presentation earn marks.', '**MCQs are case-based** at Intermediate and Final — read the case, not just the question.', '**Amendments matter** in law and tax: each attempt follows the law as on a cut-off date ICAI announces.'],
+    target: ['Start CA only if you can commit 3–4 years including full-time articleship — it clashes with your job and with UPSC 2027.', 'If you go ahead: check your B.E. percentage for direct entry, clear Intermediate Group I and II, then articleship and Final.', 'ICAI’s free study material, RTPs, MTPs and past suggested answers are enough for disciplined self-study.'],
+    calendar: [{ d: '2027-01-01', e: 'CA Foundation & Intermediate — January 2027 session (dates at icai.org)', tent: true }, { d: '2027-05-01', e: 'CA Foundation, Intermediate & Final — May 2027 session', tent: true }, { d: '2027-09-01', e: 'CA Foundation & Intermediate — September 2027 session', tent: true }, { d: '2027-11-01', e: 'CA Final — November 2027 session', tent: true }],
+    sources: [{ t: 'ICAI', u: 'https://www.icai.org' }, { t: 'ICAI BoS Knowledge Portal (study material, RTP, MTP)', u: 'https://boslive.icai.org' }, { t: 'Business Today: CA Final twice a year from May 2026', u: 'https://www.businesstoday.in/education/exams/story/icai-announces-major-change-ca-final-exams-reduced-to-two-sessions-per-year-starting-may-2026-524350-2026-04-07' }, { t: 'ICAI FAQ: direct-entry eligibility', u: 'https://icai-call-sahayata.icai.org/assets/pdf/FAQs_on_CA_Course.pdf' }],
+  });
+
+  /* Syllabus */
+  const mk = (ex, notes, src) => (id, name, w, h, pts, tip) => ({ id, name, ex, w, h, pts, notes, src, tip });
+  const qa = mk(['cat', 'mat'], ['cat-formulas'], 'NCERT Class 8–10 Maths (pre-2017) first, then Arun Sharma’s *Quantitative Aptitude for CAT*; solve CAT past papers 2017–2025 by topic.');
+  const lr = mk(['cat', 'mat'], ['cat-playbook'], 'CAT DILR sets from past papers 2017–2025, timed (10–12 min a set); Arun Sharma’s *DI & LR for CAT*.');
+  const va = mk(['cat', 'mat'], ['cat-playbook'], 'One long article a day (The Hindu / Indian Express editorials, Aeon essays); CAT past RC passages; Norman Lewis *Word Power Made Easy* for MAT vocabulary.');
+  const ge = mk(['mat'], [], 'Your News diary (last 6 months) and a yearbook for static business GK.');
+  const caS = 'ICAI Board of Studies study material (free at boslive.icai.org), the RTP and MTP for your attempt, and past suggested answers.';
+  const cf = mk(['ca'], ['ca-glance'], caS);
+  window.PC_SYLLABUS.push(
+    { id: 'cat-qa', name: 'Quantitative Ability (CAT / MAT)', blurb: 'Class 8–10 maths applied fast. Arithmetic and algebra are about two-thirds of CAT QA.', units: [
+      qa('cq-arith', 'Percentages, profit & loss, simple and compound interest', 3, 8, ['Successive change, percentage points', 'Mark-up and discount', 'CI vs SI, instalments']),
+      qa('cq-ratio', 'Ratio, proportion, mixtures & alligation, averages', 3, 6, ['Partnership', 'Alligation rule', 'Weighted averages']),
+      qa('cq-tsd', 'Time-speed-distance, time & work, pipes', 3, 8, ['Relative speed, trains, boats', 'Races and circular tracks', 'Work efficiency, wages']),
+      qa('cq-num', 'Number system', 2, 8, ['Divisibility, factors, HCF/LCM', 'Remainders and cyclicity', 'Base systems, last digits']),
+      qa('cq-alg', 'Equations, quadratics, inequalities, modulus', 3, 8, ['Linear and quadratic equations', 'Maxima/minima with AM–GM', 'Modulus and integer solutions']),
+      qa('cq-func', 'Functions, graphs, logarithms, indices', 2, 6, ['Composite and inverse functions', 'Graph shifts', 'Log rules']),
+      qa('cq-prog', 'Progressions and series', 2, 4, ['AP, GP, HP', 'Sum of special series']),
+      qa('cq-geo', 'Geometry and coordinate geometry', 3, 10, ['Triangles, similarity, circles', 'Polygons', 'Lines, slopes, distance']),
+      qa('cq-mens', 'Mensuration (2D and 3D)', 2, 4, ['Areas, volumes, surface areas', 'Cut and melt problems']),
+      qa('cq-modern', 'P&C, probability, set theory', 2, 6, ['Arrangements and selections', 'Distribution of objects', 'Venn-diagram counting']),
+    ] },
+    { id: 'cat-dilr', name: 'Data Interpretation & Logical Reasoning (CAT / MAT)', blurb: 'Set-based puzzles. Selection of sets matters as much as solving.', units: [
+      lr('cd-di', 'DI: tables, bar, line and pie charts, caselets', 3, 8, ['Percent change and ratios from charts', 'Approximation', 'Missing-data tables']),
+      lr('cd-arr', 'Arrangements: linear, circular, matrix, distribution', 3, 8, ['Grid method', 'Fixed vs floating clues']),
+      lr('cd-games', 'Games, tournaments and scheduling', 2, 6, ['Round-robin and knock-out', 'Points tables', 'Calendars and slots']),
+      lr('cd-routes', 'Routes, networks, cubes and quant-based puzzles', 2, 5, ['Shortest paths, flows', 'Maximum/minimum cases']),
+      lr('cd-venn', 'Venn-diagram and set-based sets', 2, 4, ['Three-set Venn', 'Max/min overlaps']),
+      mk(['mat', 'cat'], ['cat-playbook'], 'MAT sample papers; any data-sufficiency practice book.')('cd-ds', 'Data sufficiency', 2, 3, ['Five-option logic', 'Test each statement alone, then together']),
+      mk(['mat'], ['cat-playbook'], 'MAT sample papers; R.S. Aggarwal *Verbal & Non-Verbal Reasoning* for basics.')('cd-cr', 'Critical reasoning, syllogisms, coding (MAT)', 2, 4, ['Assumption, strengthen, weaken', 'Syllogisms', 'Coding-decoding, series']),
+    ] },
+    { id: 'cat-varc', name: 'Verbal Ability & Reading Comprehension (CAT / MAT)', blurb: 'Reading speed plus inference. Daily reading is the preparation.', units: [
+      va('cv-rc', 'Reading comprehension: main idea, inference, tone', 3, 12, ['Author’s argument', 'Eliminating extreme/out-of-scope options']),
+      va('cv-pj', 'Para jumbles (TITA)', 2, 4, ['Opening sentence', 'Mandatory pairs']),
+      va('cv-ps', 'Para summary', 2, 3, ['Core idea vs detail']),
+      va('cv-odd', 'Odd sentence out, sentence placement', 2, 3, ['Theme break', 'Link words']),
+      mk(['mat'], ['cat-playbook'], 'Wren & Martin (selected chapters); Norman Lewis *Word Power Made Easy*.')('cv-gram', 'Grammar, vocabulary, sentence correction (MAT)', 2, 4, ['Subject–verb agreement', 'Synonyms, antonyms, idioms']),
+      va('cv-read', 'Daily reading habit', 2, 10, ['Editorials, long-form essays', 'Summarise each piece in one line'], 'Read 30 minutes a day — it also helps your UPSC essay and GS answers.'),
+    ] },
+    { id: 'mat-ge', name: 'Economic & Business Environment (MAT)', blurb: 'MAT’s awareness section. Overlaps with your UPSC economy and current affairs.', units: [
+      ge('mg-biz', 'Business news: companies, mergers, leaders, brands', 2, 4, ['Major deals and IPOs', 'CEOs and headquarters']),
+      ge('mg-eco', 'Economy: RBI, budget, GDP, banking, trade', 2, 4, ['Policy rates', 'Budget highlights', 'Trade agreements']),
+      ge('mg-world', 'International organisations, summits, awards', 2, 3, ['Headquarters and heads', 'Recent summits and awards']),
+    ] },
+    { id: 'ca-f', name: 'CA Foundation (ICAI)', blurb: 'Skipped on direct entry (graduates with 60%, or 55% in commerce).', units: [
+      cf('caf-acc', 'Paper 1 · Accounting', 3, 60, ['Accounting framework and process, trial balance', 'Bank reconciliation, inventories, depreciation', 'Bills of exchange, rectification of errors', 'Final accounts: sole proprietor, not-for-profit, partnership', 'Introduction to company accounts']),
+      cf('caf-law', 'Paper 2 · Business Laws', 3, 50, ['Indian regulatory framework', 'Indian Contract Act 1872', 'Sale of Goods Act 1930', 'Indian Partnership Act 1932 and LLP Act 2008', 'Companies Act 2013 (basics)']),
+      cf('caf-qa', 'Paper 3 · Quantitative Aptitude', 3, 40, ['Business maths: ratio, indices, logs, equations, time value of money, P&C, series, sets, basic calculus', 'Logical reasoning: series, coding, directions, seating, blood relations, syllogism', 'Statistics: descriptive statistics, probability, distributions, correlation & regression, index numbers']),
+      cf('caf-eco', 'Paper 4 · Business Economics', 2, 35, ['Demand, supply, elasticity', 'Production and cost', 'Markets and price determination', 'National income, public finance, money, trade, Indian economy']),
+    ] },
+    { id: 'ca-i', name: 'CA Intermediate (ICAI)', blurb: 'Two groups of three papers; about 30% of each paper is case-based MCQs.', units: [
+      cf('cai-aa', 'G-I P1 · Advanced Accounting', 3, 90, ['Accounting Standards', 'Company accounts, amalgamation, branches', 'Cash flow statements']),
+      cf('cai-law', 'G-I P2 · Corporate & Other Laws', 3, 70, ['Companies Act 2013', 'General Clauses Act, interpretation of statutes', 'FEMA basics']),
+      cf('cai-tax', 'G-I P3 · Taxation (Income-tax + GST)', 3, 100, ['Heads of income, deductions, TDS', 'GST: supply, levy, ITC, registration, returns']),
+      cf('cai-cma', 'G-II P4 · Cost & Management Accounting', 3, 80, ['Material, labour, overheads', 'Marginal costing, standard costing, budgets']),
+      cf('cai-audit', 'G-II P5 · Auditing & Ethics', 2, 60, ['Standards on Auditing', 'Audit of items, company audit', 'Professional ethics']),
+      cf('cai-fmsm', 'G-II P6 · Financial Management & Strategic Management', 2, 70, ['Ratios, cost of capital, capital budgeting, working capital', 'Strategic analysis and choices']),
+    ] },
+    { id: 'ca-fin', name: 'CA Final (ICAI)', blurb: 'After articleship. Twice a year (May, November).', units: [
+      cf('cafin-fr', 'G-I P1 · Financial Reporting (Ind AS)', 3, 120, ['Ind AS framework and key standards', 'Consolidation, business combinations']),
+      cf('cafin-afm', 'G-I P2 · Advanced Financial Management', 3, 90, ['Derivatives, forex, portfolio management', 'Valuation, mergers']),
+      cf('cafin-audit', 'G-I P3 · Advanced Auditing, Assurance & Ethics', 3, 90, ['Standards on Auditing in depth', 'Company and bank audit', 'Code of Ethics']),
+      cf('cafin-dt', 'G-II P4 · Direct Tax Laws & International Taxation', 3, 120, ['Advanced income-tax', 'Transfer pricing, DTAA']),
+      cf('cafin-idt', 'G-II P5 · Indirect Tax Laws', 3, 100, ['GST in depth', 'Customs and foreign trade policy']),
+      cf('cafin-ibs', 'G-II P6 · Integrated Business Solutions', 2, 60, ['Multi-disciplinary case studies (open book)', 'Strategic management applied']),
+    ] },
+  );
+
+  /* Notes */
+  window.PC_NOTES.push({
+    id: 'cat-formulas', subject: 'cat-qa', ex: ['cat', 'mat'], title: 'CAT / MAT quant formula sheet',
+    intro: 'Revise this before every mock. Most CAT QA questions need one of these plus a clean setup.',
+    sections: [
+      { h: 'Arithmetic', items: [['Successive change', 'a% then b% gives a + b + ab/100 %'], ['Discount', 'SP = MP × (1 − d); profit % = (SP − CP) ÷ CP × 100'], ['Compound interest', 'A = P(1 + r/100)ⁿ; CI − SI over 2 years = P(r/100)²'], ['Alligation', 'Cheaper : dearer quantity = (dearer − mean) : (mean − cheaper)'], ['Average speed', 'Equal distances at x and y: 2xy ÷ (x + y)'], ['Work', 'A in a days, B in b days: together ab ÷ (a + b) days']] },
+      { h: 'Algebra', items: [['Quadratic', 'Sum of roots −b/a, product c/a; real roots if b² − 4ac ≥ 0'], ['AM ≥ GM', 'For positive numbers; equality when all are equal — used for max/min'], ['Logarithms', 'log(ab) = log a + log b; logₐb = log b ÷ log a'], ['AP / GP', 'AP sum n/2[2a + (n − 1)d]; GP sum a(rⁿ − 1) ÷ (r − 1); infinite GP a ÷ (1 − r)'], ['Modulus', '|x − a| < b means a − b < x < a + b']] },
+      { h: 'Number system', items: [['Number of factors', 'N = pᵃqᵇrᶜ has (a + 1)(b + 1)(c + 1) factors'], ['Divisibility', '3 and 9: digit sum · 11: alternating digit sum · 8: last three digits'], ['Remainders', 'Use last-digit cycles; Fermat: a^(p−1) leaves remainder 1 on division by a prime p not dividing a'], ['HCF × LCM', 'Equals the product of the two numbers']] },
+      { h: 'Geometry', items: [['Triangle area', '½ab sin C; Heron √(s(s − a)(s − b)(s − c)); equilateral (√3/4)a²'], ['Similar triangles', 'Area ratio = (side ratio)²'], ['Circle', 'Angle at centre = 2 × angle at circumference; tangent ⟂ radius'], ['Polygon', 'Sum of interior angles = (n − 2) × 180°'], ['Coordinates', 'Distance √((x₂ − x₁)² + (y₂ − y₁)²); slope (y₂ − y₁) ÷ (x₂ − x₁)']] },
+      { h: 'Modern maths', items: [['P and C', 'nPr = n! ÷ (n − r)!; nCr = n! ÷ (r!(n − r)!)'], ['Repeated letters', 'n! ÷ (p! q! …) arrangements'], ['Identical items into groups', 'n identical items into r groups (empty allowed): (n + r − 1)C(r − 1)'], ['Probability', 'P(A or B) = P(A) + P(B) − P(A and B)']] },
+    ],
+  }, {
+    id: 'cat-playbook', subject: 'cat-dilr', ex: ['cat', 'mat'], title: 'CAT and MAT exam-day playbook',
+    intro: 'Section-wise method. Practise it in every mock so it is automatic on the day.',
+    sections: [
+      { h: 'VARC · 40 min', items: [['Order', 'RC passages first; para summary and odd-one-out in the last 10 minutes'], ['RC method', 'Read for the argument and tone; drop options that are too extreme or out of scope'], ['Para jumble (TITA)', 'Find the opening sentence and mandatory pairs (pronouns, “however”, examples)']] },
+      { h: 'DILR · 40 min', items: [['First 4–5 min', 'Scan every set and rank them by how clear the data is'], ['Target', 'Solve 2–3 sets fully — accuracy beats attempts'], ['Exit rule', 'No progress in 4 minutes → move to the next set']] },
+      { h: 'QA · 40 min', items: [['Two passes', 'First pass: questions you can solve in 2 minutes; second pass: the rest'], ['TITA', 'No negative marking — always enter an answer'], ['Shortcuts', 'Plug in options or extreme values']] },
+      { h: 'MAT · 120 min, 150 Q', items: [['Pace', 'About 45 seconds a question'], ['Order', 'Strongest section first; awareness section last'], ['Guessing', '−0.25 per wrong answer: guess only after eliminating two options']] },
+    ],
+  }, {
+    id: 'ca-glance', subject: 'ca-f', ex: ['ca'], title: 'CA course at a glance',
+    intro: 'Structure and anchor facts. Always study from the ICAI module for your attempt.',
+    sections: [
+      { h: 'Structure', items: [['Levels', 'Foundation → Intermediate → articleship → Final'], ['Direct entry', 'Graduates with 60% (55% in commerce) skip Foundation'], ['Pass rule', '40% in each paper and 50% aggregate (per group at Intermediate and Final)'], ['Sessions', 'Foundation & Intermediate: Jan, May, Sep · Final: May, Nov']] },
+      { h: 'Accounting', items: [['Accounting equation', 'Assets = Liabilities + Capital'], ['Straight-line depreciation', '(Cost − residual value) ÷ useful life'], ['Contingent liability', 'Disclosed in notes, not recorded — e.g. bills discounted, guarantees'], ['Bank reconciliation', 'Matches the cash book with the bank statement: timing differences and errors']] },
+      { h: 'Indian Contract Act, 1872', items: [['Valid contract (s. 10)', 'Free consent, competent parties, lawful consideration and object, not expressly void'], ['No consideration (s. 25)', 'Void, except: written and registered promise from natural love and affection; compensation for past voluntary service; written promise to pay a time-barred debt'], ['Minor', 'Agreement with a minor is void ab initio (Mohori Bibee v Dharmodas Ghose, 1903)']] },
+      { h: 'Intermediate anchors', items: [['Break-even (units)', 'Fixed cost ÷ contribution per unit'], ['P/V ratio', 'Contribution ÷ sales × 100'], ['GST type', 'Intra-state: CGST + SGST/UTGST · inter-state and imports: IGST'], ['Standards on Auditing', 'SA 230 documentation · SA 500 audit evidence · SA 700 audit report']] },
+    ],
+  });
+
+  /* Practice questions (original) */
+  let n = 0;
+  const q = (s, ex, text, o, a, x, src) => ({ id: s + '-m' + (++n), s, ex, q: text, o, a, x, src });
+  const CM = ['cat', 'mat'];
+  window.PC_QUIZ.push(
+    q('cat-qa', CM, 'Goods are marked 40% above cost and sold at a 25% discount. What is the profit?', ['5%', '10%', '15%', 'A loss of 5%'], 0, '1.40 × 0.75 = 1.05, so the profit is 5%.', 'CAT/MAT style'),
+    q('cat-qa', CM, 'A sum doubles in 5 years at compound interest. In how many years will it become 8 times?', ['10', '15', '20', '25'], 1, '8 = 2³, so three doubling periods: 15 years.'),
+    q('cat-qa', CM, 'If log₂x + log₄x = 6, what is x?', ['8', '16', '32', '64'], 1, 'log₄x = ½ log₂x, so 1.5 log₂x = 6, log₂x = 4 and x = 16.'),
+    q('cat-qa', CM, 'Trains 150 m and 100 m long run in opposite directions at 54 km/h and 36 km/h. How long do they take to cross each other?', ['8 s', '10 s', '12.5 s', '25 s'], 1, 'Relative speed 90 km/h = 25 m/s; 250 m ÷ 25 = 10 s.'),
+    q('cat-qa', CM, 'How many positive divisors does 360 have?', ['18', '20', '24', '30'], 2, '360 = 2³ × 3² × 5, so (3 + 1)(2 + 1)(1 + 1) = 24.'),
+    q('cat-qa', CM, 'A can finish a job in 12 days and B in 18 days. They work together for 4 days, then A leaves. How many more days does B need?', ['6', '8', '10', '12'], 1, 'Together they do 5/36 a day, so 20/36 = 5/9 in 4 days. B does the remaining 4/9 at 1/18 a day: 8 days.'),
+    q('cat-qa', CM, 'Rice at ₹40/kg and ₹60/kg is mixed so that the mixture costs ₹52/kg. In what ratio are they mixed?', ['2 : 3', '3 : 2', '1 : 2', '3 : 4'], 0, 'Alligation: (60 − 52) : (52 − 40) = 8 : 12 = 2 : 3 (cheaper : dearer).'),
+    q('cat-qa', CM, 'In how many ways can the letters of LEVEL be arranged?', ['20', '30', '60', '120'], 1, '5! ÷ (2! × 2!) = 30 (L and E each repeat twice).'),
+    q('cat-qa', ['cat'], 'The sum of the first 20 terms of an AP with first term 3 and common difference 4 is', ['780', '800', '820', '860'], 2, 'S = 20/2 × (2 × 3 + 19 × 4) = 10 × 82 = 820.'),
+    q('cat-dilr', CM, 'Five boxes P, Q, R, S and T are stacked. T is at the bottom. R is directly above P. Q is somewhere above S. S is not directly on T. Which box is on top?', ['P', 'Q', 'R', 'S'], 1, 'From the bottom: T, P, R, S, Q. Any other placement of the P–R pair forces S directly onto T.', 'CAT LR style'),
+    q('cat-dilr', CM, 'A company’s revenue grew from ₹200 crore to ₹242 crore in two years at a constant annual rate. What is the rate?', ['10%', '10.5%', '11%', '21%'], 0, '242 ÷ 200 = 1.21 = 1.1², so 10% a year.'),
+    q('cat-dilr', ['mat'], 'Is x > y?\nI. x² > y²\nII. x − y > 0', ['I alone is sufficient', 'II alone is sufficient', 'Both together are needed', 'Neither is sufficient'], 1, 'II directly gives x > y. I fails for negatives: x = −3, y = 1.', 'MAT data sufficiency'),
+    q('cat-dilr', ['mat'], 'All managers are graduates. Some graduates are engineers. Which conclusion must follow?', ['Some managers are engineers', 'All engineers are graduates', 'Some graduates are managers', 'No manager is an engineer'], 2, '“All managers are graduates” converts to “Some graduates are managers”. Nothing links managers and engineers.'),
+    q('cat-varc', CM, 'Arrange into a coherent paragraph:\n1. Yet that benefit disappears if buyers cannot trust what is being sold.\n2. Online marketplaces lower the cost of finding a seller.\n3. Ratings and return policies exist to rebuild that trust.\n4. Where they work, small sellers can compete with established brands.', ['2134', '1234', '2314', '3214'], 0, '2 states the benefit, 1 the threat (“Yet that benefit”), 3 the fix (“that trust”), 4 the result.', 'CAT para jumble'),
+    q('cat-varc', ['mat'], 'Choose the word closest in meaning to “ephemeral”.', ['Short-lived', 'Ethereal', 'Essential', 'Eternal'], 0, 'Ephemeral means lasting a very short time.'),
+    q('cat-varc', ['mat'], 'Which sentence is correct?', ['Neither the manager nor the clerks was present.', 'Neither the manager nor the clerks were present.', 'Neither the manager or the clerks were present.', 'Neither the manager nor the clerks is present.'], 1, 'With neither…nor, the verb agrees with the nearer subject (“clerks”), so “were”.'),
+    q('mat-ge', ['mat'], 'India’s policy repo rate is decided by the', ['Monetary Policy Committee', 'Finance Commission', 'NITI Aayog', 'SEBI board'], 0, 'The six-member Monetary Policy Committee of the RBI sets the repo rate.'),
+    q('mat-ge', ['mat'], 'The World Trade Organization is headquartered in', ['Geneva', 'New York', 'Washington DC', 'Paris'], 0, 'WTO: Geneva. The IMF and World Bank are in Washington DC.'),
+    q('ca-f', ['ca'], 'A machine costs ₹1,00,000, has a residual value of ₹10,000 and a life of 5 years. Annual straight-line depreciation is', ['₹20,000', '₹18,000', '₹22,000', '₹10,000'], 1, '(1,00,000 − 10,000) ÷ 5 = ₹18,000.', 'CA Foundation'),
+    q('ca-f', ['ca'], 'Which of these is a contingent liability?', ['Outstanding salary', 'A bill discounted with the bank that has not yet matured', 'Bank overdraft', 'Trade payables'], 1, 'A discounted bill becomes a liability only if the drawee defaults, so it is disclosed as contingent.'),
+    q('ca-f', ['ca'], 'Under the Indian Contract Act, 1872, an agreement made without consideration is generally', ['Void', 'Voidable', 'Valid', 'Illegal'], 0, 'Section 25 makes it void, subject to three exceptions.'),
+    q('ca-f', ['ca'], 'An agreement with a minor is', ['Void ab initio', 'Voidable at the minor’s option', 'Valid', 'Enforceable once the minor turns 18'], 0, 'Mohori Bibee v Dharmodas Ghose (1903).'),
+    q('ca-f', ['ca'], 'The mean of 5 numbers is 20. If the number 30 is removed, the mean of the rest is', ['17.5', '18', '20', '22.5'], 0, '(100 − 30) ÷ 4 = 17.5.'),
+    q('ca-f', ['ca'], 'If price elasticity of demand is greater than 1, a fall in price will', ['Raise total revenue', 'Lower total revenue', 'Leave total revenue unchanged', 'Make demand perfectly inelastic'], 0, 'Elastic demand: quantity rises proportionally more than price falls, so revenue rises.'),
+    q('ca-f', ['ca'], 'The present value of ₹11,025 due in 2 years at 5% compound interest is', ['₹10,000', '₹10,500', '₹9,800', '₹10,025'], 0, '11,025 ÷ 1.05² = 11,025 ÷ 1.1025 = ₹10,000.'),
+    q('ca-i', ['ca'], 'Which GST applies to an inter-state supply of goods?', ['IGST', 'CGST + SGST', 'UTGST', 'Only customs duty'], 0, 'Inter-state supplies and imports attract IGST.', 'CA Intermediate'),
+    q('ca-i', ['ca'], 'Which Standard on Auditing deals with audit documentation?', ['SA 200', 'SA 230', 'SA 500', 'SA 700'], 1, 'SA 230 is Audit Documentation; SA 500 is Audit Evidence; SA 700 is the audit report.'),
+    q('ca-i', ['ca'], 'In marginal costing, break-even point in units equals', ['Fixed cost ÷ contribution per unit', 'Fixed cost ÷ selling price per unit', 'Total cost ÷ contribution per unit', 'Contribution ÷ fixed cost'], 0, 'Break-even is reached when total contribution covers fixed cost.'),
+  );
+
+  /* NCERT reading for these subjects (pre-2017 editions) */
+  const E = 'pre-2017 edition';
+  Object.assign(window.PC_NCERT || {}, {
+    'cat-qa': [['8–10', 'Mathematics', E + ' — arithmetic, algebra, geometry base'], ['11', 'Mathematics — sets, sequences, P&C, probability', E]],
+    'mat-ge': [['11', 'Indian Economic Development', E], ['12', 'Introductory Macroeconomics (money, banking, budget)', E]],
+    'ca-f': [['11', 'Accountancy — Financial Accounting I–II', E], ['11', 'Statistics for Economics', E], ['12', 'Introductory Microeconomics', E]],
+  });
+
+  /* Strategy */
+  window.PC_STRATEGY.push({
+    id: 'mba-ca', short: 'CAT · MAT · CA', title: 'CAT, MAT and CA around your UPSC 2027 attempt',
+    lede: 'UPSC CSE 2027 (Prelims 23 May 2027) is your last attempt, so it comes first. CAT 2027 (expected 28 Nov 2027) falls after UPSC Mains — the natural backup. MAT is a cheap safety net. CA is a 3–4 year course with full-time articleship; start it only if you leave the civil-services path.',
+    body: '| When | UPSC | CAT / MAT | CA |\n|---|---|---|---|\n' +
+      '| Now – May 2027 | Prelims + Anthropology (main focus) | 2 h a week: your CSAT quant and RC double as CAT basics | Not now |\n' +
+      '| Jun – Aug 2027 | Mains if Prelims cleared | If not cleared: CAT mode (2 h a day + 6 h on weekend days) | Decide; check your B.E. % for direct entry |\n' +
+      '| Sep – Nov 2027 | Mains | Sectional tests, then 1 → 2 full mocks a week; CAT about 28 Nov | — |\n' +
+      '| Dec 2027 – Feb 2028 | Interview if called | MAT (Dec / Feb) as backup; WAT/PI practice | Register for Intermediate if chosen |\n\n' +
+      '### CAT plan for a working professional (16 weeks)\n' +
+      '1. **Weeks 1–6, foundations:** QA arithmetic and algebra with topic tests, one RC passage and one DILR set a day.\n' +
+      '2. **Weeks 7–10, past papers:** CAT 2017–2025 slots section by section, timed at 40 minutes.\n' +
+      '3. **Weeks 11–16, mocks:** one, then two full mocks a week; spend twice the mock time on analysis and log every error.\n\n' +
+      '### How to use previous papers\n' +
+      '- **CAT:** each year’s slots appear with the answer key after the exam. Treat 2017–2025 as your question bank — RC and DILR repeat in type, not content.\n' +
+      '- **MAT:** AIMA sample papers plus three recent papers, purely for speed.\n' +
+      '- **CA:** ICAI’s RTPs, MTPs and past suggested answers for every paper — this is how ICAI signals what it will ask.\n\n' +
+      '### Selection reality as a General (OC) candidate\n' +
+      '- IIMs use category-wise cut-offs, and General is the highest. Several IIMs give diversity points for gender and non-engineering backgrounds, so a General male engineer typically needs **99+ for A/B/C** and **97+** for the next tier.\n' +
+      '- Work experience earns points up to about 3 years at most IIMs. With 5+ years, one-year executive MBAs (mostly via GMAT/GRE) may suit better.\n' +
+      '- **Telangana option:** TG ICET (MBA/MCA in Telangana universities) has an easier, overlapping syllabus — analytical, mathematical and communication ability — with no negative marking.\n\n' +
+      '### CA reality check\n' +
+      '- Direct entry needs 60% in your B.E.; otherwise you start at Foundation.\n' +
+      '- Articleship is full-time, and ICAI does not allow another job during it — you would have to leave your current job.\n' +
+      '- ICAI’s free study material is enough for self-study, but pass rates are low (often 10–20% at Final), so plan for re-attempts.',
+  });
+
+  (window.PC_RESOURCES || []).push({
+    cat: 'CAT, MAT and CA (official, free)', note: 'Past papers and study material straight from the conducting bodies.',
+    items: [
+      { n: 'IIM CAT official site', u: 'https://iimcat.ac.in', d: 'Notification, free mock test, answer keys', ex: 'CAT' },
+      { n: 'AIMA MAT', u: 'https://mat.aima.in', d: 'Session dates, registration, sample questions', ex: 'MAT' },
+      { n: 'ICAI BoS Knowledge Portal', u: 'https://boslive.icai.org', d: 'Free study material, RTPs, MTPs, suggested answers for every level', ex: 'CA' },
+      { n: 'ICAI self-service portal', u: 'https://eservices.icai.org', d: 'Registration for Foundation / Intermediate', ex: 'CA' },
+    ],
+  });
+})();
+</script>
 <script>/* MMJ Self-Coaching App — app engine. Plain JS, no build step. Data lives in data/*.js.
    Works standalone (any static host or offline file) and inside claude.ai. AI help works with any AI
    tool via copy–paste, with your own API key (Gemini/OpenRouter/Groq/OpenAI-compatible), or with Claude on claude.ai. */
@@ -3464,7 +3848,7 @@ window.PC_RESOURCES = [
   }
   function searchLinks(q) {
     const e = encodeURIComponent(q);
-    return [['Google', 'https://www.google.com/search?q=' + e], ['Google AI Mode', 'https://www.google.com/search?udm=50&q=' + e], ['YouTube lectures', 'https://www.youtube.com/results?search_query=' + encodeURIComponent(q + ' lecture')], ['Wikipedia', 'https://en.wikipedia.org/w/index.php?search=' + encodeURIComponent(q.replace(/ (UPSC|TGPSC|SSC|TET|optional|exam).*$/i, ''))]]
+    return [['Google', 'https://www.google.com/search?q=' + e], ['Google AI Mode', 'https://www.google.com/search?udm=50&q=' + e], ['Animated videos (4–20 min)', 'https://www.youtube.com/results?search_query=' + encodeURIComponent(q.replace(/ (UPSC|TGPSC|SSC|TET|optional|exam).*$/i, '') + ' animated explanation') + '&sp=EgIYAw%253D%253D'], ['Wikipedia', 'https://en.wikipedia.org/w/index.php?search=' + encodeURIComponent(q.replace(/ (UPSC|TGPSC|SSC|TET|optional|exam).*$/i, ''))]]
       .map(([n, u]) => `<a class="chip" href="${esc(u)}" target="_blank" rel="noopener">${n} ↗</a>`).join('');
   }
   function searchQ(t) {
@@ -3967,6 +4351,10 @@ window.PC_RESOURCES = [
   }
 
   /* topic drawer */
+  function ncertHtml(t) {
+    const list = (window.PC_NCERT || {})[t.subject]; if (!list || !list.length) return '';
+    return `<section class="stack" style="gap:6px"><h3>NCERT to read</h3><ul class="bullets small">${list.map(([c, b, n]) => `<li><b>${esc(c)}</b> · ${esc(b)}${n ? ` — <span class="muted">${esc(n)}</span>` : ''}</li>`).join('')}</ul><span class="small muted">Use pre-2017 or old editions (library / second-hand); ncert.nic.in hosts only current editions.</span></section>`;
+  }
   async function openTopic(id) {
     const t = TOPIC[id]; if (!t) return;
     const s = statusOf(id); const rec = Store.state.topics[id] || {};
@@ -3979,7 +4367,7 @@ window.PC_RESOURCES = [
       <section class="stack" style="gap:8px"><h3>Your progress</h3><div class="seg" role="group" aria-label="Status">${STATUS.map((l, i) => `<button data-act="set-status" data-id="${id}" data-v="${i}" aria-pressed="${s === i}">${l}</button>`).join('')}</div>
         ${rec.t ? `<span class="small muted">Last updated ${fmtD(rec.t)}</span>` : ''}</section>
       ${t.tip ? `<div class="callout mark small">${inline(t.tip)}</div>` : ''}
-      ${t.src ? `<section class="stack" style="gap:6px"><h3>Read from</h3><p class="small">${inline(t.src)}</p></section>` : ''}
+      ${t.src ? `<section class="stack" style="gap:6px"><h3>Read from</h3><p class="small">${inline(t.src)}</p></section>` : ''}${ncertHtml(t)}
       ${notes.length ? `<section class="stack" style="gap:6px"><h3>Quick notes</h3>${notes.map((n) => `<a class="note-link" href="#note-${n.id}"><b>${esc(n.title)}</b><small>${(n.sections || []).length} sections · open sheet</small></a>`).join('')}</section>` : ''}
       ${(() => { const news = CA.all().filter((x) => x.x === id).slice(0, 5); return news.length ? `<section class="stack" style="gap:6px"><h3>In the news</h3>${news.map((x) => `<div class="small"><b>${fmtD(x.d, { day: 'numeric', month: 'short', year: 'numeric' })}</b> · ${esc(x.t)}${x.n ? `<br><span class="muted">${esc(x.n)}</span>` : ''}</div>`).join('')}<a class="small" href="#ca">Open the current-affairs diary</a></section>` : ''; })()}
       <section class="stack" style="gap:8px"><h3>Open this topic in one click</h3>
