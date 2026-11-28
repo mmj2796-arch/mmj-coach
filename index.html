@@ -616,8 +616,8 @@ body.wiz .tabbar, body.wiz .search, body.wiz .countdown, body.wiz .user-chip { d
 .tv-dialog.tv-right { left: auto; right: 12px; top: 8px; width: 210px; }
 .tv-btn { align-self: flex-end; padding: 4px 12px; border-radius: 6px; background: var(--accent); color: var(--on-accent); font-weight: 600; }
 .tv-home { position: absolute; inset: 0; background: linear-gradient(160deg, #2340b8, #6b3fb8); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; color: #fff; z-index: 6; }
-.tv-appicon { width: 56px; height: 56px; border-radius: 14px; background: #fff; display: grid; place-items: center; color: #1d2233; }
-.tv-appicon .tv-logo { width: 40px; height: 40px; }
+.tv-appicon { width: 56px; height: 56px; border-radius: 14px; background: none; display: grid; place-items: center; color: #1d2233; }
+.tv-appicon .tv-logo { width: 56px; height: 56px; }
 .tv-window { position: absolute; inset: 0; background: var(--sheet); display: grid; place-items: center; font-size: .95rem; z-index: 6; }
 .tv-wide { font-size: .8rem; }
 .tv-center { display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; padding: 16px; }
@@ -669,7 +669,7 @@ body.wiz .tabbar, body.wiz .search, body.wiz .countdown, body.wiz .user-chip { d
 <div class="app">
   <aside class="rail" aria-label="Sections">
     <a class="brand" href="#today">
-      <svg class="brand-mark" viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="17" r="15" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17" cy="17" r="10" fill="none" stroke="var(--margin)" stroke-width="1.2" stroke-dasharray="2 3"/><path d="M17 6 L20.5 17 L17 28 L13.5 17 Z" fill="var(--accent)"/><path d="M17 17 L20.5 17 L17 28 L13.5 17 Z" fill="var(--mark)"/><circle cx="17" cy="17" r="1.8" fill="var(--sheet)"/></svg>
+      <svg class="brand-mark" viewBox="0 0 512 512" aria-hidden="true"><rect width="512" height="512" rx="116" fill="#1f2024"/><g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="40" transform="translate(28 -20)"><path stroke="#fff" d="M118 330V150l55 100 55-100v180M228 150l55 100 55-100"/><path stroke="#b9c0cf" d="M338 150v206a40 40 0 0 1-40 40H118"/></g></svg>
       <span><span class="brand-name">MMJ Self-Coaching</span><br><span class="brand-sub">UPSC · PSC · SSC · TET · CAT · CA</span></span>
     </a>
     <nav class="nav" id="rail-nav"></nav>
@@ -682,7 +682,7 @@ body.wiz .tabbar, body.wiz .search, body.wiz .countdown, body.wiz .user-chip { d
   <div class="main">
     <header class="topbar">
       <a class="brand" href="#today" aria-label="MMJ Self-Coaching App home">
-        <svg class="brand-mark" viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="17" r="15" fill="none" stroke="currentColor" stroke-width="2"/><path d="M17 6 L20.5 17 L17 28 L13.5 17 Z" fill="var(--accent)"/><path d="M17 17 L20.5 17 L17 28 L13.5 17 Z" fill="var(--mark)"/><circle cx="17" cy="17" r="1.8" fill="var(--sheet)"/></svg>
+        <svg class="brand-mark" viewBox="0 0 512 512" aria-hidden="true"><rect width="512" height="512" rx="116" fill="#1f2024"/><g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="40" transform="translate(28 -20)"><path stroke="#fff" d="M118 330V150l55 100 55-100v180M228 150l55 100 55-100"/><path stroke="#b9c0cf" d="M338 150v206a40 40 0 0 1-40 40H118"/></g></svg>
       </a>
       <div class="countdown" id="countdown"></div>
       <div class="spacer"></div>
@@ -5451,7 +5451,7 @@ window.PC_RESOURCES = [
   const tvIn = (d, html, cls) => `<div class="tv-in ${cls || ''}" style="--d:${d}s">${html}</div>`;
   const tvLines = (n) => Array.from({ length: n }, (_, i) => `<i class="tv-line" style="width:${55 + ((i * 37) % 40)}%"></i>`).join('');
   const tvPhone = (bar, body, taps) => `<div class="tv-phone"><div class="tv-url">${bar}</div><div class="tv-screen">${body}</div>${taps || ''}</div>`;
-  const TV_LOGO = '<svg class="tv-logo" viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="17" r="15" fill="none" stroke="currentColor" stroke-width="2"/><path d="M17 6 L20.5 17 L17 28 L13.5 17 Z" fill="var(--accent)"/><path d="M17 17 L20.5 17 L17 28 L13.5 17 Z" fill="var(--mark)"/></svg>';
+  const TV_LOGO = '<svg class="tv-logo" viewBox="0 0 512 512" aria-hidden="true"><rect width="512" height="512" rx="116" fill="#1f2024"/><g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="40" transform="translate(28 -20)"><path stroke="#fff" d="M118 330V150l55 100 55-100v180M228 150l55 100 55-100"/><path stroke="#b9c0cf" d="M338 150v206a40 40 0 0 1-40 40H118"/></g></svg>';
   const TOUR = [
     { t: 'Welcome', d: 9, c: 'Welcome to MMJ Self-Coaching: a free study app for UPSC, state PSC, SSC, TET and DSC, engineering, CAT, MAT and CA exams. It works offline and keeps your data on your own device.',
       s: () => `<div class="tv-center">${TV_LOGO}<b class="tv-big">MMJ Self-Coaching</b>${tvIn(1, '<div class="tv-chips"><span>UPSC</span><span>TGPSC · APPSC</span><span>SSC</span><span>TET · DSC</span><span>Engineering</span><span>CAT · MAT · CA</span></div>')}${tvIn(2.6, '<p class="tv-sub">Free · works offline · your data stays on your device</p>')}</div>` },
