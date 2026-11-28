@@ -4,6 +4,10 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Self-coaching app for UPSC CSE, TGPSC Group-I/II/III/IV, APPSC, SSC, TG DSC/TET, engineering exams, CAT, MAT and CA: syllabus tracker, paper trends, OC cut-offs, notes at a glance, practice, planner and AI help from any AI tool.">
 <meta name="theme-color" content="#2340b8">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="MMJ Coach">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-192.png">
@@ -482,13 +486,191 @@ pre code { font-family: var(--font-mono); font-size: .8rem; background: var(--sh
 .resource:last-child { border-bottom: 0; }
 .resource a { font-weight: 600; }
 .resource small { color: var(--ink-3); }
+
+/* ---------- step-by-step start, users, topic tabs, videos ---------- */
+[hidden] { display: none !important; }
+.steps { list-style: none; margin: 0; padding: 0; display: flex; gap: 6px; flex-wrap: wrap; counter-reset: none; }
+.steps li { display: flex; align-items: center; gap: 6px; padding: 5px 10px 5px 5px; border-radius: 999px; background: var(--sheet-2); border: 1px solid var(--rule); font-size: .84rem; color: var(--ink-3); }
+.steps li a { display: inline-flex; align-items: center; gap: 6px; color: inherit; text-decoration: none; }
+.steps li span { width: 22px; height: 22px; border-radius: 50%; display: inline-grid; place-items: center; background: var(--sheet); border: 1px solid var(--rule-2); font-weight: 700; font-size: .78rem; }
+.steps li.done { color: var(--good-text); background: var(--good-soft); border-color: transparent; }
+.steps li.done span { background: var(--good-text); color: var(--sheet); border-color: transparent; }
+.steps li.now { color: var(--accent); background: var(--accent-soft); border-color: var(--accent); font-weight: 600; }
+.steps li.now span { background: var(--accent); color: var(--on-accent); border-color: transparent; }
+.steps-sm li { font-size: .8rem; }
+.wiz { display: flex; flex-direction: column; gap: 18px; max-width: 760px; width: 100%; margin: 0 auto; }
+.wiz .sheet { gap: 14px; }
+body.wiz .tabbar, body.wiz .search, body.wiz .countdown, body.wiz .user-chip { display: none !important; }
+.privacy p { margin: 6px 0; }
+.privacy .bullets { margin: 4px 0 0; }
+.check { display: flex; gap: 8px; align-items: flex-start; cursor: pointer; }
+.check input { margin-top: 3px; width: 18px; height: 18px; flex: none; }
+.exam-pick { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; }
+.chip.pick { cursor: pointer; padding: 7px 12px; font-size: .9rem; }
+.chip.pick:has(input:checked) { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); font-weight: 600; }
+.elig-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.how { margin: 0; padding-left: 1.3em; display: flex; flex-direction: column; gap: 8px; }
+.how-inline { margin: 4px 0 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 6px 14px; color: var(--ink-2); font-size: .9rem; counter-reset: s; }
+.how-inline li { counter-increment: s; }
+.how-inline li::before { content: counter(s); display: inline-grid; place-items: center; width: 20px; height: 20px; margin-right: 6px; border-radius: 50%; background: var(--accent); color: var(--on-accent); font-size: .74rem; font-weight: 700; }
+.filters summary { cursor: pointer; color: var(--ink-2); }
+.filters[open] { display: flex; flex-direction: column; gap: 10px; }
+.hero { border: 1.5px solid var(--accent); gap: 10px; }
+.hero h2 { font-size: 1.35rem; }
+.step-btns { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; }
+.step-btns .btn { justify-content: flex-start; gap: 8px; padding: 10px 12px; }
+.step-btns .btn span, .ttabs button span { display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; background: var(--sheet-2); color: var(--ink-2); font-size: .74rem; font-weight: 700; flex: none; }
+.step-btns .btn-primary span { background: var(--on-accent); color: var(--accent); }
+.ttabs { display: flex; flex: none; gap: 6px; overflow-x: auto; padding: 8px 0; scrollbar-width: none; position: sticky; top: -16px; background: var(--sheet); z-index: 2; border-bottom: 1px solid var(--rule); }
+.ttabs::-webkit-scrollbar { display: none; }
+.ttabs button { flex: none; display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--rule-2); background: var(--sheet); color: var(--ink-2); border-radius: 999px; padding: 6px 12px 6px 6px; font: inherit; font-size: .86rem; font-weight: 550; cursor: pointer; }
+.ttabs button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.ttabs button[aria-pressed="true"] span { background: var(--on-accent); color: var(--accent); }
+.tpane { gap: 12px; }
+.tpane h4 { margin: 4px 0 0; }
+.seg-sm button { padding: 5px 9px; font-size: .8rem; }
+.video-list { display: flex; flex-direction: column; gap: 8px; }
+.video-link { display: flex; gap: 12px; align-items: center; padding: 10px 12px; border: 1px solid var(--rule-2); border-radius: var(--r); text-decoration: none; color: var(--ink); background: var(--sheet); }
+.video-link:hover { border-color: var(--accent); background: var(--accent-soft); }
+.video-link svg { width: 30px; height: 30px; flex: none; color: #d0312d; }
+.video-link small { display: block; color: var(--ink-3); font-size: .8rem; }
+.vlink { display: inline-flex; align-items: center; gap: 4px; font-size: .8rem; font-weight: 600; text-decoration: none; color: #b8261f; border: 1px solid currentColor; border-radius: 999px; padding: 1px 8px 1px 4px; vertical-align: middle; white-space: nowrap; }
+.vlink svg { width: 15px; height: 15px; }
+.note-section h3 .vlink { margin-left: 6px; }
+.user-chip { width: 34px; height: 34px; border-radius: 50%; border: 0; background: var(--accent); color: var(--on-accent); font-weight: 700; font-size: .82rem; cursor: pointer; flex: none; }
+.user-list { display: flex; flex-direction: column; gap: 8px; }
+.user-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.user-row b { flex: 1; min-width: 6rem; }
+.avatar { width: 30px; height: 30px; border-radius: 50%; display: inline-grid; place-items: center; background: var(--accent-soft); color: var(--accent); font-weight: 700; font-size: .78rem; flex: none; }
+.user-line { display: inline-flex; align-items: center; gap: 8px; align-self: flex-start; }
+.btn.danger { color: var(--crit); }
+.linkline { word-break: break-all; font-size: 1.05rem; }
+@media (prefers-color-scheme: dark) { .video-link svg, .vlink { color: #ff6b63; } }
+@media (max-width: 880px) { .topbar .spacer { display: none; } .countdown { flex: 1 1 0; } .tabbar { grid-template-columns: repeat(5, 1fr); } }
+
+/* ---------- clearer AI answers ---------- */
+.ai-out { background: var(--sheet); border-left: 4px solid var(--accent); }
+.ai-out .md { gap: 8px; max-width: none; line-height: 1.5; }
+.ai-out .md h2, .ai-out .md h3 { font-size: .98rem; color: var(--accent); margin: 10px 0 0; padding-bottom: 4px; border-bottom: 1px solid var(--rule); }
+.ai-out .md > h2:first-child, .ai-out .md > h3:first-child { margin-top: 0; }
+.ai-out .md p { margin: 0; }
+.ai-out .md ul, .ai-out .md ol { gap: 5px; }
+.ai-out .md .tw { overflow-x: auto; }
+.ai-out .md table { width: 100%; }
+
+/* ---------- test review and explanations ---------- */
+.q-card .explain { line-height: 1.5; }
+.xq { margin-top: 8px; font-size: .86rem; }
+.xq summary { cursor: pointer; color: var(--accent); font-weight: 600; }
+.xq .chips { margin-top: 6px; }
+.rv-list { display: flex; flex-direction: column; gap: 8px; }
+.rv { border: 1px solid var(--rule); border-radius: var(--r); padding: 8px 12px; background: var(--sheet); }
+.rv.bad { border-left: 4px solid var(--crit); }
+.rv.ok { border-left: 4px solid var(--good-text); }
+.rv > summary { cursor: pointer; font-weight: 550; display: flex; gap: 8px; align-items: baseline; }
+.rv > summary .chip { flex: none; }
+.rv .q-text { margin: 8px 0; white-space: pre-line; }
+.rv-opts { margin: 0 0 8px; padding-left: 1.6em; display: flex; flex-direction: column; gap: 4px; }
+.rv-opts li.right { color: var(--good-text); }
+.rv-opts li.wrong { color: var(--crit); }
+.rv-x { background: var(--sheet-2); border-radius: 8px; padding: 8px 10px; margin-bottom: 6px; }
+
+/* ---------- exam-wise papers ---------- */
+.paper-card { gap: 10px; }
+.pc-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+.pc-steps > div { display: flex; flex-direction: column; gap: 8px; padding: 12px; border: 1px solid var(--rule); border-radius: var(--r); background: var(--sheet-2); }
+.pc-steps h4 { margin: 0; display: flex; gap: 8px; align-items: center; font-size: .95rem; }
+.pc-steps h4 span { display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: var(--accent); color: var(--on-accent); font-size: .76rem; flex: none; }
+.input-sm { padding: 5px 8px; font-size: .86rem; width: auto; }
+
+/* ---------- video guide ---------- */
+.tv { border: 1px solid var(--rule-2); border-radius: 14px; overflow: hidden; background: var(--sheet); box-shadow: var(--shadow); max-width: 760px; width: 100%; }
+.tv-stage { position: relative; height: 420px; background: linear-gradient(160deg, var(--accent-soft), var(--sheet-2)); display: grid; place-items: center; overflow: hidden; }
+.tv-scene { width: 100%; height: 100%; display: grid; place-items: center; animation: tvIn .45s ease both; }
+.tv.paused .tv-stage *, .tv.paused .tv-prog i { animation-play-state: paused !important; }
+.tv-cap { padding: 12px 16px 6px; display: flex; flex-direction: column; gap: 3px; min-height: 84px; }
+.tv-cap b { font-size: 1.05rem; }
+.tv-cap span { color: var(--ink-2); font-size: .95rem; }
+.tv-prog { display: flex; gap: 4px; padding: 6px 16px; }
+.tv-prog button { flex: 1; height: 6px; border: 0; padding: 0; border-radius: 3px; background: var(--rule-2); cursor: pointer; overflow: hidden; }
+.tv-prog button i { display: block; height: 100%; width: 0; background: var(--accent); }
+.tv-prog button.done i { width: 100%; }
+.tv-prog button.now i { animation: tvFill var(--dur, 8s) linear forwards; }
+.tv-ctrl { display: flex; gap: 8px; align-items: center; padding: 6px 16px 14px; flex-wrap: wrap; }
+.tv-in { opacity: 0; animation: tvFade .5s ease var(--d, 0s) forwards; }
+.tv-hl { animation: tvHl .5s ease var(--d, 0s) forwards; border-radius: 6px; }
+.tv-flash { animation: tvFlash 1.3s ease var(--d, 0s) 1; }
+.tv-tap { position: absolute; left: var(--x); top: var(--y); width: 34px; height: 34px; margin: -17px 0 0 -17px; border-radius: 50%; background: rgba(35, 64, 184, .28); border: 2px solid var(--accent); opacity: 0; animation: tvTap 1.4s ease var(--d, 0s) forwards; pointer-events: none; z-index: 5; }
+.tv-phone { position: relative; width: 230px; height: 390px; border: 9px solid #1d2233; border-radius: 30px; background: var(--sheet); overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 12px 30px rgba(0,0,0,.18); }
+.tv-laptop { position: relative; width: min(560px, 92%); height: 330px; border: 10px solid #1d2233; border-bottom-width: 18px; border-radius: 12px; background: var(--sheet); overflow: hidden; display: flex; flex-direction: column; }
+.tv-url { font-size: .7rem; padding: 7px 10px; background: var(--sheet-2); border-bottom: 1px solid var(--rule); display: flex; justify-content: space-between; align-items: center; gap: 6px; color: var(--ink-2); white-space: nowrap; overflow: hidden; }
+.tv-url .tv-hl, .tv-dots { padding: 0 5px; font-weight: 700; }
+.tv-screen { position: relative; flex: 1; padding: 10px; display: flex; flex-direction: column; gap: 7px; font-size: .74rem; overflow: hidden; }
+.tv-line { display: block; height: 7px; border-radius: 4px; background: var(--rule); }
+.tv-toolbar { position: absolute; left: 0; right: 0; bottom: 0; display: flex; justify-content: space-around; padding: 8px 4px; background: var(--sheet-2); border-top: 1px solid var(--rule); font-size: .95rem; color: var(--accent); }
+.tv-sheet, .tv-menu { position: absolute; left: 6px; right: 6px; bottom: 6px; background: var(--sheet); border: 1px solid var(--rule-2); border-radius: 12px; box-shadow: var(--shadow); padding: 4px; z-index: 3; }
+.tv-menu { top: 4px; bottom: auto; left: auto; width: 62%; }
+.tv-menu.tv-low { top: auto; bottom: 46px; left: 6px; width: auto; }
+.tv-row { padding: 7px 9px; border-radius: 6px; }
+.tv-dialog { position: absolute; left: 12px; right: 12px; top: 34%; background: var(--sheet); border: 1px solid var(--rule-2); border-radius: 12px; box-shadow: var(--shadow); padding: 12px; display: flex; flex-direction: column; gap: 6px; z-index: 4; }
+.tv-dialog.tv-right { left: auto; right: 12px; top: 8px; width: 210px; }
+.tv-btn { align-self: flex-end; padding: 4px 12px; border-radius: 6px; background: var(--accent); color: var(--on-accent); font-weight: 600; }
+.tv-home { position: absolute; inset: 0; background: linear-gradient(160deg, #2340b8, #6b3fb8); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; color: #fff; z-index: 6; }
+.tv-appicon { width: 56px; height: 56px; border-radius: 14px; background: #fff; display: grid; place-items: center; color: #1d2233; }
+.tv-appicon .tv-logo { width: 40px; height: 40px; }
+.tv-window { position: absolute; inset: 0; background: var(--sheet); display: grid; place-items: center; font-size: .95rem; z-index: 6; }
+.tv-wide { font-size: .8rem; }
+.tv-center { display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; padding: 16px; }
+.tv-logo { width: 64px; height: 64px; color: var(--ink); }
+.tv-big { font-family: var(--font-display); font-size: 1.8rem; font-weight: 780; font-stretch: 85%; }
+.tv-sub { color: var(--ink-2); margin: 0; }
+.tv-chips { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
+.tv-chips.tv-left { justify-content: flex-start; }
+.tv-chips span, .tv-steps span, .tv-tabs span, .tv-tabbar span { padding: 3px 8px; border-radius: 999px; border: 1px solid var(--rule-2); background: var(--sheet); font-size: .72rem; }
+.tv-center .tv-chips span { font-size: .85rem; padding: 4px 10px; }
+.tv-pick { animation: tvPick .4s ease var(--d, 0s) forwards; }
+.tv-card { border: 1px solid var(--rule); border-radius: 10px; padding: 9px; display: flex; flex-direction: column; gap: 6px; background: var(--sheet); }
+.tv-card small { color: var(--ink-3); font-size: .62rem; letter-spacing: .04em; }
+.tv-privacy { background: var(--accent-soft); }
+.tv-field { display: flex; flex-direction: column; gap: 3px; }
+.tv-field small { color: var(--ink-3); }
+.tv-field > span { border: 1px solid var(--rule-2); border-radius: 6px; padding: 5px 7px; min-height: 26px; }
+.tv-type { display: inline-block; white-space: nowrap; overflow: hidden; width: 0; animation: tvType 1.1s steps(10) var(--d, 0s) forwards; }
+.tv-checkrow { display: flex; gap: 8px; align-items: center; }
+.tv-cb { width: 16px; height: 16px; border: 2px solid var(--ink-3); border-radius: 4px; display: inline-grid; place-items: center; animation: tvCb .3s ease var(--d, 0s) forwards; }
+.tv-cb::after { content: '✓'; color: #fff; font-size: .7rem; opacity: 0; animation: tvFade .3s ease var(--d, 0s) forwards; }
+.tv-bigbtn { margin-top: auto; text-align: center; padding: 8px; border-radius: 8px; background: var(--accent); color: var(--on-accent); font-weight: 600; }
+.tv-ok { padding: 6px 8px; border-radius: 6px; background: var(--good-soft); color: var(--good-text); font-weight: 600; }
+.tv-toast { position: absolute; left: 50%; top: 52%; translate: -50% 0; background: var(--ink); color: var(--sheet); border-radius: 999px; padding: 5px 12px; white-space: nowrap; }
+.tv-steps, .tv-tabs { display: flex; flex-wrap: wrap; gap: 4px; }
+.tv-vid { padding: 7px 8px; border: 1px solid var(--rule-2); border-radius: 8px; color: var(--ink); }
+.tv-ai { border-left: 3px solid var(--accent); padding-left: 8px; display: flex; flex-direction: column; gap: 6px; }
+.tv-ai ul { margin: 0; padding-left: 1.1em; display: flex; flex-direction: column; gap: 5px; }
+.tv-h { color: var(--accent); font-size: .76rem; border-bottom: 1px solid var(--rule); padding-bottom: 2px; display: block; }
+.tv-table { display: grid; grid-template-columns: 1fr 2fr; gap: 3px; margin-top: 4px; }
+.tv-table i { height: 12px; background: var(--rule); border-radius: 3px; }
+.tv-tabbar { position: absolute; left: 0; right: 0; bottom: 0; display: flex; justify-content: space-around; padding: 7px 2px; background: var(--sheet-2); border-top: 1px solid var(--rule); }
+.tv-tabbar span { border: 0; background: transparent; }
+@keyframes tvIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@keyframes tvFade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes tvHl { to { background: var(--accent-soft); box-shadow: 0 0 0 2px var(--accent); } }
+@keyframes tvFlash { 0%, 100% { background: var(--sheet); } 15%, 80% { background: var(--accent); color: var(--on-accent); border-color: var(--accent); } }
+@keyframes tvTap { 0% { opacity: 0; transform: scale(1.8); } 35% { opacity: 1; transform: scale(1); } 55% { transform: scale(.75); } 100% { opacity: .85; transform: scale(1); } }
+@keyframes tvFill { to { width: 100%; } }
+@keyframes tvType { to { width: 11ch; } }
+@keyframes tvCb { to { background: var(--accent); border-color: var(--accent); } }
+@keyframes tvPick { to { background: var(--accent); color: var(--on-accent); border-color: var(--accent); } }
+@media (max-width: 520px) { .tv-stage { height: 410px; } .tv-phone { transform: scale(.95); } }
+@media (prefers-reduced-motion: reduce) { .tv-scene { animation: none; } }
+
+.callout > svg { width: 20px; height: 20px; flex: none; }
 </style>
 </head><body>
 <div class="app">
   <aside class="rail" aria-label="Sections">
     <a class="brand" href="#today">
       <svg class="brand-mark" viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="17" r="15" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17" cy="17" r="10" fill="none" stroke="var(--margin)" stroke-width="1.2" stroke-dasharray="2 3"/><path d="M17 6 L20.5 17 L17 28 L13.5 17 Z" fill="var(--accent)"/><path d="M17 17 L20.5 17 L17 28 L13.5 17 Z" fill="var(--mark)"/><circle cx="17" cy="17" r="1.8" fill="var(--sheet)"/></svg>
-      <span><span class="brand-name">MMJ Self-Coaching</span><br><span class="brand-sub">UPSC · TGPSC · SSC · DSC · Engg</span></span>
+      <span><span class="brand-name">MMJ Self-Coaching</span><br><span class="brand-sub">UPSC · PSC · SSC · TET · CAT · CA</span></span>
     </a>
     <nav class="nav" id="rail-nav"></nav>
     <div class="rail-foot">
@@ -504,6 +686,7 @@ pre code { font-family: var(--font-mono); font-size: .8rem; background: var(--sh
       </a>
       <div class="countdown" id="countdown"></div>
       <div class="spacer"></div>
+      <button type="button" class="user-chip" id="user-chip" data-act="users" hidden aria-label="Switch or add user"></button>
       <div class="search" role="search">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
         <label for="q" class="sr">Search topics, notes and questions</label>
@@ -3301,6 +3484,44 @@ window.PC_RESOURCES = [
       '\n\n**Old NCERT authors to ask for:** Romila Thapar (Class 6–7), R.S. Sharma and Satish Chandra (Class 11), Bipan Chandra (Class 12), Arjun Dev (Class 9–10).',
   });
 })();
+
+/* Explanations for bank questions that had none (every test question now explains its answer). */
+(function () {
+  const XP = {
+    'econ-72': '**Primary deficit = fiscal deficit − interest payments.** It shows how much the government borrows for its current needs, leaving out the cost of past debt. Revenue deficit = revenue expenditure − revenue receipts; effective revenue deficit = revenue deficit − grants for creating capital assets.',
+    'econ-77': 'Under the **National Food Security Act 2013**, Antyodaya Anna Yojana (poorest) households get **35 kg of foodgrains per household per month**. Priority households get 5 kg per person per month.',
+    'econ-79': 'Under RBI norms, a loan becomes a **non-performing asset when interest or principal stays overdue for more than 90 days**. 30 and 60 days are earlier “special mention” stages, not NPA.',
+    'econ-81': 'The GST change effective **22 September 2025** moved most goods into two main slabs, **5% and 18%**, with a special **40%** rate for sin and luxury goods. Petrol and diesel are still outside GST, and services were not exempted.',
+    'env-83': 'The **Kigali Amendment (2016)** to the **Montreal Protocol** commits countries to phase down **hydrofluorocarbons (HFCs)**, powerful greenhouse gases used in ACs and fridges. Hazardous waste = Basel Convention; mercury = Minamata Convention; wetlands = Ramsar Convention.',
+    'env-89': 'IUCN order from most to least threatened: Critically Endangered → Endangered → **Vulnerable** → Near Threatened → Least Concern. So Vulnerable sits between Endangered and Near Threatened.',
+    'snt-91': '**Aditya-L1** (launched September 2023) orbits the **Sun–Earth Lagrange point L1**, about 1.5 million km from Earth. From there it sees the Sun all the time, with no eclipses blocking the view.',
+    'snt-94': 'In **myopia** the image forms in front of the retina. A **concave (diverging) lens** spreads the rays so the image falls on the retina. Convex lens → long-sightedness; cylindrical lens → astigmatism; bifocal lens → presbyopia.',
+    'snt-95': 'Lack of **vitamin C (ascorbic acid)** causes **scurvy** (bleeding gums, slow wound healing). Rickets → vitamin D; beriberi → vitamin B1; night blindness → vitamin A.',
+    'snt-97': 'Air molecules scatter **short (blue) wavelengths** much more than long (red) ones — **Rayleigh scattering**, which varies as 1/λ⁴. This scattered blue light reaches our eyes from every direction, so the sky looks blue.',
+    'snt-99': '**O negative** red cells carry no A, B or Rh(D) antigens, so they can be given to any patient in an emergency — the **universal donor**. AB positive is the universal recipient.',
+    'soc-102': 'The **POSH Act 2013** requires every employer with **10 or more employees** to set up an Internal Committee. Smaller workplaces use the Local Committee set up by the District Officer.',
+    'ethics-104': '**John Rawls** (A Theory of Justice, 1971): choose rules for society from behind a **veil of ignorance**, not knowing your own position, so the rules come out fair. Kant → categorical imperative; Mill → utilitarianism; Aristotle → virtue ethics.',
+    'ethics-105': 'Goleman’s five parts of emotional intelligence: **self-awareness, self-regulation, motivation, empathy and social skills**. **IQ** measures cognitive ability and is not a component of EI.',
+    'english-127': '**“No sooner … than”** is a fixed pair: “No sooner had he arrived **than** it started raining.” Hardly / scarcely take “when”, not “than”.',
+    'english-128': '**Ephemeral** means **lasting a very short time** (Greek: “lasting a day”). Eternal is its opposite; ethereal means light or heavenly and is often confused because it sounds similar.',
+    'english-129': 'A **white elephant** is something **costly to keep but of little use** — from the story of kings gifting white elephants that were very expensive to maintain.',
+    'english-130': '**Omniscient** = all-knowing. Omnipotent = all-powerful; omnipresent = present everywhere; omnivorous = eats both plants and animals.',
+    'comp-132': '**SMTP** (Simple Mail Transfer Protocol) **sends** e-mail. POP3 and IMAP **receive** mail from the server; FTP transfers files.',
+    'comp-133': '**F5** starts the slide show from the first slide (Shift + F5 starts from the current slide). F7 runs the spelling check.',
+    'comp-134': 'A **worm** copies itself and spreads across networks **on its own**. A virus needs a host file and a user action; a Trojan pretends to be useful software; spyware secretly collects information.',
+    'edu-135': 'In Piaget’s **sensorimotor stage (0–2 years)** the child learns that objects still exist when out of sight — **object permanence**. Later stages: pre-operational (2–7), concrete operational (7–11), formal operational (11+).',
+    'edu-136': '**Lev Vygotsky**: the **zone of proximal development** is the gap between what a learner can do alone and what they can do with help. Teaching works best inside this zone, using scaffolding.',
+    'edu-137': '**E. L. Thorndike** (puzzle-box experiments with cats): actions followed by satisfying results are strengthened — the **law of effect**. Pavlov → classical conditioning; Skinner → operant conditioning; Köhler → insight learning.',
+    'edu-139': 'Revised Bloom’s taxonomy (2001), lowest to highest: Remember → Understand → Apply → Analyse → Evaluate → **Create**. “Create” replaced “synthesis” at the top.',
+    'edu-141': 'Kohlberg’s **conventional level** has stage 3 (good boy / good girl) and stage 4 (**law and order**). Pre-conventional = punishment and self-interest; post-conventional = social contract and universal principles.',
+    'edu-142': '**NEP 2020** replaces 10+2 with **5+3+3+4**: Foundational (age 3–8: 3 years pre-school + Classes 1–2), Preparatory (Classes 3–5), Middle (6–8), Secondary (9–12).',
+    'edu-144': '**Dyscalculia** is difficulty with numbers and **mathematics**. Dyslexia → reading; dysgraphia → writing; dyspraxia → motor coordination.',
+    'engg-gs-147': '**ISO 14001** is the standard for **environmental management systems**. ISO 9001 → quality; ISO 45001 → occupational health and safety; ISO/IEC 27001 → information security.',
+    'engg-gs-148': 'A **Six Sigma** process allows at most **3.4 defects per million opportunities** (this allows for a 1.5-sigma long-term drift of the process).',
+    'engg-gs-149': 'Activities on the **critical path have zero total float**: any delay in them delays the whole project. Activities off the critical path have some float (slack).',
+  };
+  (window.PC_QUIZ || []).forEach((q) => { if ((!q.x || q.x.length < 5) && XP[q.id]) q.x = XP[q.id]; });
+})();
 </script>
 <script>/* CAT, MAT and CA: tracks, exam pages, syllabus, notes, practice questions, strategy and resources.
    Facts checked Nov 2026; dates marked tentative must be confirmed on iimcat.ac.in, mat.aima.in and icai.org. */
@@ -3670,21 +3891,28 @@ window.PC_RESOURCES = [
     profile: '<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>',
     more: '<circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/>',
     spark: '<path d="M12 3l2.2 5.8L20 11l-5.8 2.2L12 19l-2.2-5.8L4 11l5.8-2.2z"/>',
+    install: '<path d="M12 3v12M7 10l5 5 5-5"/><path d="M5 21h14"/>',
+    guide: '<circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.7M12 17h.01"/>',
+    play: '<circle cx="12" cy="12" r="9"/><path d="M10 8.5l5 3.5-5 3.5z"/>',
+    tour: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 9l5 3-5 3z"/>',
   };
   const icon = (n) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[n] || ''}</svg>`;
 
   const NAV = [
-    { id: 'today', label: 'Today' },
-    { id: 'exams', label: 'Exams & cutoffs' },
-    { id: 'syllabus', label: 'Syllabus tracker' },
-    { id: 'notes', label: 'Notes at a glance' },
+    { id: 'today', label: 'Home' },
+    { id: 'syllabus', label: 'Study: subjects & topics' },
+    { id: 'practice', label: 'Tests & practice' },
     { id: 'ca', label: 'Current affairs' },
-    { id: 'practice', label: 'Practice' },
-    { id: 'trends', label: 'Paper trends', group: 'Plan & analyse' },
-    { id: 'strategy', label: 'Strategy (OC)' },
-    { id: 'plan', label: 'Study planner' },
+    { id: 'notes', label: 'Notes at a glance' },
+    { id: 'exams', label: 'Exams & cutoffs' },
+    { id: 'plan', label: 'Study planner', group: 'Plan & analyse' },
+    { id: 'trends', label: 'Paper trends' },
+    { id: 'strategy', label: 'Strategy' },
     { id: 'resources', label: 'Free resources' },
-    { id: 'profile', label: 'Profile & eligibility' },
+    { id: 'profile', label: 'Profile & users' },
+    { id: 'tour', label: 'Video guide (2 min)', group: 'Help' },
+    { id: 'guide', label: 'How to use (steps)' },
+    { id: 'install', label: 'Install on phone / laptop' },
   ];
 
   /* ---------------- indexes ---------------- */
@@ -3720,13 +3948,14 @@ window.PC_RESOURCES = [
   /* ---------------- store (local + cloud) ---------------- */
   const defaults = () => ({
     v: 1,
-    profile: { name: '', dob: '', local: 'yes', tracks: ['upsc', 'tg1', 'tg2'], primary: 'upsc', examDate: '', wd: 4, we: 9, branch: 'civil', optional: '', attemptsUsed: 0, tet: 'no', tetScore: '', ctet: 'no' },
+    profile: { name: '', dob: '', local: 'no', tracks: ['upsc', 'tg1', 'tg2'], primary: 'upsc', examDate: '', wd: 2, we: 6, branch: 'civil', optional: '', attemptsUsed: 0, tet: 'no', tetScore: '', ctet: 'no', cat: 'oc', pwd: false, state: '', vlang: 'English', setup: false, consent: '' },
     topics: {}, srs: {}, quiz: { log: [], wrong: {} }, plan: null, log: {}, answers: [], updatedAt: 0,
     custom: { quiz: [], cards: [], events: [] },
   });
   function mergeDefaults(st) {
     const d = defaults(); const o = Object.assign(d, st || {});
     o.profile = Object.assign(defaults().profile, (st && st.profile) || {});
+    if (!o.profile.state && st && st.profile && st.profile.local === 'yes') o.profile.state = 'tg';
     o.quiz = Object.assign({ log: [], wrong: {} }, (st && st.quiz) || {});
     ['topics', 'srs', 'log'].forEach((k) => { if (!o[k] || typeof o[k] !== 'object') o[k] = {}; });
     if (!Array.isArray(o.answers)) o.answers = [];
@@ -3738,10 +3967,40 @@ window.PC_RESOURCES = [
   const lsGet = (k) => { try { return localStorage.getItem(k); } catch (e) { return null; } };
   const lsSet = (k, v) => { try { localStorage.setItem(k, v); } catch (e) { /* storage blocked */ } };
 
+  /* Users on this device: each has its own profile, plan and progress. The first user keeps the original storage keys. */
+  const USERS_KEY = 'mmj-users';
+  const Users = {
+    reg: { list: [], active: null },
+    load() {
+      let r = null; try { r = JSON.parse(lsGet(USERS_KEY) || 'null'); } catch (e) { r = null; }
+      if (!r || !Array.isArray(r.list)) {
+        r = { list: [], active: null };
+        const old = lsGet(LS_KEY);
+        if (old) { let nm = ''; try { nm = ((JSON.parse(old) || {}).profile || {}).name || ''; } catch (e) { nm = ''; } r.list.push({ id: 'main', name: nm || 'Me' }); r.active = 'main'; }
+      }
+      if (!r.list.some((u) => u.id === r.active)) r.active = r.list.length ? r.list[0].id : null;
+      this.reg = r; this.save();
+    },
+    save() { lsSet(USERS_KEY, JSON.stringify(this.reg)); },
+    get active() { return this.reg.active; },
+    cur() { return this.reg.list.find((u) => u.id === this.reg.active) || null; },
+    key(base, id) { id = id || this.reg.active; return !id || id === 'main' ? base : base + ':' + id; },
+    add(name) { const id = this.reg.list.some((u) => u.id === 'main') ? 'u' + uid() : 'main'; this.reg.list.push({ id, name: name || 'Me' }); this.save(); return id; },
+    rename(name) { const u = this.cur(); if (u && name) { u.name = name; this.save(); } },
+    remove(id) {
+      const keys = []; try { for (let i = 0; i < localStorage.length; i++) keys.push(localStorage.key(i)); } catch (e) { /* storage blocked */ }
+      const mine = (k) => k === this.key(LS_KEY, id) || k === this.key('mmj-ca', id) || (id === 'main' ? (k.startsWith('pc-ai-') && !k.includes(':')) : k.startsWith('pc-ai-' + id + ':'));
+      keys.forEach((k) => { if (k && mine(k)) { try { localStorage.removeItem(k); } catch (e) { /* ignore */ } } });
+      this.reg.list = this.reg.list.filter((u) => u.id !== id);
+      this.reg.active = this.reg.list.length ? this.reg.list[0].id : null; this.save();
+    },
+  };
+  const aiKey = (topicId) => (Users.active && Users.active !== 'main' ? 'pc-ai-' + Users.active + ':' + topicId : 'pc-ai-' + topicId);
+
   const Store = {
-    state: null, ref: null, aiCol: null, timer: null, writing: false, dirty: false, mode: 'local',
-    load() { let s = null; try { s = JSON.parse(lsGet(LS_KEY) || 'null'); } catch (e) { s = null; } this.state = mergeDefaults(s); },
-    persistLocal() { lsSet(LS_KEY, JSON.stringify(this.state)); },
+    state: null, ref: null, aiCol: null, parked: null, timer: null, writing: false, dirty: false, mode: 'local',
+    load() { let s = null; if (Users.active) { try { s = JSON.parse(lsGet(Users.key(LS_KEY)) || 'null'); } catch (e) { s = null; } } this.state = mergeDefaults(s); },
+    persistLocal() { if (Users.active) lsSet(Users.key(LS_KEY), JSON.stringify(this.state)); },
     change(fn, opts) {
       fn(this.state); this.state.updatedAt = Date.now(); this.persistLocal(); this.schedule();
       if (!(opts && opts.silent)) rerender();
@@ -3759,7 +4018,7 @@ window.PC_RESOURCES = [
       } finally { this.writing = false; if (this.dirty && this.ref) this.schedule(); }
     },
     async connect() {
-      if (!(window.claude && typeof window.claude.use === 'function')) return;
+      if (!(window.claude && typeof window.claude.use === 'function') || Users.active !== 'main') return;
       let db = null, user = null;
       try { [db, user] = await Promise.all([window.claude.use('db'), window.claude.use('user')]); } catch (e) { return; }
       if (!db || !user) return;
@@ -3770,7 +4029,7 @@ window.PC_RESOURCES = [
       let settled = false;
       const timer = setTimeout(() => { if (!settled) setSync('local', 'Cloud not reachable yet — saving on this device'); }, 10000);
       this.ref.onSnapshot((snap) => {
-        if (snap.metadata.hasPendingWrites) return;
+        if (snap.metadata.hasPendingWrites || Users.active !== 'main') return;
         if (!snap.metadata.fromCache) { settled = true; clearTimeout(timer); }
         if (snap.exists) {
           const remote = snap.data() || {};
@@ -3790,7 +4049,7 @@ window.PC_RESOURCES = [
   /* Current-affairs diary: one record per month (localStorage + cloud subcollection data/users/<id>/state/ca/<YYYY-MM>)
      so the diary can grow for years without hitting the size limit of the main progress document. */
   const CA = {
-    key: 'mmj-ca', data: {},
+    get key() { return Users.key('mmj-ca'); }, data: {},
     load() { try { const d = JSON.parse(lsGet(this.key) || '{}'); this.data = d && typeof d === 'object' ? d : {}; } catch (e) { this.data = {}; } },
     persist() { lsSet(this.key, JSON.stringify(this.data)); },
     push(m) { if (!Store.ref) return; try { Store.ref.collection('ca').doc(m).set({ items: this.data[m] || [], at: Date.now() }).catch(() => { /* kept locally */ }); } catch (e) { /* kept locally */ } },
@@ -3820,12 +4079,12 @@ window.PC_RESOURCES = [
       if (this.mem[id]) return this.mem[id];
       let v = null;
       if (Store.aiCol) { try { const s = await Store.aiCol.doc(id).get(); if (s.exists) v = s.data(); } catch (e) { v = null; } }
-      if (!v) { try { v = JSON.parse(lsGet('pc-ai-' + id) || 'null'); } catch (e) { v = null; } }
+      if (!v) { try { v = JSON.parse(lsGet(aiKey(id)) || 'null'); } catch (e) { v = null; } }
       this.mem[id] = v || {}; return this.mem[id];
     },
     async put(id, patch) {
       const cur = Object.assign({}, await this.get(id), patch, { at: Date.now() });
-      this.mem[id] = cur; lsSet('pc-ai-' + id, JSON.stringify(cur));
+      this.mem[id] = cur; lsSet(aiKey(id), JSON.stringify(cur));
       if (Store.aiCol) { try { await Store.aiCol.doc(id).set(cur); } catch (e) { /* kept locally */ } }
     },
   };
@@ -3848,16 +4107,26 @@ window.PC_RESOURCES = [
   }
   function searchLinks(q) {
     const e = encodeURIComponent(q);
-    return [['Google', 'https://www.google.com/search?q=' + e], ['Google AI Mode', 'https://www.google.com/search?udm=50&q=' + e], ['Animated videos (4–20 min)', 'https://www.youtube.com/results?search_query=' + encodeURIComponent(q.replace(/ (UPSC|TGPSC|SSC|TET|optional|exam).*$/i, '') + ' animated explanation') + '&sp=EgIYAw%253D%253D'], ['Wikipedia', 'https://en.wikipedia.org/w/index.php?search=' + encodeURIComponent(q.replace(/ (UPSC|TGPSC|SSC|TET|optional|exam).*$/i, ''))]]
+    const base = q.replace(/ (UPSC|TGPSC|SSC|TET|optional|exam|CAT|MAT|CA exam|APPSC).*$/i, '');
+    return [['Google', 'https://www.google.com/search?q=' + e], ['Google AI Mode', 'https://www.google.com/search?udm=50&q=' + e], ['▶ Animated videos', ytUrl(vq(base + ' animated explanation'), 'm')], ['Wikipedia', 'https://en.wikipedia.org/w/index.php?search=' + encodeURIComponent(base)]]
       .map(([n, u]) => `<a class="chip" href="${esc(u)}" target="_blank" rel="noopener">${n} ↗</a>`).join('');
   }
-  function searchQ(t) {
+  /* YouTube search links: len 's' = under 4 min, 'm' = 4–20 min. Queries carry the user's video language. */
+  function ytUrl(q, len) { return 'https://www.youtube.com/results?search_query=' + encodeURIComponent(q) + (len === 's' ? '&sp=EgIYAQ%253D%253D' : len === 'm' ? '&sp=EgIYAw%253D%253D' : ''); }
+  const vlang = () => ((Store.state && P().vlang) || 'English');
+  const vq = (q) => q + (vlang() !== 'English' ? ' in ' + vlang() : '');
+  const vlink = (q, label, len) => `<a class="vlink" href="${esc(ytUrl(vq(q), len || 'm'))}" target="_blank" rel="noopener" title="Animated / simple video explanations on YouTube">${icon('play')}${esc(label || 'Video')}</a>`;
+  function topicName(t) {
     let name = String(t.name);
     if ((t.opt || t.branch) && name.includes('·')) name = name.split('·').slice(1).join(' ');
-    name = name.replace(/^Phase [IVX]+\s*[—–-]\s*/i, 'Telangana movement ').replace(/\([^)]*\)/g, '').replace(/[:&,;]/g, ' ').replace(/\s+/g, ' ').trim();
+    return name.replace(/^Phase [IVX]+\s*[—–-]\s*/i, 'Telangana movement ').replace(/\([^)]*\)/g, '').replace(/[:&,;]/g, ' ').replace(/\s+/g, ' ').trim();
+  }
+  function examWord(t) {
     const ex = t.ex || [];
-    const suffix = t.opt ? optName(t.opt) + ' UPSC optional' : ex.some((x) => x === 'upsc' || x === 'upscm' || x === 'csat') ? 'UPSC' : ex.some((x) => /^tg/.test(x)) ? 'Telangana TGPSC' : ex.includes('ssc') ? 'SSC CGL' : ex.includes('dsc') ? 'TG TET DSC' : ex.includes('engg') ? 'engineering exam' : '';
-    return (name + ' ' + suffix).trim();
+    return t.opt ? optName(t.opt) + ' UPSC optional' : ex.some((x) => x === 'upsc' || x === 'upscm' || x === 'csat') ? 'UPSC' : ex.some((x) => /^tg/.test(x)) ? 'Telangana TGPSC' : ex.includes('ap') ? 'APPSC' : ex.includes('ssc') ? 'SSC CGL' : ex.includes('dsc') ? 'TG TET DSC' : ex.includes('engg') ? 'engineering exam' : ex.includes('cat') ? 'CAT' : ex.includes('mat') ? 'MAT' : ex.includes('ca') ? 'CA exam ICAI' : '';
+  }
+  function searchQ(t) {
+    return (topicName(t) + ' ' + examWord(t)).trim();
   }
   const PROVIDERS = {
     gemini: { label: 'Google Gemini (free tier)', model: 'gemini-flash-latest', keyUrl: 'https://aistudio.google.com/apikey' },
@@ -3998,17 +4267,31 @@ window.PC_RESOURCES = [
     return { q: String(x.q), o, a, x: String(x.x || '') };
   }
 
+  /* Every AI reply must be short, scannable and the same shape, whichever AI tool answers. */
+  const FMT = '\n\nFORMAT RULES (follow strictly):\n- Start directly with the first heading. No greeting, introduction or closing line.\n- Use only the headings asked for, written as "## Heading".\n- Bullets, not paragraphs. One idea per bullet, under 20 words. Put the key term in **bold**.\n- Use a table whenever you compare or list facts with values.\n- Simple English that a school student understands. No repetition, no filler, no emojis.';
+  /* Remove chatty openings and closings that some AI tools add anyway, and turn bold-only lines into headings. */
+  function tidyAI(text) {
+    let ls = String(text || '').replace(/\r/g, '').split('\n');
+    while (ls.length && (!ls[0].trim() || (/^(sure|certainly|of course|absolutely|great|okay|ok|here('s| is| are)|below (is|are))\b/i.test(ls[0].trim()) && ls[0].trim().length < 160 && !/^#/.test(ls[0])))) ls.shift();
+    while (ls.length && (!ls[ls.length - 1].trim() || /(let me know|hope (this|it) helps|feel free|happy to help|good luck|all the best|would you like|want me to)/i.test(ls[ls.length - 1]))) ls.pop();
+    ls = ls.map((l) => (/^\s*\*\*[^*]{2,70}\*\*:?\s*$/.test(l) ? '## ' + l.replace(/\*\*|:\s*$/g, '').trim() : l));
+    return ls.join('\n');
+  }
+  const aimd = (s) => md(tidyAI(s));
   const PROMPTS = {
     ctx(t) {
       const tr = TRACKS.filter((x) => (t.ex || []).some((g) => x.tags.includes(g))).map((x) => x.id);
       const exams = (examNamesFor(tr) || 'Indian competitive exams') + (t.opt ? ` — UPSC Mains optional: ${optName(t.opt)}` : '');
-      return `Topic: ${t.subjectName} → ${t.name}\nSyllabus points: ${(t.pts || []).join('; ')}\nCandidate is preparing for: ${exams} (open/general category, Telangana-based, studies in short breaks around a full-time job).`;
+      return `Topic: ${t.subjectName} → ${t.name}\nSyllabus points: ${(t.pts || []).join('; ')}\nCandidate is preparing for: ${exams}. Explain in simple, clear language.`;
     },
-    explain(t) { return `${this.ctx(t)}\n\nWrite "at a glance" revision notes in Markdown, at most about 450 words, using these headings:\n## Core idea (2–3 lines)\n## Must-remember facts (8–14 bullets: exact dates, articles, numbers, names)\n## How it is asked (typical question patterns and statement traps in prelims-type MCQs)\n## Telangana angle (only if genuinely relevant, else omit)\n## For descriptive/mains answers (3–5 dimension headings with a one-line point each)\n## Recent links to verify (2–3 items; say they need verification against current sources)\nBe precise. If unsure of a figure, say so instead of guessing.`; },
+    examples(t) { return `${this.ctx(t)}\n\nTeach this topic through examples, under 350 words, using exactly these headings:\n## Everyday examples (3 bullets: **example** — why it fits)\n## Solved exam-type examples (2, numbered. Maths, reasoning, science or accounts: Question, then Step 1, Step 2… and **Answer**. Theory subjects: a real case, scheme, judgment, event or data point — what happened and how it links to the topic)\n## Common mistake (one bullet, with the fix)\n## Memory hook (one line)\nIf unsure of a fact or number, write "(verify)".${FMT}`; },
+    pyq(t) { return `${this.ctx(t)}\n\nList up to 10 questions that were actually asked on this topic in previous papers of these exams (objective and descriptive). Include only questions you are confident were really asked; add "(verify)" to any doubtful year or wording. Use exactly these headings:\n## Previous-year questions (a table: Exam | Year | Question — shorten long questions)\n## Pattern (3 bullets: what is asked again and again)\n## Prepare this (3 bullets)${FMT}`; },
+    mock(t) { return `${this.ctx(t)}\n\nGive me a 10-question mock test on this topic in the style of these exams (mix easy, moderate and hard; include statement-based questions where the exam uses them). Ask ONE question at a time in this format:\n**Q1 of 10.** question text\n(a) …\n(b) …\n(c) …\n(d) …\nThen stop and wait for my answer. After I answer, reply with "✅ Correct" or "❌ Wrong — correct answer (x)", then **Why:** 2–3 short lines explaining why that answer is right and, if I was wrong, why my choice is wrong. Then ask the next question. At the end show: **Score: X / 10** and 3 bullets on what to revise. No other text.`; },
+    explain(t) { return `${this.ctx(t)}\n\nWrite "at a glance" revision notes, at most 300 words, using exactly these headings:\n## In one line\n## Key points (6–10 bullets)\n## Must-remember facts (a table: Fact | Detail — dates, articles, numbers, names)\n## How exams ask it (3 bullets)\n## Common traps (2–3 bullets)\n## Memory hook (one line)\nIf unsure of a figure, write "(verify)" instead of guessing.${FMT}`; },
     mcq(t) { return `${this.ctx(t)}\n\nWrite 5 multiple-choice questions in the style of recent UPSC/TGPSC prelims for this topic: mix "Consider the following statements… How many of the above are correct?", match-the-pairs, Statement-I/Statement-II, and one direct factual question. Difficulty: moderate to hard; facts must be accurate and unambiguous.\nReply with only a JSON array of 5 objects: {"q": string (use \\n between statements), "o": [4 option strings], "a": index of the correct option 0-3, "x": one or two sentence explanation}. No other text.`; },
-    mains(t) { return `${this.ctx(t)}\n\nSet one UPSC/TGPSC Mains-style question (15 marks, 250 words) on this topic, using a directive word (discuss/critically examine/analyse/evaluate). Then give an answer outline in Markdown: Introduction (2 options), 5–7 body points under 2–3 sub-headings with data/report/case references where reliable, a balanced way forward, and a one-line conclusion. Finish with 3 mistakes candidates typically make on this question. Keep it under 400 words.`; },
-    doubt(t, q) { return `${this.ctx(t)}\n\nThe candidate asks: ${q}\n\nAnswer clearly in Markdown within 250 words, exam-oriented, with one memory hook if useful. If the answer depends on recent events, say what to verify.`; },
-    evaluate(q, ans, marks, limit, words) { return `You are a strict but fair UPSC Civil Services Mains examiner (also familiar with TGPSC Group-I Mains). Evaluate this answer.\n\nQuestion (${marks} marks, ${limit} words): ${q}\n\nCandidate's answer (${words} words):\n"""\n${ans.slice(0, 9000)}\n"""\n\nReply in Markdown:\n## Score: X / ${marks} (be realistic: top scorers usually get 40–55% of marks; an average answer gets 30–40%)\n## What works (2–4 bullets)\n## What is missing (content dimensions, data/reports/committees/case laws/examples that would lift the score)\n## Structure and presentation (intro, sub-headings, flow, conclusion, word limit, directive word compliance)\n## Model answer skeleton (bullets, ≤180 words)\n## One habit to fix next time`; },
+    mains(t) { return `${this.ctx(t)}\n\nSet one descriptive (Mains-style) question on this topic: 15 marks, 250 words, with a directive word (discuss / critically examine / analyse / evaluate). Then give the answer outline, under 350 words, using exactly these headings:\n## Question\n## Introduction (2 one-line options)\n## Body (5–7 bullets under 2–3 bold sub-points, with data, report or case names where reliable)\n## Way forward (2–3 bullets)\n## Conclusion (one line)\n## Mistakes to avoid (3 bullets)${FMT}`; },
+    doubt(t, q) { return `${this.ctx(t)}\n\nThe candidate asks: ${q}\n\nAnswer in under 180 words using exactly these headings:\n## Answer (2–3 lines, direct)\n## Key points (3–6 bullets)\n## Remember (one-line memory hook)\nIf the answer depends on recent events, add "(verify)" to that point.${FMT}`; },
+    evaluate(q, ans, marks, limit, words) { return `You are a strict but fair UPSC Civil Services Mains examiner (also familiar with TGPSC Group-I Mains). Evaluate this answer.\n\nQuestion (${marks} marks, ${limit} words): ${q}\n\nCandidate's answer (${words} words):\n"""\n${ans.slice(0, 9000)}\n"""\n\nReply in Markdown:\n## Score: X / ${marks} (be realistic: top scorers usually get 40–55% of marks; an average answer gets 30–40%)\n## What works (2–4 bullets)\n## What is missing (content dimensions, data/reports/committees/case laws/examples that would lift the score)\n## Structure and presentation (intro, sub-headings, flow, conclusion, word limit, directive word compliance)\n## Model answer skeleton (bullets, ≤180 words)\n## One habit to fix next time${FMT}`; },
     cards(src, n) { return `Turn the study material below into ${n} flashcards for Indian competitive-exam revision (UPSC/TGPSC). Each card tests one precise fact, definition, name, date, formula or concept that is in the material. Front: a short cue or question. Back: the answer in under 30 words.\nReply with only a JSON array like [{"front": "...", "back": "..."}]. No other text.\n\nMaterial:\n"""\n${src.slice(0, 15000)}\n"""`; },
     mcqFrom(src, n) { return `Write ${n} exam-style multiple-choice questions (UPSC/TGPSC prelims style; include some "how many of the above statements are correct" questions) using only facts in the material below.\nReply with only a JSON array of objects {"q": string, "o": [4 options], "a": index 0-3 of the correct option, "x": short explanation}. No other text.\n\nMaterial:\n"""\n${src.slice(0, 15000)}\n"""`; },
   };
@@ -4144,8 +4427,8 @@ window.PC_RESOURCES = [
       h += `<a href="#${n.id}" data-nav="${n.id}">${icon(n.id)}<span>${esc(n.label)}</span></a>`;
     });
     $('#rail-nav').innerHTML = h;
-    const tabs = ['today', 'syllabus', 'notes', 'ca', 'practice'];
-    const short = { ca: 'News' };
+    const tabs = ['today', 'syllabus', 'practice', 'ca'];
+    const short = { today: 'Home', syllabus: 'Study', practice: 'Tests', ca: 'News' };
     $('#tabbar').innerHTML = tabs.map((id) => `<a href="#${id}" data-nav="${id}">${icon(id)}<span>${esc(short[id] || NAV.find((n) => n.id === id).label.split(' ')[0])}</span></a>`).join('') +
       `<button type="button" data-act="more">${icon('more')}<span>More</span></button>`;
   }
@@ -4176,22 +4459,26 @@ window.PC_RESOURCES = [
   let current = { name: 'today', arg: null };
   function parseHash() {
     const h = (location.hash || '#today').slice(1);
-    const prefixes = ['exam-', 'note-', 'topic-', 'strategy-'];
+    const prefixes = ['exam-', 'note-', 'topic-', 'strategy-', 'start-'];
     for (const p of prefixes) if (h.startsWith(p)) return { name: p.slice(0, -1), arg: h.slice(p.length) };
+    if (h === 'start') return { name: 'start', arg: '1' };
     return { name: NAV.some((n) => n.id === h) ? h : 'today', arg: null };
   }
   function route() {
     const r = parseHash();
+    if (r.name !== 'tour') tvStop();
+    if (!isSetup() && !['start', 'install', 'tour'].includes(r.name)) { location.replace('#start-' + (Users.active && P().consent ? '2' : '1')); return; }
     if (r.name === 'topic') { if (!$('#view').dataset.view) { current = { name: 'syllabus', arg: null }; draw(); } openTopic(r.arg); return; }
     closeDrawer();
     current = r; draw(true);
   }
   function draw(scrollTop) {
     const v = $('#view'); const r = current;
-    const map = { today: vToday, exams: vExams, exam: vExam, syllabus: vSyllabus, notes: vNotes, note: vNote, ca: vCA, practice: vPractice, trends: vTrends, strategy: vStrategy, plan: vPlan, resources: vResources, profile: vProfile };
+    const map = { today: vToday, exams: vExams, exam: vExam, syllabus: vSyllabus, notes: vNotes, note: vNote, ca: vCA, practice: vPractice, trends: vTrends, strategy: vStrategy, plan: vPlan, resources: vResources, profile: vProfile, start: vStart, guide: () => vStart('guide'), install: vInstall, tour: vTour };
     const fn = map[r.name] || vToday;
     const y = window.scrollY;
     v.dataset.view = r.name;
+    document.body.classList.toggle('wiz', r.name === 'start');
     v.innerHTML = fn(r.arg);
     wireCharts(v);
     if (fn.after) fn.after(r.arg);
@@ -4245,7 +4532,9 @@ window.PC_RESOURCES = [
 
     return `<div class="view-head"><span class="eyebrow">${new Date().toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}</span>
       <h1>${p.name ? 'Namaste, ' + esc(p.name) + '.' : 'Today’s desk'}</h1>
-      <p>Tracking <b>${esc(examNamesFor(tracks))}</b> as an OC candidate. ${t ? `Your main target is <b>${esc(t.e)}</b> on ${fmtD(t.d)}.` : ''} <a href="#profile">Change</a></p></div>
+      <p>Preparing for <b>${esc(examNamesFor(tracks))}</b>. ${t ? `Main target: <b>${esc(t.e)}</b> on ${fmtD(t.d)}.` : ''} <a href="#profile">Change</a></p></div>
+      ${heroHtml()}
+      ${!isStandalone() && !ui.hideInstall ? `<div class="callout small row" style="justify-content:space-between">${icon('install')}<span style="flex:1">Install this app on your phone or laptop: free, works offline, opens in one tap.</span><a class="btn btn-sm" href="#install">How to install</a><a class="btn btn-sm" href="#tour">Video guide</a><button class="btn btn-sm btn-ghost" data-act="hide-install">Hide</button></div>` : ''}
       ${deadlinesHtml()}${situationHtml()}${dscHtml()}
       <section class="sheet"><div class="sheet-head"><h2>Got a short break?</h2><span class="eyebrow">Each session logs its own time</span></div>
         <div class="row"><button class="btn" data-act="quick" data-k="flash">10 min · flashcards due</button><button class="btn" data-act="quick" data-k="quiz">15 min · 10 MCQs</button><button class="btn" data-act="quick" data-k="topic">25 min · next topic</button><a class="btn" href="#ca">10 min · current affairs${(() => { const n = CA.all().filter((x) => x.d === todayStr()).length; return n ? ` (${n} saved today)` : ''; })()}</a></div></section>
@@ -4294,10 +4583,10 @@ window.PC_RESOURCES = [
     const tracks = TRACKS.filter((t) => t.exam === id).map((t) => t.id);
     const tps = tracks.length ? trackedTopics(tracks) : []; const pr = progressFor(tps);
     return `<div class="view-head"><a href="#exams" class="small">← All exams</a><span class="eyebrow">${esc(e.body)}</span><h1>${esc(e.name)}</h1><p>${inline(e.summary || '')}</p>
-      <div class="chips">${(e.badges || []).map((b) => `<span class="chip">${esc(b)}</span>`).join('')}</div></div>
+      <div class="chips">${(e.badges || []).map((b) => `<span class="chip">${esc(b)}</span>`).join('')}${vlink(e.name + ' exam pattern syllabus strategy explained', 'Videos: pattern & strategy', '')}</div></div>
       <div class="grid g2">
         <section class="sheet"><h3>At a glance</h3><dl class="kv">${(e.facts || []).map((f) => `<dt>${esc(f[0])}</dt><dd>${inline(f[1])}</dd>`).join('')}</dl></section>
-        <section class="sheet"><h3>Eligibility for an OC candidate</h3><dl class="kv">${(e.eligibility || []).map((f) => `<dt>${esc(f[0])}</dt><dd>${inline(f[1])}</dd>`).join('')}</dl>
+        <section class="sheet"><h3>Eligibility (General / OC rules)</h3><p class="small muted">Your category’s age relaxation is applied in <a href="#profile">Profile</a>.</p><dl class="kv">${(e.eligibility || []).map((f) => `<dt>${esc(f[0])}</dt><dd>${inline(f[1])}</dd>`).join('')}</dl>
           ${tps.length ? `<div class="stack" style="gap:6px"><span class="small">Your syllabus progress for this exam: <b>${pr.pct}%</b> (${pr.started}/${pr.n} topics started)</span><div class="progress"><i style="width:${pr.pct}%"></i></div><a class="small" href="#syllabus" data-act="syl-track" data-track="${tracks[0]}">Open this exam’s syllabus</a></div>` : ''}</section>
       </div>
       <section class="stack"><h2>Scheme of examination</h2><div class="stage-strip">${stages}</div>${e.total ? `<p class="small"><b>Selection is decided on:</b> ${inline(e.total)}</p>` : ''}</section>
@@ -4305,7 +4594,7 @@ window.PC_RESOURCES = [
       ${tbl}
       <div class="grid g2">
         ${e.mindset ? `<section class="sheet ruled"><h2>Paper-setter’s mindset</h2><ul class="bullets mindset">${e.mindset.map((m) => `<li>${inline(m)}</li>`).join('')}</ul></section>` : ''}
-        ${e.target ? `<section class="sheet ruled"><h2>What an OC candidate should aim for</h2><ul class="bullets">${e.target.map((m) => `<li>${inline(m)}</li>`).join('')}</ul></section>` : ''}
+        ${e.target ? `<section class="sheet ruled"><h2>What to aim for (General / OC cut-offs)</h2><ul class="bullets">${e.target.map((m) => `<li>${inline(m)}</li>`).join('')}</ul></section>` : ''}
       </div>
       ${e.calendar && e.calendar.length ? `<section class="sheet"><h3>Calendar</h3><div class="table-wrap"><table class="t"><tbody>${e.calendar.map((c) => `<tr><td class="n">${fmtD(c.d)}</td><td>${esc(c.e)}${c.tent ? ' <span class="chip warn">tentative</span>' : ''}</td></tr>`).join('')}</tbody></table></div></section>` : ''}
       ${e.sources ? `<p class="foot-note">Sources: ${e.sources.map((s) => `<a href="${esc(s.u)}" target="_blank" rel="noopener">${esc(s.t)}</a>`).join(' · ')}</p>` : ''}`;
@@ -4323,17 +4612,18 @@ window.PC_RESOURCES = [
       return { s, units };
     }).filter((x) => x.units.length);
     const all = subjects.flatMap((x) => x.units); const pr = progressFor(all);
-    return `<div class="view-head"><span class="eyebrow">Syllabus tracker</span><h1>The whole syllabus, one map</h1>
-      <p>One topic list shared across exams, so a topic you finish for UPSC also counts for TGPSC and SSC. Tap a bubble to log progress like filling an OMR sheet; tap a topic for its quick notes, an AI explainer, practice questions and your own notes.</p></div>
+    return `<div class="view-head"><span class="eyebrow">Study</span><h1>Subjects and topics</h1>
+      <ol class="how-inline"><li>Open a subject</li><li>Tap a topic</li><li>Go through its tabs: Learn → Videos → Examples → PYQs → Mock test → My notes</li><li>Tap the bubble ◯ to mark progress</li></ol></div>
       <div class="sheet" style="gap:10px">
         <div class="chips" role="group" aria-label="Exam filter">${chips.map(([v, l]) => `<button class="chip" data-act="syl-track" data-track="${v}" aria-pressed="${ui.sylTrack === v}">${esc(l)}</button>`).join('')}</div>
+        <details class="filters"><summary class="small">More filters</summary>
         <div class="toolbar">
           <div class="seg" role="group" aria-label="Weight">${[['all', 'All weights'], ['3', 'High'], ['2', 'Medium'], ['1', 'Low']].map(([v, l]) => `<button data-act="syl-w" data-v="${v}" aria-pressed="${ui.sylW === v}">${l}</button>`).join('')}</div>
           <div class="seg" role="group" aria-label="Status">${[['all', 'All'], ['todo', 'Not exam-ready'], ['done', 'Revised']].map(([v, l]) => `<button data-act="syl-s" data-v="${v}" aria-pressed="${ui.sylS === v}">${l}</button>`).join('')}</div>
           <span class="spacer" style="flex:1"></span>
           <button class="btn btn-sm btn-ghost" data-act="syl-expand">Expand all</button><button class="btn btn-sm btn-ghost" data-act="syl-collapse">Collapse all</button>
         </div>
-        ${omrLegend()}
+        ${omrLegend()}</details>
         <div class="row small"><span><b>${all.length}</b> topics in view · <b>${pr.pct}%</b> weighted progress · ${pr.revised} revised</span><div class="progress" style="flex:1;min-width:120px"><i style="width:${pr.pct}%"></i></div></div>
       </div>
       <div class="stack">${subjects.map(({ s, units }) => {
@@ -4355,44 +4645,86 @@ window.PC_RESOURCES = [
     const list = (window.PC_NCERT || {})[t.subject]; if (!list || !list.length) return '';
     return `<section class="stack" style="gap:6px"><h3>NCERT to read</h3><ul class="bullets small">${list.map(([c, b, n]) => `<li><b>${esc(c)}</b> · ${esc(b)}${n ? ` — <span class="muted">${esc(n)}</span>` : ''}</li>`).join('')}</ul><span class="small muted">Use pre-2017 or old editions (library / second-hand); ncert.nic.in hosts only current editions.</span></section>`;
   }
+  const TTABS = [['learn', 'Learn'], ['videos', 'Videos'], ['examples', 'Examples'], ['pyq', 'PYQs'], ['mock', 'Mock test'], ['notes', 'My notes']];
+  function videoList(t) {
+    const n = topicName(t); const p = P();
+    const calc = /quant|math|reason|csat|aptitude|dilr|arith|algebra|account|tax|cost|physics|chem|engineering|mech|thermo|elect|circuit|struct|fluid/i.test(t.subjectName + ' ' + t.subject + ' ' + n);
+    const L = [
+      ['Animated explanation', 'Best first watch · 4–20 min', ytUrl(vq(n + ' animated explanation'), 'm')],
+      ['Quick revision in under 4 minutes', 'Short animation to recall the idea', ytUrl(vq(n + ' explained animation'), 's')],
+      ['Explained simply for beginners', 'Whiteboard / story style', ytUrl(vq(n + ' explained simply for beginners'), '')],
+      calc ? ['Solved examples and short tricks', 'Step-by-step problem solving', ytUrl(vq(n + ' solved examples tricks'), '')] : ['Maps, diagrams and flowcharts', 'Visual summary of the topic', ytUrl(vq(n + ' diagram flowchart explained'), '')],
+      ['Previous-year questions discussed', 'How the exam asks it', ytUrl(vq(n + ' ' + examWord(t) + ' previous year questions'), '')],
+    ];
+    if (vlang() === 'English') L.push(['Same topic in Hindi', 'Animated / simple', ytUrl(n + ' explained in Hindi', 'm')]);
+    else L.push(['Same topic in English', 'Animated / simple', ytUrl(n + ' animated explanation', 'm')]);
+    if ((p.state === 'tg' || p.state === 'ap') && vlang() !== 'Telugu') L.push(['Same topic in Telugu', 'Animated / simple', ytUrl(n + ' explained in Telugu', '')]);
+    return `<div class="video-list">${L.map(([h, d, u]) => `<a class="video-link" href="${esc(u)}" target="_blank" rel="noopener">${icon('play')}<span><b>${esc(h)}</b><small>${esc(d)}</small></span></a>`).join('')}</div>
+      <p class="foot-note">Each link opens YouTube already searched for “${esc(n)}”${vlang() !== 'English' ? ' in ' + esc(vlang()) : ''}. Pick a video from a channel you trust, and prefer recent uploads for current topics. Change the video language in Profile.</p>`;
+  }
   async function openTopic(id) {
     const t = TOPIC[id]; if (!t) return;
     const s = statusOf(id); const rec = Store.state.topics[id] || {};
     const notes = (t.notes || []).map((n) => NOTE[n]).filter(Boolean);
     const qs = allQuiz().filter((q) => (q.t && q.t === id) || (!q.t && q.s === t.subject)).length;
     const tracks = TRACKS.filter((tr) => (t.ex || []).some((x) => tr.tags.includes(x))).map((tr) => tr.id);
+    const tab = TTABS.some(([k]) => k === ui.tTab) ? ui.tTab : 'learn';
+    const descriptive = (t.ex || []).some((x) => ['upscm', 'tg1', 'ap'].includes(x)) || !!t.opt;
+    const next = (k) => { const i = TTABS.findIndex(([x]) => x === k); const n = TTABS[i + 1]; return n ? `<div class="row"><button class="btn btn-sm" data-act="ttab" data-v="${n[0]}">Next: ${i + 2}. ${n[1]} →</button></div>` : ''; };
+    const officials = Array.from(new Set(tracks.map((tr) => TRACK[tr].exam))).flatMap((x) => ((EXAM[x] || {}).sources || []).filter((s) => /question|paper|previous|pyq/i.test(s.t)).map((s) => [EXAM[x].short + ': ' + s.t, s.u]));
+    const pane = (k, inner) => `<div class="tpane stack" data-pane="${k}" ${tab === k ? '' : 'hidden'}>${inner}${next(k)}</div>`;
     const html = `<div class="stack" style="gap:8px"><span class="eyebrow">${esc(t.subjectName)}</span>
-        <div class="chips"><span class="weight w${t.w || 1}">${['', 'LOW', 'MED', 'HIGH'][t.w || 1]} PYQ WEIGHT</span>${(t.ex || []).map((x) => `<span class="chip">${esc(TAG_LABEL[x] || x)}</span>`).join('')}${t.h ? `<span class="chip">~${t.h} h first read</span>` : ''}</div></div>
-      ${t.pts ? `<section class="stack" style="gap:6px"><h3>Syllabus points</h3><ul class="bullets">${t.pts.map((x) => `<li>${esc(x)}</li>`).join('')}</ul></section>` : ''}
-      <section class="stack" style="gap:8px"><h3>Your progress</h3><div class="seg" role="group" aria-label="Status">${STATUS.map((l, i) => `<button data-act="set-status" data-id="${id}" data-v="${i}" aria-pressed="${s === i}">${l}</button>`).join('')}</div>
-        ${rec.t ? `<span class="small muted">Last updated ${fmtD(rec.t)}</span>` : ''}</section>
-      ${t.tip ? `<div class="callout mark small">${inline(t.tip)}</div>` : ''}
-      ${t.src ? `<section class="stack" style="gap:6px"><h3>Read from</h3><p class="small">${inline(t.src)}</p></section>` : ''}${ncertHtml(t)}
-      ${notes.length ? `<section class="stack" style="gap:6px"><h3>Quick notes</h3>${notes.map((n) => `<a class="note-link" href="#note-${n.id}"><b>${esc(n.title)}</b><small>${(n.sections || []).length} sections · open sheet</small></a>`).join('')}</section>` : ''}
-      ${(() => { const news = CA.all().filter((x) => x.x === id).slice(0, 5); return news.length ? `<section class="stack" style="gap:6px"><h3>In the news</h3>${news.map((x) => `<div class="small"><b>${fmtD(x.d, { day: 'numeric', month: 'short', year: 'numeric' })}</b> · ${esc(x.t)}${x.n ? `<br><span class="muted">${esc(x.n)}</span>` : ''}</div>`).join('')}<a class="small" href="#ca">Open the current-affairs diary</a></section>` : ''; })()}
-      <section class="stack" style="gap:8px"><h3>Open this topic in one click</h3>
-        <p class="small muted">The AI links open with an “explain at a glance” prompt for this exact topic. The search links look up “${esc(searchQ(t))}”.</p>
-        <div class="chips">${aiLinks(PROMPTS.explain(t))}</div>
-        <div class="chips">${searchLinks(searchQ(t))}</div>
-        <div class="row"><button class="btn btn-sm btn-ghost" data-act="copy-link" data-hash="topic-${id}">Copy link to this topic</button></div></section>
-      <section class="stack" style="gap:8px"><h3>My notes</h3><textarea id="my-note" class="input" rows="4" placeholder="Your own one-liners, mnemonics, page refs…">${esc(rec.n || '')}</textarea><div class="row"><button class="btn btn-sm" data-act="save-note" data-id="${id}">Save note</button>${qs ? `<a class="btn btn-sm btn-ghost" href="#practice" data-act="quiz-subj" data-s="${t.subject}">Practise ${qs} ${esc(t.subjectName)} MCQs</a>` : ''}</div></section>
-      <section class="stack" style="gap:10px"><div class="sheet-head"><h3>Ask AI about this topic</h3><a class="small" href="#profile" title="Change in Profile → AI helper">${esc(AI.label())}</a></div>
-        <div class="row"><button class="btn btn-primary btn-sm" data-act="ai-explain" data-id="${id}">${icon('spark')} Explain at a glance</button><button class="btn btn-sm" data-act="ai-mcq" data-id="${id}">5 exam-style MCQs</button><button class="btn btn-sm" data-act="ai-mains" data-id="${id}">Mains question + answer outline</button></div>
-        <div class="row" style="flex-wrap:nowrap"><input id="ai-doubt" class="input" placeholder="Ask a doubt on ${esc(t.name)}…"><button class="btn btn-sm" data-act="ai-doubt" data-id="${id}">Ask</button></div>
-        <div id="ai-area" class="stack"></div>
-        <p class="foot-note">Works with any AI chat (free) or your own API key — change it in Profile → AI helper. Answers are saved to this topic. Cross-check numbers and recent events with official sources.</p></section>`;
+        <div class="chips"><span class="weight w${t.w || 1}">${['', 'LOW', 'MED', 'HIGH'][t.w || 1]} PYQ WEIGHT</span>${(t.ex || []).map((x) => `<span class="chip">${esc(TAG_LABEL[x] || x)}</span>`).join('')}${t.h ? `<span class="chip">~${t.h} h first read</span>` : ''}</div>
+        <div class="seg seg-sm" role="group" aria-label="Your progress">${STATUS.map((l, i) => `<button data-act="set-status" data-id="${id}" data-v="${i}" aria-pressed="${s === i}">${l}</button>`).join('')}</div>
+        ${rec.t ? `<span class="small muted">Progress last updated ${fmtD(rec.t)}</span>` : ''}</div>
+      <div class="ttabs" role="tablist" aria-label="Study this topic step by step">${TTABS.map(([k, l], i) => `<button role="tab" data-act="ttab" data-v="${k}" aria-pressed="${tab === k}"><span>${i + 1}</span>${l}</button>`).join('')}</div>
+      ${pane('learn', `${t.pts ? `<section class="stack" style="gap:6px"><h3>What to learn</h3><ul class="bullets">${t.pts.map((x) => `<li>${esc(x)}</li>`).join('')}</ul></section>` : ''}
+        ${t.tip ? `<div class="callout mark small">${inline(t.tip)}</div>` : ''}
+        ${t.src ? `<section class="stack" style="gap:6px"><h3>Read from</h3><p class="small">${inline(t.src)}</p></section>` : ''}${ncertHtml(t)}
+        ${notes.length ? `<section class="stack" style="gap:6px"><h3>Quick notes</h3>${notes.map((n) => `<a class="note-link" href="#note-${n.id}"><b>${esc(n.title)}</b><small>${(n.sections || []).length} sections · open sheet</small></a>`).join('')}</section>` : ''}
+        ${(() => { const news = CA.all().filter((x) => x.x === id).slice(0, 5); return news.length ? `<section class="stack" style="gap:6px"><h3>In the news</h3>${news.map((x) => `<div class="small"><b>${fmtD(x.d, { day: 'numeric', month: 'short', year: 'numeric' })}</b> · ${esc(x.t)}${x.n ? `<br><span class="muted">${esc(x.n)}</span>` : ''}</div>`).join('')}<a class="small" href="#ca">Open the current-affairs diary</a></section>` : ''; })()}
+        <section class="stack" style="gap:8px"><h3>Simple explanation</h3>
+          <div class="row"><button class="btn btn-primary btn-sm" data-act="ai-explain" data-id="${id}">${icon('spark')} Explain at a glance</button></div>
+          <p class="small muted">Or open it in any free AI chat in one click:</p><div class="chips">${aiLinks(PROMPTS.explain(t))}</div>
+          <div class="chips">${searchLinks(searchQ(t))}</div>
+          <div class="row" style="flex-wrap:nowrap"><input id="ai-doubt" class="input" placeholder="Ask a doubt on ${esc(t.name)}…"><button class="btn btn-sm" data-act="ai-doubt" data-id="${id}">Ask</button></div></section>`)}
+      ${pane('videos', `<p class="small">Short animated and simple videos for this topic. Watch one, then come back and mark your progress.</p>${videoList(t)}`)}
+      ${pane('examples', `<p class="small">Examples make a topic stick: everyday analogies, solved exam-type examples and the usual mistake.</p>
+        <div class="row"><button class="btn btn-primary btn-sm" data-act="ai-examples" data-id="${id}">${icon('spark')} Show examples here</button></div>
+        <p class="small muted">Or open the same request in any free AI chat:</p><div class="chips">${aiLinks(PROMPTS.examples(t))}</div>
+        <div class="chips"><a class="chip" href="${esc('https://www.google.com/search?q=' + encodeURIComponent(topicName(t) + ' examples explained'))}" target="_blank" rel="noopener">Google: examples ↗</a>${vlink(topicName(t) + ' solved examples explained', 'Video: solved examples')}</div>`)}
+      ${pane('pyq', `<p class="small">Previous-year questions (PYQs) show exactly how the examiner asks this topic.</p>
+        ${qs ? `<div class="row"><button class="btn btn-primary btn-sm" data-act="quiz-go" data-s="${t.subject}" data-n="10">Practise ${Math.min(10, qs)} ${esc(t.subjectName)} questions from the bank</button></div>` : ''}
+        <h4>Find the PYQs asked on this topic</h4>
+        <div class="row"><button class="btn btn-sm" data-act="ai-pyq" data-id="${id}">${icon('spark')} List PYQs here</button></div>
+        <div class="chips">${aiLinks(PROMPTS.pyq(t), { search: true })}</div>
+        <div class="chips"><a class="chip" href="${esc('https://www.google.com/search?q=' + encodeURIComponent(searchQ(t) + ' previous year questions'))}" target="_blank" rel="noopener">Google: PYQs ↗</a>${vlink(topicName(t) + ' ' + examWord(t) + ' previous year questions', 'Video: PYQs solved', '')}${officials.slice(0, 4).map(([n, u]) => `<a class="chip accent" href="${esc(u)}" target="_blank" rel="noopener">${esc(n)} ↗</a>`).join('')}</div>
+        <p class="foot-note">AI lists can contain mistakes; confirm the year and wording in the official paper.</p>`)}
+      ${pane('mock', `<p class="small">Test yourself after learning. Scores are saved, and wrong answers go to your Mistake book.</p>
+        <div class="row">${qs ? `<button class="btn btn-primary btn-sm" data-act="quiz-go" data-s="${t.subject}" data-n="10">10-question test: ${esc(t.subjectName)}</button>` : ''}<button class="btn btn-sm" data-act="quiz-go" data-s="all" data-n="25">25-question mixed mock (my exams)</button></div>
+        <h4>Fresh questions on this exact topic</h4>
+        <div class="row"><button class="btn btn-sm" data-act="ai-mcq" data-id="${id}">${icon('spark')} 5 new exam-style MCQs</button>${descriptive ? `<button class="btn btn-sm" data-act="ai-mains" data-id="${id}">Descriptive question + answer outline</button>` : ''}</div>
+        <p class="small muted">Or take a 10-question mock, one question at a time, in any free AI chat:</p><div class="chips">${aiLinks(PROMPTS.mock(t))}</div>`)}
+      ${pane('notes', `<p class="small">Write in your own words: one-liners, mnemonics, page numbers, doubts. Saved on this device.</p>
+        <textarea id="my-note" class="input" rows="7" placeholder="Your own one-liners, mnemonics, page refs…">${esc(rec.n || '')}</textarea>
+        <div class="row"><button class="btn btn-sm btn-primary" data-act="save-note" data-id="${id}">Save my notes</button><button class="btn btn-sm btn-ghost" data-act="copy-link" data-hash="topic-${id}">Copy link to this topic</button></div>`)}
+      <section class="stack" style="gap:10px"><div id="ai-area" class="stack"></div>
+        <p class="foot-note">AI answers appear here and are saved to this topic. They use ${esc(AI.label())} (change in Profile → AI helper; free options work). Cross-check numbers and recent events with official sources.</p></section>`;
     openDrawer(t.name, html, () => { if (location.hash === '#topic-' + id) history.replaceState(null, '', '#' + (current.name === 'syllabus' ? 'syllabus' : current.name + (current.arg ? '-' + current.arg : ''))); });
+    { const tb = $('#drawer .ttabs'); const on = tb && $(`[data-v="${tab}"]`, tb); if (on) tb.scrollLeft = on.offsetLeft - tb.clientWidth / 2 + on.offsetWidth / 2; }
     {
       const saved = await AINotes.get(id);
       const area = $('#ai-area'); if (!area) return;
       let h = '';
       if (saved.explain) h += aiBlock('Explainer', saved.explain, id, 'explain');
-      if (saved.mains) h += aiBlock('Mains practice', saved.mains, id, 'mains');
-      if (saved.doubts && saved.doubts.length) h += saved.doubts.slice(-3).map((d) => `<div class="ai-out"><p class="small"><b>Q:</b> ${esc(d.q)}</p><div class="md">${md(d.a)}</div></div>`).join('');
+      if (saved.examples) h += aiBlock('Examples', saved.examples, id, 'examples');
+      if (saved.pyq) h += aiBlock('Previous-year questions', saved.pyq, id, 'pyq');
+      if (saved.mains) h += aiBlock('Descriptive practice', saved.mains, id, 'mains');
+      if (saved.doubts && saved.doubts.length) h += saved.doubts.slice(-3).map((d) => `<div class="ai-out"><p class="small"><b>Q:</b> ${esc(d.q)}</p><div class="md">${aimd(d.a)}</div></div>`).join('');
       area.innerHTML = h;
     }
   }
-  const aiBlock = (title, text, id, kind) => `<div class="ai-out" data-kind="${kind}"><div class="sheet-head"><h4>${esc(title)}</h4><button class="btn btn-ghost btn-sm" data-act="ai-${kind}" data-id="${id}" data-fresh="1">Regenerate</button></div><div class="md">${md(text)}</div></div>`;
+  const aiBlock = (title, text, id, kind) => `<div class="ai-out" data-kind="${kind}"><div class="sheet-head"><h4>${esc(title)}</h4><button class="btn btn-ghost btn-sm" data-act="ai-${kind}" data-id="${id}" data-fresh="1">Regenerate</button></div><div class="md">${aimd(text)}</div></div>`;
 
   let aiCtl = null; let lastMcqs = null;
   async function runAI(kind, id) {
@@ -4408,9 +4740,9 @@ window.PC_RESOURCES = [
     const old = kind === 'doubt' ? null : $(`.ai-out[data-kind="${kind}"]`, area);
     if (old) old.replaceWith(box); else area.prepend(box);
     const out = $('.md', box); const head = $('.sheet-head', box);
-    const title = { explain: 'Explain at a glance', mcq: '5 exam-style MCQs', mains: 'Mains question + outline', doubt: 'Your doubt' }[kind];
+    const title = { explain: 'Explain at a glance', mcq: '5 exam-style MCQs', mains: 'Descriptive question + outline', doubt: 'Your doubt', examples: 'Examples', pyq: 'Previous-year questions' }[kind];
     try {
-      const text = await AI.run(prompt, { area: $('.bridge-slot', box), signal: aiCtl.signal, title: title + ' — with any AI chat (free)', onText: (tx) => { if (kind !== 'mcq') out.innerHTML = md(tx); } });
+      const text = await AI.run(prompt, { area: $('.bridge-slot', box), signal: aiCtl.signal, title: title + ' — with any AI chat (free)', onText: (tx) => { if (kind !== 'mcq') out.innerHTML = aimd(tx); } });
       if (kind === 'mcq') {
         const qs = asArray(parseJsonLoose(text)).map(normQ).filter(Boolean).slice(0, 10);
         if (!qs.length) throw { code: 'invalid_json' };
@@ -4419,20 +4751,20 @@ window.PC_RESOURCES = [
         out.innerHTML = qs.map((q, qi) => mcqHtml(Object.assign({ id: 'ai' + qi }, q), qi + 1, true)).join('');
         return;
       }
-      out.innerHTML = md(text);
+      out.innerHTML = aimd(text);
       if (kind === 'doubt') {
         head.innerHTML = `<p class="small"><b>Q:</b> ${esc(doubtQ)}</p>`;
         const saved = await AINotes.get(id);
         await AINotes.put(id, { doubts: (saved.doubts || []).concat([{ q: doubtQ, a: text }]).slice(-10) });
         const inp = $('#ai-doubt'); if (inp) inp.value = '';
       } else {
-        head.innerHTML = `<h4>${kind === 'explain' ? 'Explainer' : 'Mains practice'}</h4><button class="btn btn-ghost btn-sm" data-act="ai-${kind}" data-id="${id}">Regenerate</button>`;
+        head.innerHTML = `<h4>${{ explain: 'Explainer', examples: 'Examples', pyq: 'Previous-year questions' }[kind] || 'Descriptive practice'}</h4><button class="btn btn-ghost btn-sm" data-act="ai-${kind}" data-id="${id}">Regenerate</button>`;
         await AINotes.put(id, { [kind]: text });
       }
     } catch (e) {
       if (e && e.code === 'cancelled') { box.remove(); return; }
       head.innerHTML = `<span class="small" style="color:var(--crit)">${esc(AI.errText(e))}</span><button class="btn btn-ghost btn-sm" data-act="ai-${kind}" data-id="${id}">Try again</button>`;
-      if (e && e.text && e.code !== 'refused') out.innerHTML = md(e.text);
+      if (e && e.text && e.code !== 'refused') out.innerHTML = aimd(e.text);
     }
   }
 
@@ -4455,7 +4787,7 @@ window.PC_RESOURCES = [
   function noteQuizPrompt(n) {
     const facts = []; (n.sections || []).forEach((s) => (s.items || []).forEach((it) => facts.push(`- ${it[0]}: ${it[1]}`.replace(/\*\*/g, ''))));
     let body = facts.join('\n'); if (body.length > 3200) body = body.slice(0, 3200) + '\n…';
-    return `Act as my exam coach for Indian competitive exams (UPSC/TGPSC, open category, Telangana). Quiz me on "${n.title}" with 10 exam-style MCQs (include statement-based "how many of the above are correct" questions). Ask one question at a time, wait for my answer, then tell me if I was right with a one-line explanation, and give my score at the end.\n\nKey facts to draw from:\n${body}`;
+    return `Act as my exam coach for ${examNamesFor(P().tracks) || 'Indian competitive exams'}. Quiz me on "${n.title}" with 10 exam-style MCQs (include statement-based "how many of the above are correct" questions). Ask ONE question at a time in this format: "**Q1 of 10.** question" then options (a) to (d) on separate lines, and wait for my answer. After I answer, reply with "✅ Correct" or "❌ Wrong — correct answer (x)", then **Why:** 2–3 short lines explaining why that answer is right and, if I was wrong, why my choice is wrong. At the end show **Score: X / 10** and 3 bullets on what to revise. No other text.\n\nKey facts to draw from:\n${body}`;
   }
   function vNote(id) {
     const n = NOTE[id]; if (!n) return `<p>Sheet not found. <a href="#notes">All notes</a></p>`;
@@ -4463,8 +4795,8 @@ window.PC_RESOURCES = [
     const cards = CARDS.filter((c) => c.sheet === id);
     return `<div class="view-head"><a class="small" href="#notes">← All notes</a><span class="eyebrow">${esc((SUBJ[n.subject] || {}).name || '')}</span><h1>${esc(n.title)}</h1>${n.intro ? `<p>${inline(n.intro)}</p>` : ''}
       <div class="row">${cards.length ? `<a class="btn btn-sm btn-primary" href="#practice" data-act="flash-sheet" data-sheet="${id}">Practise these ${cards.length} facts as flashcards</a>` : ''}<button class="btn btn-sm btn-ghost" data-act="copy-link" data-hash="note-${id}">Copy link to this sheet</button>${(n.ex || []).map((x) => `<span class="chip">${esc(TAG_LABEL[x] || x)}</span>`).join('')}</div>
-      <div class="stack" style="gap:6px"><span class="small muted">Quiz me on this sheet with any AI (one click):</span><div class="chips">${aiLinks(noteQuizPrompt(n))}</div></div></div>
-      <article class="sheet ruled" style="gap:22px">${(n.sections || []).map((s) => `<section class="note-section"><h3>${esc(s.h)}</h3>
+      <div class="stack" style="gap:6px"><span class="small muted">Quiz me on this sheet with any AI (one click):</span><div class="chips">${aiLinks(noteQuizPrompt(n))}${vlink(n.title + ' animated explanation', 'Videos on this sheet')}</div></div></div>
+      <article class="sheet ruled" style="gap:22px">${(n.sections || []).map((s) => `<section class="note-section"><h3>${esc(s.h)} ${vlink((s.h + ' ' + n.title).replace(/[^\w\s-]/g, ' ').replace(/\s+/g, ' ').slice(0, 90) + ' explained', 'Video')}</h3>
         ${s.p ? `<p>${inline(s.p)}</p>` : ''}
         ${s.items ? `<dl class="facts">${s.items.map((it) => `<dt>${inline(it[0])}</dt><dd>${inline(it[1])}</dd>`).join('')}</dl>` : ''}
         ${s.bullets ? `<ul class="bullets">${s.bullets.map((b) => `<li>${inline(b)}</li>`).join('')}</ul>` : ''}
@@ -4599,7 +4931,7 @@ window.PC_RESOURCES = [
           <label class="small" style="align-self:end"><input type="checkbox" id="ca-tgf" ${caUi.tg ? 'checked' : ''}> Telangana only</label>
         </div>
         <div class="chips" role="group" aria-label="GS paper">${['all'].concat(CA_G).map((g) => `<button class="chip" data-act="ca-g" data-v="${g}" aria-pressed="${caUi.g === g}">${g === 'all' ? 'All papers' : g}</button>`).join('')}</div>
-        ${days.length ? days.map((d) => `<div class="ca-day"><h4>${fmtD(d, { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' })}</h4>${byDate[d].map((x) => `<div class="ca-item"><div class="ca-main"><b>${esc(x.t)}</b>${x.n ? `<span class="small">${esc(x.n)}</span>` : ''}<div class="chips"><span class="chip accent">${esc(x.g)}</span>${x.tg ? '<span class="chip mark">Telangana</span>' : ''}${x.s ? `<span class="chip">${esc(x.s)}</span>` : ''}${x.x && TOPIC[x.x] ? `<a class="chip" href="#topic-${x.x}">↳ ${esc(TOPIC[x.x].name)}</a>` : ''}</div></div><button class="btn btn-ghost btn-sm" data-act="ca-del" data-id="${esc(x.id)}">Remove</button></div>`).join('')}</div>`).join('')
+        ${days.length ? days.map((d) => `<div class="ca-day"><h4>${fmtD(d, { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' })}</h4>${byDate[d].map((x) => `<div class="ca-item"><div class="ca-main"><b>${esc(x.t)}</b>${x.n ? `<span class="small">${esc(x.n)}</span>` : ''}<div class="chips"><span class="chip accent">${esc(x.g)}</span>${x.tg ? '<span class="chip mark">Telangana</span>' : ''}${x.s ? `<span class="chip">${esc(x.s)}</span>` : ''}${x.x && TOPIC[x.x] ? `<a class="chip" href="#topic-${x.x}">↳ ${esc(TOPIC[x.x].name)}</a>` : ''}${vlink(x.t + ' explained', 'Video', '')}</div></div><button class="btn btn-ghost btn-sm" data-act="ca-del" data-id="${esc(x.id)}">Remove</button></div>`).join('')}</div>`).join('')
           : `<p class="empty">${all.length ? 'Nothing matches these filters.' : 'Your diary is empty. Use “Today’s briefing” above or add an item from your own reading.'}</p>`}
       </section>
       <section class="sheet"><div class="sheet-head"><h2>Monthly revision</h2><span class="eyebrow">last 18 months</span></div>
@@ -4614,17 +4946,19 @@ window.PC_RESOURCES = [
   function mcqHtml(q, n, standalone) {
     return `<div class="sheet q-card" data-q="${esc(q.id)}" data-a="${q.a}" ${standalone ? 'data-standalone="1"' : ''}><span class="eyebrow">Question ${n}${q.src ? ' · ' + esc(q.src) : ''}</span><div class="q-text">${inline(q.q)}</div>
       <div class="opts">${q.o.map((o, i) => `<button class="opt" data-act="answer" data-i="${i}"><span class="key">${'abcd'[i] || i + 1}</span><span>${inline(o)}</span></button>`).join('')}</div>
-      <div class="explain" hidden>${inline(q.x || '')}</div></div>`;
+      <div class="explain" hidden><b>Answer: (${'abcd'[q.a] || q.a + 1}) ${inline(q.o[q.a] || '')}</b><br>${q.x ? inline(q.x) : '<span class="muted">No explanation saved for this question — use “Explain in detail” below.</span>'}
+        <details class="xq"><summary>Explain in detail (free AI)</summary><div class="chips">${aiLinks(explainQPrompt(q))}</div></details> ${vlink(((TOPIC[q.t] || {}).name || subjName(q.s) || '') + ' ' + kw(String(q.q).split('\n')[0]).slice(0, 5).join(' ') + ' explained', 'Video on this')}</div></div>`;
   }
   function vPractice() {
-    const tabs = [['quiz', 'MCQ quiz'], ['flash', 'Flashcards'], ['write', 'Answer writing'], ['make', 'Create & import'], ['mistakes', 'Mistake book']];
+    const tabs = [['papers', 'Exam-wise papers & mocks'], ['quiz', 'Quick tests'], ['flash', 'Flashcards'], ['mistakes', 'Mistake book'], ['write', 'Answer writing'], ['make', 'Create & import']];
     let body = '';
-    if (ui.prTab === 'quiz') body = practiceQuiz();
+    if (ui.prTab === 'papers') body = practicePapers();
+    else if (ui.prTab === 'quiz') body = practiceQuiz();
     else if (ui.prTab === 'flash') body = practiceFlash();
     else if (ui.prTab === 'write') body = practiceWrite();
     else if (ui.prTab === 'make') body = practiceMake();
     else body = practiceMistakes();
-    return `<div class="view-head"><span class="eyebrow">Practice</span><h1>Test yourself</h1><p>MCQs in current UPSC/TGPSC/SSC formats, spaced-repetition flashcards, timed answer writing, and tools to turn your own notes into cards and questions with any AI.</p></div>
+    return `<div class="view-head"><span class="eyebrow">Tests & practice</span><h1>Test yourself</h1><p>Mock tests in current exam formats, flashcards that come back just before you forget, your mistake book, answer writing, and tools to turn your own notes into questions.</p></div>
       <div class="seg" role="tablist">${tabs.map(([v, l]) => `<button role="tab" data-act="pr-tab" data-v="${v}" aria-pressed="${ui.prTab === v}">${l}</button>`).join('')}</div>${body}`;
   }
   const subjName = (s) => (SUBJ[s] || {}).name || (s === 'my' ? 'My questions' : s);
@@ -4637,19 +4971,28 @@ window.PC_RESOURCES = [
   function practiceQuiz() {
     if (quizRun && !quizRun.finished) {
       const q = quizRun.qs[quizRun.i];
-      return `<div class="row small"><span>Question ${quizRun.i + 1} of ${quizRun.qs.length} · score ${quizRun.c}/${quizRun.i + (quizRun.answered ? 1 : 0)}</span><div class="progress" style="flex:1;min-width:120px"><i style="width:${pct(quizRun.i, quizRun.qs.length)}%"></i></div><button class="btn btn-sm btn-ghost" data-act="quiz-quit">End quiz</button></div>
+      return `${quizRun.title ? `<h2>${esc(quizRun.title)}</h2>` : ''}<div class="row small"><span>Question ${quizRun.i + 1} of ${quizRun.qs.length} · score ${quizRun.c}/${quizRun.i + (quizRun.answered ? 1 : 0)}</span><div class="progress" style="flex:1;min-width:120px"><i style="width:${pct(quizRun.i, quizRun.qs.length)}%"></i></div><button class="btn btn-sm btn-ghost" data-act="quiz-quit">End quiz</button></div>
         ${mcqHtml(q, quizRun.i + 1)}<div class="row"><button class="btn btn-primary" data-act="quiz-next" ${quizRun.answered ? '' : 'disabled'}>${quizRun.i + 1 < quizRun.qs.length ? 'Next question' : 'See result'}</button></div>`;
     }
     let result = '';
     if (quizRun && quizRun.finished) {
-      const neg = quizRun.qs.length - quizRun.c;
-      result = `<section class="sheet ruled"><h2>Score: ${quizRun.c} / ${quizRun.qs.length} (${pct(quizRun.c, quizRun.qs.length)}%)</h2>
-        <p class="small">With UPSC marking (+2, −0.66 per wrong) this is <b>${(quizRun.c * 2 - neg * 0.66).toFixed(2)}</b> out of ${quizRun.qs.length * 2}. ${pct(quizRun.c, quizRun.qs.length) >= 55 ? 'That pace clears a typical General cut-off (≈44–55% in recent years).' : 'Recent General prelims cut-offs have needed roughly 44–55% after negatives — review the explanations and the mistake book.'}</p></section>`;
+      const neg = quizRun.qs.length - quizRun.c; const picks = quizRun.picks || [];
+      const review = quizRun.qs.map((q, k) => { const p = picks[k]; const ok = p === q.a;
+        return `<details class="rv ${ok ? 'ok' : 'bad'}" ${ok ? '' : 'open'}><summary><span class="chip ${ok ? 'good' : p == null ? 'warn' : 'crit'}">${ok ? '✓' : p == null ? '—' : '✗'}</span> Q${k + 1}. ${esc(String(q.q).split('\n')[0].slice(0, 110))}</summary>
+          <div class="q-text">${inline(q.q)}</div><ol class="rv-opts" type="a">${q.o.map((o, j) => `<li class="${j === q.a ? 'right' : j === p ? 'wrong' : ''}">${inline(o)}${j === q.a ? ' <b>✓ correct</b>' : j === p ? ' <b>✗ your answer</b>' : ''}</li>`).join('')}</ol>
+          <div class="rv-x"><b>Explanation:</b> ${q.x ? inline(q.x) : '<span class="muted">not saved for this question.</span>'}</div>
+          <details class="xq"><summary>Explain in detail (free AI)</summary><div class="chips">${aiLinks(explainQPrompt(q))}</div></details>${vlink(((TOPIC[q.t] || {}).name || '') + ' ' + kw(String(q.q).split('\n')[0]).slice(0, 5).join(' ') + ' explained', 'Video on this')}</details>`; }).join('');
+      result = `<section class="sheet ruled"><h2>${quizRun.title ? esc(quizRun.title) + ' · ' : ''}Score: ${quizRun.c} / ${quizRun.qs.length} (${pct(quizRun.c, quizRun.qs.length)}%)</h2>
+        ${P().tracks.includes('upsc') ? `<p class="small">With UPSC marking (+2, −0.66 per wrong) this is <b>${(quizRun.c * 2 - neg * 0.66).toFixed(2)}</b> out of ${quizRun.qs.length * 2}. ${pct(quizRun.c, quizRun.qs.length) >= 55 ? 'That pace clears a typical General cut-off (≈44–55% in recent years).' : 'Recent General prelims cut-offs have needed roughly 44–55% after negatives.'}</p>` : ''}
+        <h3>Review every question with its explanation</h3><p class="small muted">Wrong answers are open below and saved to your Mistake book.</p><div class="rv-list">${review}</div>
+        ${quizRun.qs.length - quizRun.c > 0 ? '<div class="row"><button class="btn btn-sm" data-act="quiz-mistakes">Retake my mistakes</button></div>' : ''}</section>`;
     }
     const all = allQuiz();
     const subjects = Array.from(new Set(all.map((q) => q.s))).map((s) => [s, subjName(s)]);
     const trackOpts = [['mine', 'My exams'], ['all', 'All exams']].concat(TRACKS.map((t) => [t.id, t.label]));
-    return `${result}<section class="sheet"><h2>Start a quiz</h2>
+    return `${result}<section class="sheet"><h2>One-tap tests for my exams</h2>
+      <div class="row"><button class="btn btn-primary" data-act="quiz-go" data-s="all" data-n="10">Quick test · 10 Q</button><button class="btn" data-act="quiz-go" data-s="all" data-n="25">Mock · 25 Q</button><button class="btn" data-act="quiz-go" data-s="all" data-n="50">Full mock · 50 Q</button></div></section>
+      <section class="sheet"><h2>Choose subject and size</h2>
       <div class="grid g3"><div class="field"><label for="qz-s">Subject</label><select id="qz-s"><option value="all">All subjects</option>${subjects.map(([v, l]) => `<option value="${v}" ${ui.qzS === v ? 'selected' : ''}>${esc(l)}</option>`).join('')}</select></div>
       <div class="field"><label for="qz-t">Exam</label><select id="qz-t">${trackOpts.map(([v, l]) => `<option value="${v}" ${(ui.qzT || 'all') === v ? 'selected' : ''}>${esc(l)}</option>`).join('')}</select></div>
       <div class="field"><label for="qz-n">Questions</label><select id="qz-n">${[10, 20, 30, 50].map((n) => `<option ${(+ui.qzN || 10) === n ? 'selected' : ''}>${n}</option>`).join('')}</select></div></div>
@@ -4748,7 +5091,7 @@ window.PC_RESOURCES = [
   function vStrategy(arg) {
     const sec = STRAT.find((s) => s.id === arg) || STRAT[0];
     if (!sec) return '<p>No strategy content.</p>';
-    return `<div class="view-head"><span class="eyebrow">Strategy for an OC candidate</span><h1>${esc(sec.title)}</h1>${sec.lede ? `<p>${inline(sec.lede)}</p>` : ''}</div>
+    return `<div class="view-head"><span class="eyebrow">Strategy</span><h1>${esc(sec.title)}</h1>${sec.lede ? `<p>${inline(sec.lede)}</p>` : ''}</div>
       <div class="chips">${STRAT.map((s) => `<a class="chip ${s.id === sec.id ? 'accent' : ''}" href="#strategy-${s.id}">${esc(s.short || s.title)}</a>`).join('')}</div>
       <article class="sheet ruled"><div class="md">${md(sec.body)}</div></article>
       ${sec.id === STRAT[0].id ? '' : ''}
@@ -4806,10 +5149,7 @@ window.PC_RESOURCES = [
     return { tracks: o.tracks, start: o.start, end: o.end, wd: o.wd, we: o.we, focus: o.focus, revisionMode: !!o.revisionMode, scale: +scale.toFixed(2), totalH: Math.round(totalH), weeks: W, made: todayStr() };
   }
   function vPlan() {
-    const p = P(); const plan = Store.state.plan; const t = primaryTarget();
-    const end = (plan && plan.end) || p.examDate || (t && t.d) || addDays(todayStr(), 180);
-    const trackChecks = TRACKS.map((tr) => `<label class="chip" style="cursor:pointer"><input type="checkbox" name="pl-track" value="${tr.id}" ${((plan && plan.tracks) || p.tracks).includes(tr.id) ? 'checked' : ''}> ${esc(tr.label)}</label>`).join('');
-    const focus = (plan && plan.focus) || (p.primary === 'upsc' ? 'prelims' : 'all');
+    const plan = Store.state.plan;
     let out = '';
     if (plan) {
       const td = todayStr(); const doneW = plan.weeks.filter((w) => w.done).length;
@@ -4826,17 +5166,24 @@ window.PC_RESOURCES = [
         }).join('')}</div></section>`;
     }
     return `<div class="view-head"><span class="eyebrow">Study planner</span><h1>Week-by-week plan to exam day</h1><p>About 60% of the weeks go to coverage (two subjects in parallel, plus your optional as a steady third stream), 25% to revision with tests, and the last 15% to full mocks. Roughly 38% of your weekly hours are kept aside for current affairs, PYQs and tests.</p></div>
-      <section class="sheet"><h2>${plan ? 'Rebuild plan' : 'Build a plan'}</h2>
+      ${planForm(plan)}${out}`;
+  }
+  function planForm(plan, wiz) {
+    const p = P(); const t = primaryTarget();
+    const end = (plan && plan.end) || p.examDate || (t && t.d) || addDays(todayStr(), 180);
+    const trackChecks = TRACKS.map((tr) => `<label class="chip" style="cursor:pointer"><input type="checkbox" name="pl-track" value="${tr.id}" ${((plan && !wiz && plan.tracks) || p.tracks).includes(tr.id) ? 'checked' : ''}> ${esc(tr.label)}</label>`).join('');
+    const focus = (plan && plan.focus) || (p.primary === 'upsc' ? 'prelims' : 'all');
+    return `<section class="sheet"><h2>${plan ? 'Rebuild plan' : 'Build a plan'}</h2>
         <div class="field"><label>Exams to cover</label><div class="chips">${trackChecks}</div></div>
         <div class="grid g4"><div class="field"><label for="pl-s">Start</label><input id="pl-s" type="date" value="${todayStr()}"></div>
           <div class="field"><label for="pl-e">Exam / target date</label><input id="pl-e" type="date" value="${end}"></div>
           <div class="field"><label for="pl-wd">Hours on a weekday</label><input id="pl-wd" type="number" min="0.5" max="14" step="0.5" value="${(plan && plan.wd) || p.wd}"></div>
           <div class="field"><label for="pl-we">Hours on a weekend day</label><input id="pl-we" type="number" min="1" max="16" step="0.5" value="${(plan && plan.we) || p.we}"></div>
           <div class="field"><label for="pl-focus">Focus</label><select id="pl-focus">${Object.keys(FOCUS).map((k) => `<option value="${k}" ${focus === k ? 'selected' : ''}>${FOCUS[k]}</option>`).join('')}</select></div></div>
-        <label class="small"><input type="checkbox" id="pl-rev" ${(plan ? plan.revisionMode : true) ? 'checked' : ''}> I have prepared before — plan at revision speed (about 45% of first-reading time)</label>
+        <label class="small"><input type="checkbox" id="pl-rev" ${(plan ? plan.revisionMode : false) ? 'checked' : ''}> I have prepared before — plan at revision speed (about 45% of first-reading time)</label>
         <label class="small"><input type="checkbox" id="pl-skip"> Leave out topics I have already revised twice</label>
-        ${p.optional ? `<p class="small muted">Your optional (${esc(optName(p.optional))}) is included as one or two units a week when UPSC is selected.</p>` : `<p class="small muted">Choose your UPSC optional in <a href="#profile">Profile</a> to add its syllabus to the plan.</p>`}
-        <div class="row"><button class="btn btn-primary" data-act="plan-build">${plan ? 'Rebuild (keeps topic progress)' : 'Build plan'}</button>${plan ? '<button class="btn btn-ghost" data-act="plan-clear">Delete plan</button>' : ''}</div></section>${out}`;
+        ${!p.tracks.includes('upsc') ? '' : p.optional ? `<p class="small muted">Your optional (${esc(optName(p.optional))}) is included as one or two units a week when UPSC is selected.</p>` : `<p class="small muted">Choose your UPSC optional in <a href="#profile">Profile</a> to add its syllabus to the plan.</p>`}
+        <div class="row"><button class="btn btn-primary" data-act="plan-build" ${wiz ? 'data-wiz="1"' : ''}>${plan ? 'Rebuild (keeps topic progress)' : 'Build my plan'}${wiz ? ' →' : ''}</button>${plan && !wiz ? '<button class="btn btn-ghost" data-act="plan-clear">Delete plan</button>' : ''}${wiz && plan ? '<a class="btn btn-ghost" href="#start-4">Keep my current plan →</a>' : ''}</div></section>`;
   }
 
   /* resources */
@@ -4848,9 +5195,45 @@ window.PC_RESOURCES = [
   /* profile */
   function ageOn(dob, on) { const b = parseD(dob), d = parseD(on); let a = d.getFullYear() - b.getFullYear(); if (d.getMonth() < b.getMonth() || (d.getMonth() === b.getMonth() && d.getDate() < b.getDate())) a--; return a; }
   /* Notifications state the upper limit as "must not have attained" that age on the reckoning date, so a limit of 32 means you must still be 31. */
-  function eligCalc(el, dob) { const y = el.year || new Date().getFullYear() + 1; const on = `${y}-${el.asOn}`; const a = ageOn(dob, on); return { y, on, a, ok: a >= el.min && a < el.max, last: y + (el.max - 1 - a) }; }
+  function eligCalc(el, dob, rx) { rx = rx || 0; const y = el.year || new Date().getFullYear() + 1; const on = `${y}-${el.asOn}`; const a = ageOn(dob, on); return { y, on, a, rx, ok: a >= el.min && a < el.max + rx, last: y + (el.max + rx - 1 - a) }; }
   /* For exams with several post-wise limits, the exam counts as open if any post is open. */
-  function eligOf(e, dob) { const rs = (e.eligs || [e.elig]).map((el) => eligCalc(el, dob)); return rs.find((r) => r.ok) || rs[0]; }
+  function eligOf(e, dob) { const rx = relaxFor(e.id, P()); const rs = (e.eligs || [e.elig]).map((el) => eligCalc(el, dob, rx)); return rs.find((r) => r.ok) || rs[0]; }
+  /* Upper-age relaxation in years. Central exams: OBC-NCL +3, SC/ST +5, PwBD +10 on top. State PSCs (TG, AP): SC/ST/BC/EWS +5 for that state's own candidates, PwBD +10. */
+  const CENTRAL_EX = new Set(['upsc', 'ese', 'cgl', 'chsl', 'je']);
+  const STATE_EX = { tg1: 'tg', tg2: 'tg', tg3: 'tg', aee: 'tg', dsc: 'tg', appsc: 'ap' };
+  function relaxFor(examId, p) {
+    const c = p.cat || 'oc'; let r = 0;
+    if (CENTRAL_EX.has(examId)) r = c === 'bc' ? 3 : c === 'sc' || c === 'st' ? 5 : 0;
+    else if (STATE_EX[examId]) r = c !== 'oc' && c !== 'na' && p.state === STATE_EX[examId] ? 5 : 0;
+    else return 0;
+    return r + (p.pwd ? 10 : 0);
+  }
+  const upscAttempts = (p) => (p.cat === 'sc' || p.cat === 'st' ? Infinity : p.cat === 'bc' || p.pwd ? 9 : 6);
+  const CATS = [['oc', 'OC / General (unreserved)'], ['ews', 'EWS'], ['bc', 'BC / OBC (non-creamy layer)'], ['sc', 'SC'], ['st', 'ST'], ['na', 'Prefer not to say (checked as General)']];
+  const catLabel = (c) => ({ oc: 'OC / General', ews: 'EWS', bc: 'BC / OBC', sc: 'SC', st: 'ST', na: 'General' }[c] || 'OC / General');
+  const STATES = [['tg', 'Telangana'], ['ap', 'Andhra Pradesh'], ['other', 'Another state / UT']];
+  const VLANGS = ['English', 'Hindi', 'Telugu', 'Tamil', 'Kannada', 'Malayalam', 'Marathi', 'Bengali', 'Gujarati', 'Odia', 'Punjabi'];
+  const isIOS = () => /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  const isStandalone = () => (window.matchMedia && matchMedia('(display-mode: standalone)').matches) || navigator.standalone === true;
+  const isSetup = () => !!(Users.active && Store.state && (P().setup || P().dob));
+  const SITE_URL = 'https://mmj2796-arch.github.io/mmj-coach/';
+  const appLink = () => (IN_VIEWER || !/^https:$/.test(location.protocol) ? SITE_URL : location.href.split('#')[0]);
+  const initials = (n) => String(n || '?').trim().split(/\s+/).slice(0, 2).map((w) => w[0] || '').join('').toUpperCase() || '?';
+  function eligList(p) {
+    if (!p.dob) return '<p class="small muted">Add your date of birth to check age eligibility.</p>';
+    const seen = new Set(); const li = [];
+    p.tracks.forEach((tr) => {
+      const e = TRACK[tr] && EXAM[TRACK[tr].exam]; if (!e || seen.has(e.id)) return; seen.add(e.id);
+      if (!e.elig && !e.eligs) { li.push(`<li><span class="chip good">No upper age limit</span> <b>${esc(e.short)}</b></li>`); return; }
+      const rx = relaxFor(e.id, p);
+      (e.eligs || [e.elig]).forEach((el) => {
+        const r = eligCalc(el, p.dob, rx);
+        li.push(`<li>${r.ok ? '<span class="chip good">✓ Eligible</span>' : r.a < el.min ? '<span class="chip warn">Too young yet</span>' : '<span class="chip crit">✗ Over age</span>'} <b>${esc(el.label || e.short)} ${r.y}</b><br><span class="small muted">Age on ${fmtD(r.on)}: ${r.a}. Limit: under ${el.max + rx}${rx ? ` (includes +${rx} yrs relaxation)` : ''}.${r.ok ? ` Last year your age allows: ${r.last}.` : ''}</span></li>`);
+      });
+    });
+    if (p.tracks.includes('upsc')) { const n = upscAttempts(p); li.push(`<li><span class="chip">UPSC attempts</span> ${n === Infinity ? 'No limit on attempts (only the age limit)' : n + ' attempts in total'} for ${esc(catLabel(p.cat))}${p.pwd ? ' + PwBD' : ''}.</li>`); }
+    return `<ul class="elig-list">${li.join('')}</ul><p class="foot-note">Upper limits are “must not have attained” that age on the reckoning date. Relaxation used: central exams OBC +3, SC/ST +5, PwBD +10; Telangana / Andhra Pradesh exams SC/ST/BC/EWS +5 for that state’s own candidates, PwBD +10. Always confirm in the official notification.</p>`;
+  }
   const optName = (id) => (OPTIONALS.find((o) => o.id === id) || {}).name || id;
   function deadlinesHtml() {
     const p = P(); const td = todayStr(); const rows = []; const seen = new Set();
@@ -4871,12 +5254,13 @@ window.PC_RESOURCES = [
     const p = P(); if (!p.tracks.includes('upsc')) return '';
     if (!p.dob) return `<div class="callout small">Add your date of birth in <a href="#profile">Profile</a> to see how many UPSC cycles your age still allows.</div>`;
     const e = EXAM.upsc; if (!e || !e.elig) return '';
-    const r = eligOf(e, p.dob); const left = Math.max(0, 6 - (+p.attemptsUsed || 0));
+    const r = eligOf(e, p.dob); const left = Math.max(0, upscAttempts(p) - (+p.attemptsUsed || 0));
     const cal = e.calendar || [];
     const apply = cal.find((c) => /apply/i.test(c.e)); const notif = cal.find((c) => /notification/i.test(c.e)); const pre = cal.find((c) => c.main);
     const when = notif && apply ? ` Apply between ${fmtD(notif.d, { day: 'numeric', month: 'short' })} and ${fmtD(apply.d)}${pre ? '; Prelims is on ' + fmtD(pre.d) : ''}.` : '';
-    if (!r.ok) return `<div class="callout warn"><b>UPSC CSE ${r.y}:</b> by age you are not eligible as a General candidate. Put your effort into TGPSC and the other exams you are eligible for.</div>`;
-    if (left === 0) return `<div class="callout warn"><b>UPSC:</b> all 6 General attempts are used. Focus on TGPSC and other exams.</div>`;
+    if (!r.ok) return `<div class="callout warn"><b>UPSC CSE ${r.y}:</b> by age you are not eligible as a ${esc(catLabel(p.cat))} candidate. Put your effort into the other exams you are eligible for.</div>`;
+    if (left === 0) return `<div class="callout warn"><b>UPSC:</b> all ${upscAttempts(p)} attempts are used. Focus on the other exams.</div>`;
+    if (left === Infinity) return `<div class="callout"><b>UPSC:</b> no limit on attempts for your category; age allows CSE ${r.y}–${r.last}.${when}</div>`;
     const cycles = r.last - r.y + 1;
     if (cycles <= left) return `<div class="callout warn"><b>UPSC: ${cycles === 1 ? `CSE ${r.y} is your last chance by age` : `age allows ${cycles} more cycles (CSE ${r.y}–${r.last})`}</b>, and you have ${left} attempt${left === 1 ? '' : 's'} left. Age runs out before attempts, so sit every remaining cycle — skipping one simply loses it.${when}</div>`;
     return `<div class="callout"><b>UPSC:</b> age allows ${cycles} cycles (CSE ${r.y}–${r.last}) for your ${left} attempt${left === 1 ? '' : 's'}. You can afford to skip a cycle if your mock average is below ~95 a few weeks before Prelims.${when}</div>`;
@@ -4886,29 +5270,39 @@ window.PC_RESOURCES = [
     let elig = '';
     if (p.dob) {
       const rows = EXAMS.filter((e) => e.elig).flatMap((e) => (e.eligs || [e.elig]).map((el) => [e, el])).map(([e, el]) => {
-        const r = eligCalc(el, p.dob);
-        return `<tr><td><a href="#exam-${e.id}">${esc(el.label || e.short)}</a></td><td class="n">${fmtD(r.on)}</td><td class="n">${r.a}</td><td class="n">${el.min} to under ${el.max}</td><td>${r.ok ? `<span class="chip good">Eligible</span> <span class="small muted">last cycle by age: ${r.last}</span>` : r.a < el.min ? '<span class="chip warn">Too young yet</span>' : '<span class="chip crit">Over age (OC)</span>'}${el.note ? `<br><span class="small muted">${esc(el.note)}</span>` : ''}</td></tr>`;
+        const rx = relaxFor(e.id, p); const r = eligCalc(el, p.dob, rx);
+        return `<tr><td><a href="#exam-${e.id}">${esc(el.label || e.short)}</a></td><td class="n">${fmtD(r.on)}</td><td class="n">${r.a}</td><td class="n">${el.min} to under ${el.max + rx}${rx ? ` (+${rx})` : ''}</td><td>${r.ok ? `<span class="chip good">Eligible</span> <span class="small muted">last cycle by age: ${r.last}</span>` : r.a < el.min ? '<span class="chip warn">Too young yet</span>' : '<span class="chip crit">Over age</span>'}${el.note ? `<br><span class="small muted">${esc(el.note)}</span>` : ''}</td></tr>`;
       }).join('');
-      elig = `<section class="sheet"><h2>Age eligibility check (OC, no relaxation)</h2>${situationHtml()}
+      elig = `<section class="sheet"><h2>Age eligibility · ${esc(catLabel(p.cat))}${p.pwd ? ' + PwBD' : ''}</h2>${situationHtml()}
         <div class="table-wrap"><table class="t"><thead><tr><th>Exam</th><th class="n">Age counted on</th><th class="n">Your age then</th><th class="n">Allowed</th><th>Status</th></tr></thead><tbody>${rows}</tbody></table></div>
-        <p class="foot-note">Notifications word the upper limit as “must not have attained” that age on the reckoning date, so a limit of 32 means you must still be 31 that day. Telangana’s 44 comes from a one-year order (G.O. 86, May 2026). Confirm in each notification; ex-servicemen, PwBD and in-service relaxations are not applied here.</p></section>`;
+        <p class="foot-note">Notifications word the upper limit as “must not have attained” that age on the reckoning date, so a limit of 32 means you must still be 31 that day. Relaxation applied: central exams OBC +3, SC/ST +5, PwBD +10; Telangana / Andhra Pradesh exams SC/ST/BC/EWS +5 for that state’s own candidates, PwBD +10. Telangana’s 44 comes from a one-year order (G.O. 86, May 2026). Confirm in each notification; ex-servicemen and in-service relaxations are not applied here.</p></section>`;
     }
     const evs = custom().events.slice().sort((a, b) => (a.d < b.d ? -1 : 1));
-    return `<div class="view-head"><span class="eyebrow">Profile</span><h1>Profile, eligibility & settings</h1><p>Your settings drive the countdown, syllabus filters, notes, planner and AI prompts. Category is set to OC (open competition).</p></div>
-      <section class="sheet"><div class="grid g3">
-        <div class="field"><label for="pf-name">Name (optional)</label><input id="pf-name" value="${esc(p.name)}" autocomplete="off"></div>
-        <div class="field"><label for="pf-dob">Date of birth</label><input id="pf-dob" type="date" value="${esc(p.dob)}"><span class="hint">Used only for the age check below.</span></div>
-        <div class="field"><label for="pf-local">Telangana local candidate?</label><select id="pf-local"><option value="yes" ${p.local === 'yes' ? 'selected' : ''}>Yes — studied 4 consecutive years ending Class VII in Telangana</option><option value="no" ${p.local === 'no' ? 'selected' : ''}>No / not sure</option></select><span class="hint">95% of TGPSC multi-zone posts go to locals.</span></div>
+    const has = (...ids) => ids.some((x) => p.tracks.includes(x));
+    const hide = (cond) => (cond ? '' : 'hidden');
+    return `<div class="view-head"><span class="eyebrow">Profile</span><h1>Profile, users & settings</h1><p>Your settings drive the countdown, eligibility check, syllabus filters, planner and video language. Everything is saved only on this device.</p></div>
+      <section class="sheet"><div class="sheet-head"><h2>Users on this device</h2><a class="btn btn-sm btn-primary" href="#start-new">+ Add a new user</a></div>
+        <div class="user-list">${Users.reg.list.map((u) => `<div class="user-row"><span class="avatar">${esc(initials(u.name))}</span><b>${esc(u.name)}</b>${u.id === Users.active ? '<span class="chip good">Using now</span>' : `<button class="btn btn-sm" data-act="user-switch" data-id="${u.id}">Switch to this user</button>`}</div>`).join('')}</div>
+        <p class="small muted">Each user has a separate profile, plan and progress. Nothing is shared between users or sent to any server.</p>
+        <div class="row"><button class="btn btn-sm btn-ghost danger" data-act="user-del">Delete ${esc((Users.cur() || {}).name || 'this user')} and all their data</button></div></section>
+      <section class="sheet"><h2>My details</h2><div class="grid g3">
+        <div class="field"><label for="pf-name">Name or nickname</label><input id="pf-name" value="${esc(p.name)}" autocomplete="off" maxlength="40"></div>
+        <div class="field"><label for="pf-dob">Date of birth</label><input id="pf-dob" type="date" value="${esc(p.dob)}"><span class="hint">Used only for the age check.</span></div>
+        <div class="field"><label for="pf-cat">Category (caste group)</label><select id="pf-cat">${CATS.map(([v, l]) => `<option value="${v}" ${p.cat === v ? 'selected' : ''}>${esc(l)}</option>`).join('')}</select><span class="hint">Used only for age relaxation.</span></div>
+        <div class="field"><label for="pf-state">Home state</label><select id="pf-state"><option value="">Choose…</option>${STATES.map(([v, l]) => `<option value="${v}" ${p.state === v ? 'selected' : ''}>${l}</option>`).join('')}</select></div>
+        <div class="field"><label for="pf-pwd">Person with benchmark disability</label><select id="pf-pwd"><option value="no" ${p.pwd ? '' : 'selected'}>No</option><option value="yes" ${p.pwd ? 'selected' : ''}>Yes (PwBD)</option></select></div>
+        <div class="field"><label for="pf-vl">Video language</label><select id="pf-vl">${VLANGS.map((l) => `<option ${vlang() === l ? 'selected' : ''}>${l}</option>`).join('')}</select><span class="hint">Video links search in this language.</span></div>
+        <div class="field" ${hide(p.state === 'tg' || has('tg1', 'tg2', 'tg3', 'dsc'))}><label for="pf-local">Telangana local candidate?</label><select id="pf-local"><option value="yes" ${p.local === 'yes' ? 'selected' : ''}>Yes — studied 4 consecutive years ending Class VII in Telangana</option><option value="no" ${p.local !== 'yes' ? 'selected' : ''}>No / not sure</option></select><span class="hint">95% of TGPSC multi-zone posts go to locals.</span></div>
         <div class="field"><label for="pf-primary">Main target exam</label><select id="pf-primary">${TRACKS.map((t) => `<option value="${t.id}" ${p.primary === t.id ? 'selected' : ''}>${esc(t.label)}</option>`).join('')}</select></div>
         <div class="field"><label for="pf-date">Target date (blank = next official date)</label><input id="pf-date" type="date" value="${esc(p.examDate)}"></div>
-        <div class="field"><label for="pf-att">UPSC attempts already used</label><input id="pf-att" type="number" min="0" max="6" value="${p.attemptsUsed || 0}"></div>
-        <div class="field"><label for="pf-opt">UPSC optional</label><select id="pf-opt"><option value="">Not decided yet</option>${OPTIONALS.map((o) => `<option value="${o.id}" ${p.optional === o.id ? 'selected' : ''}>${esc(o.name)}</option>`).join('')}</select><span class="hint"><a href="#strategy-optional">Compare optionals</a>. Its syllabus joins your tracker and planner.</span></div>
+        <div class="field" ${hide(has('upsc'))}><label for="pf-att">UPSC attempts already used</label><input id="pf-att" type="number" min="0" max="40" value="${p.attemptsUsed || 0}"></div>
+        <div class="field" ${hide(has('upsc'))}><label for="pf-opt">UPSC optional</label><select id="pf-opt"><option value="">Not decided yet</option>${OPTIONALS.map((o) => `<option value="${o.id}" ${p.optional === o.id ? 'selected' : ''}>${esc(o.name)}</option>`).join('')}</select><span class="hint"><a href="#strategy-optional">Compare optionals</a>. Its syllabus joins your tracker and planner.</span></div>
         <div class="field"><label for="pf-wd">Study hours on a weekday</label><input id="pf-wd" type="number" min="0.5" max="14" step="0.5" value="${p.wd}"></div>
         <div class="field"><label for="pf-we">Study hours on a weekend day</label><input id="pf-we" type="number" min="1" max="16" step="0.5" value="${p.we}"></div>
-        <div class="field"><label for="pf-branch">Engineering branch (for AEE/JE)</label><select id="pf-branch">${[['civil', 'Civil'], ['mech', 'Mechanical'], ['eee', 'Electrical'], ['ece', 'Electronics & Comm.'], ['none', 'Not an engineer']].map(([v, l]) => `<option value="${v}" ${p.branch === v ? 'selected' : ''}>${l}</option>`).join('')}</select></div>
-        <div class="field"><label for="pf-tet">TG TET</label><select id="pf-tet"><option value="no" ${p.tet !== 'yes' ? 'selected' : ''}>Not yet qualified</option><option value="yes" ${p.tet === 'yes' ? 'selected' : ''}>Qualified</option></select></div>
-        <div class="field"><label for="pf-tets">TET score (out of 150)</label><input id="pf-tets" type="number" min="0" max="150" value="${esc(p.tetScore || '')}"><span class="hint">${+p.tetScore > 0 ? `Adds ${((Math.min(150, +p.tetScore) / 150) * 20).toFixed(1)} of 20 marks to your DSC total.` : 'DSC adds 20% of this score to your written marks.'}</span></div>
-        <div class="field"><label for="pf-ctet">CTET</label><select id="pf-ctet"><option value="no" ${p.ctet !== 'yes' ? 'selected' : ''}>Not qualified</option><option value="yes" ${p.ctet === 'yes' ? 'selected' : ''}>Qualified</option></select><span class="hint">Needed for KVS/NVS teacher posts.</span></div>
+        <div class="field" ${hide(has('engg'))}><label for="pf-branch">Engineering branch (for AEE/JE)</label><select id="pf-branch">${[['civil', 'Civil'], ['mech', 'Mechanical'], ['eee', 'Electrical'], ['ece', 'Electronics & Comm.'], ['none', 'Not an engineer']].map(([v, l]) => `<option value="${v}" ${p.branch === v ? 'selected' : ''}>${l}</option>`).join('')}</select></div>
+        <div class="field" ${hide(has('dsc'))}><label for="pf-tet">TG TET</label><select id="pf-tet"><option value="no" ${p.tet !== 'yes' ? 'selected' : ''}>Not yet qualified</option><option value="yes" ${p.tet === 'yes' ? 'selected' : ''}>Qualified</option></select></div>
+        <div class="field" ${hide(has('dsc'))}><label for="pf-tets">TET score (out of 150)</label><input id="pf-tets" type="number" min="0" max="150" value="${esc(p.tetScore || '')}"><span class="hint">${+p.tetScore > 0 ? `Adds ${((Math.min(150, +p.tetScore) / 150) * 20).toFixed(1)} of 20 marks to your DSC total.` : 'DSC adds 20% of this score to your written marks.'}</span></div>
+        <div class="field" ${hide(has('dsc'))}><label for="pf-ctet">CTET</label><select id="pf-ctet"><option value="no" ${p.ctet !== 'yes' ? 'selected' : ''}>Not qualified</option><option value="yes" ${p.ctet === 'yes' ? 'selected' : ''}>Qualified</option></select><span class="hint">Needed for KVS/NVS teacher posts.</span></div>
       </div>
       <div class="field"><label>Exams I am preparing for</label><div class="chips">${TRACKS.map((t) => `<label class="chip" style="cursor:pointer"><input type="checkbox" name="pf-track" value="${t.id}" ${p.tracks.includes(t.id) ? 'checked' : ''}> ${esc(t.label)}</label>`).join('')}</div></div>
       <div class="row"><button class="btn btn-primary" data-act="profile-save">Save profile</button></div></section>
@@ -4929,10 +5323,264 @@ window.PC_RESOURCES = [
       <section class="sheet"><h2>My exam dates</h2><p class="small">Add dates from new notifications (TGPSC, AEE, RRB…). They appear under “Coming up” on the Today page.</p>
         <div class="row"><input id="ev-d" class="input" type="date" style="max-width:11rem"><input id="ev-e" class="input" placeholder="e.g. TGPSC Group-I Prelims" style="flex:1;min-width:10rem"><button class="btn btn-sm" data-act="event-add">Add date</button></div>
         ${evs.length ? `<div class="table-wrap"><table class="t"><tbody>${evs.map((ev) => `<tr><td class="n">${fmtD(ev.d)}</td><td>${esc(ev.e)}</td><td><button class="btn btn-ghost btn-sm" data-act="event-del" data-id="${esc(ev.id)}">Remove</button></td></tr>`).join('')}</tbody></table></div>` : ''}</section>
-      <section class="sheet"><h2>Backup & move to another device</h2><p class="small">Progress saves automatically ${Store.mode === 'cloud' ? 'to your Claude account' : 'in this browser'}. To move it to your phone or another browser, save a backup here and restore it there. Your AI key is never included.</p>
-        <div class="row">${IN_VIEWER ? '' : '<button class="btn btn-sm btn-primary" data-act="backup-download">Download backup file</button>'}<button class="btn btn-sm" data-act="backup-copy">Copy backup text</button><label class="btn btn-sm btn-ghost" for="backup-file">Restore from file</label><input id="backup-file" type="file" accept=".json,application/json,text/plain" hidden><button class="btn btn-sm btn-ghost" data-act="backup-show">Paste a backup…</button></div>
+      <section class="sheet"><h2>Backup & move to another device</h2><p class="small">Progress saves automatically ${Store.mode === 'cloud' ? 'to your Claude account' : 'on this device'}. To move it to another phone or laptop, save a backup here and restore it there. The backup contains your profile details, so share it only with yourself. Your AI key is never included.</p>
+        <div class="row">${IN_VIEWER ? '' : `${navigator.canShare ? '<button class="btn btn-sm btn-primary" data-act="backup-download" data-share="1">Share backup (WhatsApp, Drive, Files…)</button>' : ''}<button class="btn btn-sm ${navigator.canShare ? '' : 'btn-primary'}" data-act="backup-download">Download backup file</button>`}<button class="btn btn-sm" data-act="backup-copy">Copy backup text</button><label class="btn btn-sm btn-ghost" for="backup-file">Restore from file</label><input id="backup-file" type="file" accept=".json,application/json,text/plain" hidden><button class="btn btn-sm btn-ghost" data-act="backup-show">Paste a backup…</button></div>
         <div id="backup-area"></div></section>`;
   }
+
+  /* ---------------- step-by-step start, users, install ---------------- */
+  function privacyHtml() {
+    return `<div class="callout privacy"><b>Privacy notice: please read before you register</b>
+      <p class="small">We ask for your <b>name, date of birth and category (caste group)</b> only to check your age eligibility and age relaxation for the exams you choose.</p>
+      <ul class="bullets small">
+        <li>These details are saved <b>only on this device</b>, in this app’s private storage inside your browser.</li>
+        <li>They are <b>not sent to or stored on any server of ours</b>. The app has no server, no login and no tracking code.</li>
+        <li>They are never put into AI prompts or search links that the app opens.</li>
+        <li>They leave this device only if <b>you</b> share a backup file.</li>
+        <li>You can delete them at any time: Profile & users → Delete this user.</li>
+        ${IN_VIEWER ? '<li>Exception: when you open the app inside claude.ai, your progress (including these details) is also synced to your own Claude account.</li>' : ''}
+      </ul></div>`;
+  }
+  const STEPS = ['Create user', 'Your profile', 'Eligibility & plan', 'Start studying'];
+  const stepsBar = (n) => `<ol class="steps">${STEPS.map((s, i) => `<li class="${i + 1 < n ? 'done' : i + 1 === n ? 'now' : ''}"><span>${i + 1 < n ? '✓' : i + 1}</span>${s}</li>`).join('')}</ol>`;
+  function vStart(step) {
+    step = step || '1';
+    if (step === '1' || step === 'new') {
+      const adding = step === 'new' || !Users.active || (isSetup() && step !== '1');
+      const p = adding ? {} : P();
+      return `<div class="wiz">${stepsBar(1)}
+        <div class="view-head"><span class="eyebrow">Welcome to MMJ Self-Coaching</span><h1>${adding && Users.reg.list.length ? 'Add a new user' : 'Create your user'}</h1>
+          <p>A free self-study app for UPSC, state PSCs (TGPSC, APPSC), SSC, teaching (TET/DSC), engineering exams, CAT, MAT and CA. Setting up takes two minutes: <b>user → profile → plan → study</b>.</p>
+          <div class="row"><a class="btn btn-sm" href="#tour">${icon('tour')} Watch the 2-minute video guide</a></div></div>
+        ${isIOS() && !isStandalone() && !IN_VIEWER ? `<div class="callout warn small"><b>On iPhone or iPad:</b> install first. Tap Share <b>⬆</b> → <b>Add to Home Screen</b> → Add, then open the app from your Home Screen and register there (iPhone keeps the installed app’s data separate from Safari). <a href="#install">See how</a></div>` : ''}
+        <section class="sheet">${privacyHtml()}
+          <div class="field"><label for="wz-name">Your name or nickname</label><input id="wz-name" class="input" value="${esc(p.name || '')}" autocomplete="off" maxlength="40" placeholder="e.g. Ravi"></div>
+          <label class="small check"><input type="checkbox" id="wz-ok" ${p.consent ? 'checked' : ''}> I have read the privacy notice and I agree.</label>
+          <div class="row"><button class="btn btn-primary" data-act="wiz-user" data-new="${adding ? '1' : ''}">Agree and continue →</button>${isSetup() ? '<a class="btn btn-ghost" href="#today">Cancel</a>' : ''}</div>
+          ${adding ? `<details class="small"><summary>Moving from another phone or laptop? Restore your backup instead</summary><p class="small muted">Tick the privacy box above first, then pick the backup file you saved on the other device.</p><label class="btn btn-sm" for="backup-file">Restore from backup file</label><input id="backup-file" type="file" accept=".json,application/json,text/plain" hidden></details>` : ''}</section></div>`;
+    }
+    const p = P();
+    if (step === '2') {
+      const sel = p.setup ? p.tracks : [];
+      const groups = {}; TRACKS.forEach((t) => { const g = (EXAM[t.exam] || {}).group || 'Other'; (groups[g] = groups[g] || []).push(t); });
+      return `<div class="wiz">${stepsBar(2)}
+        <div class="view-head"><span class="eyebrow">Step 2 of 4</span><h1>Your profile</h1><p>Used to check eligibility and to show only the syllabus of the exams you pick. You can change everything later in Profile.</p></div>
+        <section class="sheet"><div class="grid g3">
+          <div class="field"><label for="wz-dob">Date of birth</label><input id="wz-dob" type="date" value="${esc(p.dob)}"></div>
+          <div class="field"><label for="wz-cat">Category (caste group)</label><select id="wz-cat">${CATS.map(([v, l]) => `<option value="${v}" ${p.cat === v ? 'selected' : ''}>${esc(l)}</option>`).join('')}</select><span class="hint">Only for age relaxation.</span></div>
+          <div class="field"><label for="wz-state">Home state</label><select id="wz-state"><option value="">Choose…</option>${STATES.map(([v, l]) => `<option value="${v}" ${p.state === v ? 'selected' : ''}>${l}</option>`).join('')}</select><span class="hint">State relaxations apply only in your home state.</span></div>
+        </div>
+        <label class="small check"><input type="checkbox" id="wz-pwd" ${p.pwd ? 'checked' : ''}> I am a person with benchmark disability (PwBD)</label>
+        <div class="field"><label>Exams you are preparing for (tick one or more)</label>
+          ${Object.keys(groups).map((g) => `<div class="exam-pick"><span class="eyebrow">${esc(g)}</span><div class="chips">${groups[g].map((t) => `<label class="chip pick"><input type="checkbox" name="wz-track" value="${t.id}" ${sel.includes(t.id) ? 'checked' : ''}> ${esc(t.label)}</label>`).join('')}</div></div>`).join('')}</div>
+        <div class="grid g3">
+          <div class="field"><label for="wz-wd">Study hours on a weekday</label><input id="wz-wd" type="number" min="0.5" max="14" step="0.5" value="${p.wd}"></div>
+          <div class="field"><label for="wz-we">Study hours on a weekend day</label><input id="wz-we" type="number" min="1" max="16" step="0.5" value="${p.we}"></div>
+          <div class="field"><label for="wz-vl">Video language</label><select id="wz-vl">${VLANGS.map((l) => `<option ${vlang() === l ? 'selected' : ''}>${l}</option>`).join('')}</select><span class="hint">Video links search in this language.</span></div>
+        </div>
+        <div class="row"><a class="btn btn-ghost" href="#start-1">← Back</a><button class="btn btn-primary" data-act="wiz-profile">Save and check eligibility →</button></div></section></div>`;
+    }
+    if (step === '3') {
+      return `<div class="wiz">${stepsBar(3)}
+        <div class="view-head"><span class="eyebrow">Step 3 of 4</span><h1>Your eligibility and study plan</h1></div>
+        <section class="sheet"><h2>Age eligibility · ${esc(catLabel(p.cat))}${p.pwd ? ' + PwBD' : ''}</h2>${eligList(p)}</section>
+        ${planForm(Store.state.plan, true)}
+        <div class="row"><a class="btn btn-ghost" href="#start-2">← Back</a></div></div>`;
+    }
+    const nid = nextTopicId(); const nt = nid && TOPIC[nid]; const wiz = current.name === 'start';
+    return `<div class="wiz">${wiz ? stepsBar(4) : ''}
+      <div class="view-head"><span class="eyebrow">${wiz ? 'Step 4 of 4' : 'Help'}</span><h1>${wiz ? 'All set. This is your daily routine' : 'How to use the app, step by step'}</h1></div>
+      <section class="sheet"><ol class="how">
+        <li><b>Home</b> shows <b>today’s topic</b> from your plan. Tap <b>1. Learn</b> to begin.</li>
+        <li>On the topic page, go through the tabs from left to right: <b>1 Learn</b> (what to read, NCERT, quick notes, simple explanation) → <b>2 Videos</b> (short animated explanations) → <b>3 Examples</b> → <b>4 PYQs</b> (previous-year questions) → <b>5 Mock test</b> → <b>6 My notes</b>.</li>
+        <li>Mark your progress at the top of the topic: Not started → Read once → Notes made → Revised twice → Exam-ready.</li>
+        <li><b>Tests</b>: one-tap 10 / 25 / 50-question mocks, flashcards and your mistake book.</li>
+        <li><b>News</b>: 10 minutes of current affairs a day, saved to a monthly diary.</li>
+        <li><b>Study</b>: the full syllabus, subject by subject, if you want to choose a topic yourself.</li>
+        <li><b>More → Profile & users</b>: change your exams, add another user, or back up your progress.</li>
+      </ol>
+      <div class="row">${nt ? `<button class="btn btn-primary" data-act="topic-tab" data-id="${nid}" data-tab="learn">Start today’s topic: ${esc(nt.name)}</button>` : ''}<a class="btn" href="#today">Go to Home</a><a class="btn" href="#tour">${icon('tour')} Video guide</a>${!isStandalone() ? '<a class="btn btn-ghost" href="#install">Install the app</a>' : ''}</div></section></div>`;
+  }
+  function heroHtml() {
+    const nid = nextTopicId(); const nt = nid && TOPIC[nid]; const plan = Store.state.plan;
+    const steps = [['Profile', true, '#profile'], ['Plan', !!plan, '#plan'], ['Study today', false, '']];
+    return `<section class="sheet hero"><ol class="steps steps-sm">${steps.map(([l, ok, h], i) => `<li class="${ok ? 'done' : i === steps.findIndex((x) => !x[1]) ? 'now' : ''}">${h ? `<a href="${h}">` : ''}<span>${ok ? '✓' : i + 1}</span>${l}${h ? '</a>' : ''}</li>`).join('')}</ol>
+      ${!plan ? `<div class="callout small">Build your study plan to get a topic for every day. <a class="btn btn-sm btn-primary" href="#plan">Build my plan</a></div>` : ''}
+      ${nt ? `<span class="eyebrow">Today’s topic · ${esc(nt.subjectName)}</span><h2>${esc(nt.name)}</h2><p class="small muted">Your progress: ${STATUS[statusOf(nid)]}. Go through the steps in order:</p>
+        <div class="step-btns">${TTABS.map(([k, l], i) => `<button class="btn ${i === 0 ? 'btn-primary' : ''}" data-act="topic-tab" data-id="${nid}" data-tab="${k}"><span>${i + 1}</span>${l}</button>`).join('')}</div>` : '<p>Every topic in your exams is started. Revise from Notes and take mock tests.</p>'}</section>`;
+  }
+  let deferredInstall = null;
+  window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); deferredInstall = e; if (current.name === 'install') rerender(); });
+  window.addEventListener('appinstalled', () => { deferredInstall = null; toast('Installed. Open it from your home screen.'); });
+  function vInstall() {
+    const link = appLink();
+    const dev = isIOS() ? 'ios' : /Android/i.test(navigator.userAgent) ? 'android' : 'desktop';
+    const sec = {
+      ios: ['iPhone / iPad', `<ol class="how"><li>Open <b>${esc(link)}</b> in <b>Safari</b>.</li><li>Tap the <b>Share</b> button (a square with an arrow ⬆; at the bottom on iPhone, at the top on iPad).</li><li>Scroll down, tap <b>Add to Home Screen</b>, then <b>Add</b>.</li><li>Open <b>MMJ Coach</b> from your Home Screen and create your user there. The installed app keeps its own data, separate from Safari.</li></ol><p class="small muted">Works offline on iOS 16.4 or later. Chrome on iPhone also works: tap Share ⬆ → Add to Home Screen.</p>`],
+      android: ['Android phone / tablet', `<ol class="how"><li>Open <b>${esc(link)}</b> in <b>Chrome</b>. Use this github.io link, not github.com.</li><li>Tap <b>⋮</b> (top right) → <b>Install app</b> (or <b>Add to Home screen</b> → <b>Install</b>).</li><li>Open <b>MMJ Coach</b> from your home screen or app drawer.</li></ol>`],
+      desktop: ['Laptop / desktop (Windows, Mac, Linux)', `<ol class="how"><li>Open <b>${esc(link)}</b> in <b>Chrome</b> or <b>Edge</b>.</li><li><b>Chrome:</b> click the install icon at the right end of the address bar, or ⋮ → Cast, save and share → <b>Install page as app</b>.<br><b>Edge:</b> ⋯ → Apps → <b>Install this site as an app</b>.<br><b>Safari on Mac (macOS 14+):</b> File → <b>Add to Dock</b>.</li><li>Open it from the Start menu, taskbar or Dock.</li></ol>`],
+    };
+    const order = [dev].concat(['ios', 'android', 'desktop'].filter((x) => x !== dev));
+    return `<div class="view-head"><span class="eyebrow">Free · no app store · no payment</span><h1>Install the app on any device</h1><p>One link works on iPhone, Android and laptops. The app installs from the browser, works offline, and updates itself whenever you are online.</p></div>
+      ${isStandalone() ? '<div class="callout">✓ You are using the installed app.</div>' : ''}
+      <section class="sheet"><h2>App link</h2><p class="linkline"><b>${esc(link)}</b></p>
+        <div class="row">${deferredInstall ? '<button class="btn btn-primary" data-act="install-now">Install now</button>' : ''}<button class="btn btn-sm" data-act="share-app">Share or copy the link</button><a class="btn btn-sm" href="#tour">${icon('tour')} Watch the video guide</a></div></section>
+      ${order.map((k, i) => `<section class="sheet ${i === 0 ? 'ruled' : ''}"><h2>${i === 0 ? 'Your device: ' : ''}${sec[k][0]}</h2>${sec[k][1]}</section>`).join('')}
+      <section class="sheet"><h3>Why not the App Store or Play Store?</h3><p class="small">Publishing there costs money (Apple charges US$99 a year, Google US$25 once) and every update waits for a review. This installable web app is free on every device, gets updates automatically, and keeps your data on your own device.</p>
+        <h3>Moving to another device</h3><p class="small">Progress is saved per device. On the old device: Profile & users → <b>Share backup</b> or <b>Download backup file</b>. On the new device: create your user, then Profile & users → <b>Restore from file</b> (or use “Restore your backup” on the first screen).</p></section>`;
+  }
+  function switchUser(id) {
+    Users.reg.active = id; Users.save();
+    if (id !== 'main' && Store.ref) { Store.parked = [Store.ref, Store.aiCol]; Store.ref = null; Store.aiCol = null; setSync('local'); }
+    Store.load(); CA.load(); AINotes.mem = {}; quizRun = null; flashRun = null;
+    if (id === 'main' && Store.parked) { [Store.ref, Store.aiCol] = Store.parked; Store.parked = null; setSync('cloud'); }
+    renderUserChip();
+  }
+  function renderUserChip() {
+    const b = $('#user-chip'); if (!b) return; const u = Users.cur();
+    b.hidden = !u || !isSetup(); if (u) { b.textContent = initials(u.name); b.title = 'User: ' + u.name + ' (tap to switch or add)'; }
+  }
+  function usersHtml() {
+    return `<p class="small muted">Each user has a separate profile, plan and progress on this device. Nothing is shared between users or sent to any server.</p>
+      <div class="user-list">${Users.reg.list.map((u) => `<div class="user-row"><span class="avatar">${esc(initials(u.name))}</span><b>${esc(u.name)}</b>${u.id === Users.active ? '<span class="chip good">Using now</span>' : `<button class="btn btn-sm" data-act="user-switch" data-id="${u.id}">Switch</button>`}</div>`).join('')}</div>
+      <div class="row"><a class="btn btn-sm btn-primary" href="#start-new">+ Add a new user</a><a class="btn btn-sm btn-ghost" href="#profile">Profile & settings</a></div>`;
+  }
+
+  /* ---------------- video guide: an animated walkthrough that plays like a short video ---------------- */
+  const tvTap = (x, y, d) => `<i class="tv-tap" style="--x:${x};--y:${y};--d:${d}s"></i>`;
+  const tvIn = (d, html, cls) => `<div class="tv-in ${cls || ''}" style="--d:${d}s">${html}</div>`;
+  const tvLines = (n) => Array.from({ length: n }, (_, i) => `<i class="tv-line" style="width:${55 + ((i * 37) % 40)}%"></i>`).join('');
+  const tvPhone = (bar, body, taps) => `<div class="tv-phone"><div class="tv-url">${bar}</div><div class="tv-screen">${body}</div>${taps || ''}</div>`;
+  const TV_LOGO = '<svg class="tv-logo" viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="17" r="15" fill="none" stroke="currentColor" stroke-width="2"/><path d="M17 6 L20.5 17 L17 28 L13.5 17 Z" fill="var(--accent)"/><path d="M17 17 L20.5 17 L17 28 L13.5 17 Z" fill="var(--mark)"/></svg>';
+  const TOUR = [
+    { t: 'Welcome', d: 9, c: 'Welcome to MMJ Self-Coaching: a free study app for UPSC, state PSC, SSC, TET and DSC, engineering, CAT, MAT and CA exams. It works offline and keeps your data on your own device.',
+      s: () => `<div class="tv-center">${TV_LOGO}<b class="tv-big">MMJ Self-Coaching</b>${tvIn(1, '<div class="tv-chips"><span>UPSC</span><span>TGPSC · APPSC</span><span>SSC</span><span>TET · DSC</span><span>Engineering</span><span>CAT · MAT · CA</span></div>')}${tvIn(2.6, '<p class="tv-sub">Free · works offline · your data stays on your device</p>')}</div>` },
+    { t: 'Install on iPhone', d: 9, c: 'On iPhone, open the app link in Safari. Tap the Share button, choose Add to Home Screen, then tap Add.',
+      s: () => tvPhone('🔒 mmj2796-arch.github.io', `${tvLines(6)}<div class="tv-toolbar"><span>‹</span><span>›</span><span class="tv-hl" style="--d:.8s">⬆</span><span>▢</span><span>⧉</span></div>
+        ${tvIn(1.8, '<div class="tv-sheet"><div class="tv-row">Copy</div><div class="tv-row">Add to Bookmarks</div><div class="tv-row tv-hl" style="--d:3s">＋ Add to Home Screen</div></div>')}
+        ${tvIn(4.4, '<div class="tv-dialog"><b>Add to Home Screen</b><span>MMJ Coach</span><span class="tv-btn tv-hl" style="--d:5.2s">Add</span></div>')}
+        ${tvIn(6.6, `<div class="tv-home"><span class="tv-appicon">${TV_LOGO}</span><small>MMJ Coach</small></div>`)}`, tvTap('50%', '93%', 0.8) + tvTap('50%', '89%', 3) + tvTap('76%', '56%', 5.2)) },
+    { t: 'Install on Android', d: 8, c: 'On Android, open the link in Chrome. Tap the three-dot menu, then Install app, then Install.',
+      s: () => tvPhone('mmj2796-arch.github.io <span class="tv-hl tv-dots" style="--d:.8s">⋮</span>', `${tvLines(6)}
+        ${tvIn(1.6, '<div class="tv-menu"><div class="tv-row">New tab</div><div class="tv-row">Bookmarks</div><div class="tv-row tv-hl" style="--d:2.6s">⤓ Install app</div></div>')}
+        ${tvIn(3.8, '<div class="tv-dialog"><b>Install app?</b><span>MMJ Coach</span><span class="tv-btn tv-hl" style="--d:4.8s">Install</span></div>')}
+        ${tvIn(6, `<div class="tv-home"><span class="tv-appicon">${TV_LOGO}</span><small>MMJ Coach</small></div>`)}`, tvTap('91%', '4%', 0.8) + tvTap('68%', '26%', 2.6) + tvTap('76%', '56%', 4.8)) },
+    { t: 'Install on a laptop', d: 8, c: 'On a laptop, open the link in Chrome or Edge and click the install icon at the right end of the address bar. Then click Install.',
+      s: () => `<div class="tv-laptop"><div class="tv-url">mmj2796-arch.github.io/mmj-coach/ <span class="tv-hl" style="--d:1s">⤓</span></div><div class="tv-screen tv-wide">${tvLines(5)}
+        ${tvIn(2.2, '<div class="tv-dialog tv-right"><b>Install app?</b><span>MMJ Self-Coaching App</span><span class="tv-btn tv-hl" style="--d:3.4s">Install</span></div>')}
+        ${tvIn(5, '<div class="tv-window"><b>MMJ Coach</b> · opens in its own window, like any app</div>')}</div>${tvTap('93%', '6%', 1) + tvTap('84%', '50%', 3.4)}</div>` },
+    { t: 'Create your user', d: 9, c: 'First, create your user. Read the privacy notice: your name, date of birth and category stay only on your device. Tick the box and continue.',
+      s: () => tvPhone('Step 1 of 4 · Create user', `<div class="tv-card tv-privacy"><b>Privacy notice</b>${tvLines(3)}</div>
+        <div class="tv-field"><small>Your name</small><span class="tv-type" style="--d:1.4s">Ravi</span></div>
+        <div class="tv-checkrow"><span class="tv-cb" style="--d:3.4s"></span> I agree</div>
+        <div class="tv-bigbtn tv-hl" style="--d:5s">Agree and continue →</div>`, tvTap('50%', '91%', 5)) },
+    { t: 'Fill your profile', d: 9, c: 'Next, add your date of birth, category and home state, and tick the exams you are preparing for.',
+      s: () => tvPhone('Step 2 of 4 · Your profile', `<div class="tv-field"><small>Date of birth</small><span class="tv-type" style="--d:.8s">02-07-1998</span></div>
+        <div class="tv-field"><small>Category</small><span class="tv-in" style="--d:2s">BC / OBC ▾</span></div>
+        <div class="tv-field"><small>Exams</small><div class="tv-chips tv-left"><span class="tv-pick" style="--d:3.2s">UPSC</span><span class="tv-pick" style="--d:4s">TGPSC Gr-II</span><span>SSC</span><span class="tv-pick" style="--d:4.8s">CAT</span><span>CA</span></div></div>
+        <div class="tv-bigbtn tv-hl" style="--d:6.4s">Save and check eligibility →</div>`, tvTap('14%', '52%', 3.2) + tvTap('50%', '91%', 6.4)) },
+    { t: 'Eligibility and plan', d: 8, c: 'The app checks your age eligibility, with relaxation for your category. Then tap Build my plan to get a week-by-week plan.',
+      s: () => tvPhone('Step 3 of 4 · Eligibility & plan', `${tvIn(0.6, '<div class="tv-ok">✓ Eligible · UPSC CSE 2027</div>')}${tvIn(1.4, '<div class="tv-ok">✓ Eligible · TGPSC Group-II</div>')}${tvIn(2.2, '<div class="tv-ok">✓ No upper age limit · CAT</div>')}
+        <div class="tv-bigbtn tv-hl" style="--d:3.8s">Build my plan →</div>${tvIn(4.8, '<div class="tv-toast">Plan built: 34 weeks</div>')}`, tvTap('50%', '91%', 3.8)) },
+    { t: 'Today’s topic', d: 8, c: 'Every day, Home shows today’s topic from your plan. Tap 1, Learn, to begin.',
+      s: () => tvPhone('Home', `<div class="tv-card"><small>TODAY’S TOPIC · POLITY</small><b>Fundamental Rights</b><div class="tv-steps"><span class="tv-hl" style="--d:2.4s">1 Learn</span><span>2 Videos</span><span>3 Examples</span><span>4 PYQs</span><span>5 Mock</span><span>6 Notes</span></div></div>${tvLines(4)}`, tvTap('20%', '25%', 2.4)) },
+    { t: 'Six steps for every topic', d: 10, c: 'Each topic has six steps. Learn, Videos, Examples, Previous-year questions, Mock test, and My notes. Go from left to right.',
+      s: () => tvPhone('Fundamental Rights', `<div class="tv-tabs">${['Learn', 'Videos', 'Examples', 'PYQs', 'Mock test', 'My notes'].map((l, i) => `<span class="tv-flash" style="--d:${0.6 + i * 1.4}s">${i + 1} ${l}</span>`).join('')}</div>
+        ${tvIn(0.6, '<div class="tv-card"><b>What to learn</b>' + tvLines(3) + '</div>')}${tvIn(2, '<div class="tv-vid">▶ Animated explanation · 4–20 min</div>')}${tvIn(3.4, '<div class="tv-vid">▶ Quick revision in under 4 minutes</div>')}`) },
+    { t: 'Clear AI answers', d: 9, c: 'The AI buttons give short, clear notes, examples and previous-year questions, using any free AI chat. Every mock question comes with an explanation.',
+      s: () => tvPhone('Explain at a glance', `<div class="tv-ai">${tvIn(0.6, '<b class="tv-h">In one line</b>' + tvLines(1))}${tvIn(1.6, '<b class="tv-h">Key points</b><ul><li>' + tvLines(1) + '</li><li>' + tvLines(1) + '</li><li>' + tvLines(1) + '</li></ul>')}${tvIn(3, '<b class="tv-h">Must-remember facts</b><div class="tv-table"><i></i><i></i><i></i><i></i></div>')}${tvIn(4.4, '<b class="tv-h">Common traps</b>' + tvLines(2))}</div>`) },
+    { t: 'Papers and mock tests', d: 9, c: 'In Tests, open your exam for official previous papers, year-wise questions with answers and explanations, and full mock tests.',
+      s: () => tvPhone('Tests · Exam-wise', `<div class="tv-card"><b>UPSC Civil Services</b><div class="tv-vid tv-hl" style="--d:1s">1 Official papers & answer keys ↗</div><div class="tv-vid tv-hl" style="--d:2.4s">2 Year-wise PYQs with explanations</div><div class="tv-vid tv-hl" style="--d:3.8s">3 Mock test · 25 questions</div></div>${tvIn(5.2, '<div class="tv-ok">✓ Score 18 / 25 · review every explanation</div>')}`, tvTap('50%', '41%', 3.8)) },
+    { t: 'News, users and backup', d: 9, c: 'Use News for 10 minutes of current affairs a day. In Profile you can add another user or back up your progress to move it to a new phone.',
+      s: () => tvPhone('Home', `${tvLines(7)}<div class="tv-tabbar"><span>Home</span><span>Study</span><span class="tv-flash" style="--d:1s">Tests</span><span class="tv-flash" style="--d:2.4s">News</span><span class="tv-flash" style="--d:3.8s">More</span></div>${tvIn(5, '<div class="tv-menu tv-low"><div class="tv-row">👤 Ravi · switch or add user</div><div class="tv-row tv-hl" style="--d:6s">Share backup</div></div>')}`) },
+    { t: 'You are ready', d: 7, c: 'Study one topic a day, mark your progress, take the mock tests and revise. All the best!',
+      s: () => `<div class="tv-center">${TV_LOGO}<b class="tv-big">One topic a day.</b>${tvIn(1.2, '<p class="tv-sub">Learn → Watch → Practise → Revise</p>')}${tvIn(2.4, '<p class="tv-sub"><b>All the best!</b></p>')}</div>` },
+  ];
+  const tv = { i: 0, on: true, timer: null, voice: false };
+  function vTour() {
+    return `<div class="view-head"><span class="eyebrow">Video guide · about 2 minutes</span><h1>How to install and use the app</h1><p>Plays like a short video. Turn on <b>Voice</b> to hear it, or pause and go step by step.</p></div>
+      <div class="tv" id="tv"><div class="tv-stage" id="tv-stage" aria-live="polite"></div>
+        <div class="tv-cap" id="tv-cap"></div>
+        <div class="tv-prog" id="tv-prog">${TOUR.map((x, i) => `<button data-act="tv-go" data-i="${i}" aria-label="Part ${i + 1}: ${esc(x.t)}"><i></i></button>`).join('')}</div>
+        <div class="tv-ctrl"><button class="btn btn-sm" data-act="tv-prev" aria-label="Previous part">◀</button><button class="btn btn-sm btn-primary" data-act="tv-play" id="tv-play">Pause</button><button class="btn btn-sm" data-act="tv-next" aria-label="Next part">▶</button>
+          ${'speechSynthesis' in window ? `<label class="small check"><input type="checkbox" id="tv-voice" ${tv.voice ? 'checked' : ''}> Voice</label>` : ''}<span class="small muted" id="tv-count"></span></div></div>
+      <div class="row">${isSetup() ? '<a class="btn" href="#today">Go to Home</a>' : '<a class="btn btn-primary" href="#start-1">Start setup →</a>'}<a class="btn btn-ghost" href="#install">Install steps as text</a><button class="btn btn-ghost btn-sm" data-act="share-tour">Share this video guide</button></div>
+      <p class="foot-note">To keep it as a video file, play it with Voice on and use your phone’s screen recorder (Android: Quick settings → Screen record; iPhone: Control Centre → Screen Recording).</p>`;
+  }
+  vTour.after = () => { tv.i = 0; tv.on = true; tvShow(0); };
+  function tvStop() { clearTimeout(tv.timer); tv.timer = null; try { if (window.speechSynthesis) speechSynthesis.cancel(); } catch (e) { /* no speech */ } }
+  function tvShow(i) {
+    tvStop(); const st = $('#tv-stage'); if (!st) return;
+    tv.i = Math.max(0, Math.min(TOUR.length - 1, i)); const sc = TOUR[tv.i];
+    st.innerHTML = `<div class="tv-scene">${sc.s()}</div>`;
+    $('#tv-cap').innerHTML = `<b>${tv.i + 1}. ${esc(sc.t)}</b><span>${esc(sc.c)}</span>`;
+    $('#tv-count').textContent = `${tv.i + 1} / ${TOUR.length}`;
+    $$('#tv-prog button').forEach((b, k) => { b.className = k < tv.i ? 'done' : k === tv.i ? 'now' : ''; b.style.setProperty('--dur', sc.d + 's'); });
+    $('#tv-play').textContent = tv.on ? 'Pause' : 'Play';
+    $('#tv').classList.toggle('paused', !tv.on);
+    if (!tv.on) return;
+    const next = () => { if (current.name !== 'tour') return; if (tv.i < TOUR.length - 1) tvShow(tv.i + 1); else { tv.on = false; $('#tv-play').textContent = 'Replay'; $('#tv').classList.add('paused'); } };
+    const ms = sc.d * 1000;
+    if (tv.voice && window.speechSynthesis) {
+      const u = new SpeechSynthesisUtterance(sc.c); u.lang = 'en-IN'; u.rate = 0.95; const t0 = Date.now();
+      u.onend = () => { clearTimeout(tv.timer); tv.timer = setTimeout(next, Math.max(700, ms - (Date.now() - t0))); };
+      tv.timer = setTimeout(next, ms + 15000); speechSynthesis.speak(u);
+    } else tv.timer = setTimeout(next, ms);
+  }
+
+  /* ---------------- exam-wise previous papers and mock tests ---------------- */
+  const PAPER_SITES = { upsc: 'upsc.gov.in', ese: 'upsc.gov.in', cgl: 'ssc.gov.in', chsl: 'ssc.gov.in', je: 'ssc.gov.in', tg1: 'tgpsc.gov.in', tg2: 'tgpsc.gov.in', tg3: 'tgpsc.gov.in', aee: 'tgpsc.gov.in', appsc: 'psc.ap.gov.in', ca: 'icai.org', cat: 'iimcat.ac.in', mat: 'aima.in', gate: 'iitm.ac.in' };
+  const PAPER_DIRECT = { upsc: [['UPSC previous question papers', 'https://upsc.gov.in/examinations/previous-question-papers']], ese: [['UPSC previous question papers', 'https://upsc.gov.in/examinations/previous-question-papers']], gate: [['GATE papers and syllabi', 'https://gate2027.iitm.ac.in/download']] };
+  function examPattern(e) {
+    const st = (e.stages || [])[0]; if (!st) return e.name;
+    return `${e.name} — ${st.name}: ${(st.papers || []).map((p) => `${p.n}${p.d ? ' (' + p.d + ')' : ''}${p.m ? ', ' + p.m : ''}`).join('; ')}`;
+  }
+  const Q_JSON = 'Reply with only a JSON array of objects: {"q": question text (use \\n between numbered statements), "o": [4 option strings], "a": index 0-3 of the correct option, "x": explanation in 2–4 short sentences — why the correct option is right and why each other option is wrong, "t": short topic name}. No other text.';
+  const PROMPT_PYQ = (e, year, n) => `You are an expert on ${e.name}. Reproduce up to ${n} objective (MCQ) questions that were actually asked in the ${year} paper of this exam (${examPattern(e)}), as close to the original wording as you can. Include only questions you are confident appeared in that year's paper; skip any you are unsure about. Give the correct answer as per the official answer key, and a clear explanation for every question.\n${Q_JSON}`;
+  const PROMPT_MOCK = (e, n) => `Write a ${n}-question mock test in the exact style, difficulty and syllabus mix of recent papers of ${examPattern(e)}. Use the question formats this exam really uses (for UPSC: statement-based "how many of the above are correct", Statement-I/Statement-II and match-the-pairs). Facts must be accurate and unambiguous.\n${Q_JSON}`;
+  const examsForPapers = () => { const ids = ui.papAll ? TRACKS.map((t) => t.id) : P().tracks; const seen = new Set(); return ids.map((tr) => TRACK[tr]).filter(Boolean).map((tr) => Object.assign({ tr }, EXAM[tr.exam])).filter((e) => e.id && !seen.has(e.id) && seen.add(e.id)); };
+  function practicePapers() {
+    const yNow = new Date().getFullYear(); const years = Array.from({ length: 11 }, (_, i) => yNow - 1 - i);
+    return `<div class="row"><button class="chip" data-act="pap-all" data-v="" aria-pressed="${!ui.papAll}">My exams</button><button class="chip" data-act="pap-all" data-v="1" aria-pressed="${!!ui.papAll}">All exams</button></div>
+      ${examsForPapers().map((e) => {
+        const tags = new Set(e.tr.tags); const pool = allQuiz().filter((q) => (q.ex || []).some((x) => tags.has(x)));
+        const mine = custom().quiz.filter((q) => q.pk === e.id); const site = PAPER_SITES[e.id];
+        const g = (q) => 'https://www.google.com/search?q=' + encodeURIComponent(q);
+        return `<section class="sheet paper-card"><div class="sheet-head"><h2>${esc(e.name)}</h2><a class="small" href="#exam-${e.id}">Pattern & cut-offs</a></div>
+          <p class="small muted">${esc(examPattern(e).replace(e.name + ' — ', ''))}</p>
+          <div class="pc-steps">
+            <div><h4><span>1</span>Official previous papers & answer keys</h4><div class="chips">${(PAPER_DIRECT[e.id] || []).map(([n, u]) => `<a class="chip accent" href="${esc(u)}" target="_blank" rel="noopener">${esc(n)} ↗</a>`).join('')}
+              <a class="chip" href="${esc(g((site ? 'site:' + site + ' ' : '') + e.name + ' previous question papers'))}" target="_blank" rel="noopener">Find official papers ↗</a>
+              <a class="chip" href="${esc(g((site ? 'site:' + site + ' ' : '') + e.short + ' final answer key'))}" target="_blank" rel="noopener">Find official answer keys ↗</a>
+              ${vlink(e.short + ' previous year paper solved analysis', 'Video: papers solved', '')}</div></div>
+            <div><h4><span>2</span>Year-wise questions with answers & explanations</h4>
+              <div class="row"><select class="input input-sm" id="py-y-${e.id}">${years.map((y) => `<option>${y}</option>`).join('')}</select><select class="input input-sm" id="py-n-${e.id}"><option>10</option><option selected>20</option><option>30</option></select><button class="btn btn-sm btn-primary" data-act="pap-pyq" data-e="${e.id}">${icon('spark')} Practise this year</button></div>
+              <p class="foot-note">Any free AI recalls the questions of that year with answers and explanations; the app runs them as a test. Check doubtful answers against the official key.</p></div>
+            <div><h4><span>3</span>Mock tests with explanations</h4>
+              <div class="row">${pool.length ? `<button class="btn btn-sm" data-act="pap-bank" data-e="${e.id}" data-n="25">Mock from the app’s bank · ${Math.min(25, pool.length)} Q</button>` : ''}<button class="btn btn-sm btn-primary" data-act="pap-mock" data-e="${e.id}" data-n="25">${icon('spark')} New full mock · 25 Q</button>${mine.length ? `<button class="btn btn-sm" data-act="pap-mine" data-e="${e.id}">My saved ${esc(e.short)} papers · ${mine.length} Q</button>` : ''}</div></div>
+          </div><div class="pap-out" id="pap-out-${e.id}"></div></section>`;
+      }).join('') || '<p class="empty">Pick your exams in Profile.</p>'}`;
+  }
+  async function runPaper(e, kind, year, n) {
+    const out = $('#pap-out-' + e.id); if (!out) return;
+    if (aiCtl) aiCtl.abort(); aiCtl = new AbortController();
+    out.innerHTML = AI.mode() === 'bridge' ? '' : `<span class="thinking">Writing the ${kind === 'pyq' ? year + ' paper' : 'mock test'}… (${esc(AI.label())})</span>`;
+    const slot = document.createElement('div'); out.appendChild(slot);
+    try {
+      const text = await AI.run(kind === 'pyq' ? PROMPT_PYQ(e, year, n) : PROMPT_MOCK(e, n), { area: slot, signal: aiCtl.signal, title: (kind === 'pyq' ? `${e.short} ${year} questions` : `${e.short} mock test`) + ' — with any AI chat (free)' });
+      const src = kind === 'pyq' ? `${e.short} ${year} (recalled — verify with the official key)` : `${e.short} mock`;
+      const qs = asArray(parseJsonLoose(text)).map((x) => { const q = normQ(x); return q && Object.assign(q, { id: 'my-' + uid(), s: 'my', ex: e.tr.tags, src: src + (x.t ? ' · ' + String(x.t).slice(0, 40) : ''), pk: e.id }); }).filter(Boolean);
+      if (!qs.length) throw { code: 'invalid_json' };
+      Store.change((s) => { s.custom.quiz = s.custom.quiz.concat(qs).slice(-800); }, { silent: true });
+      out.innerHTML = '';
+      quizRun = { qs, i: 0, c: 0, answered: false, finished: false, wrong: [], picks: [], title: kind === 'pyq' ? `${e.short} · ${year} paper` : `${e.short} · mock test` };
+      ui.prTab = 'quiz'; saveUi(); rerender(); window.scrollTo(0, 0);
+    } catch (err) {
+      if (err && err.code === 'cancelled') { out.innerHTML = ''; return; }
+      out.innerHTML = `<p class="small" style="color:var(--crit)">${esc(AI.errText(err))}</p>`;
+    }
+  }
+  const explainQPrompt = (q) => `Explain this exam question simply.\n\nQuestion: ${q.q}\nOptions:\n${q.o.map((o, i) => `(${'abcd'[i]}) ${o}`).join('\n')}\nCorrect answer: (${'abcd'[q.a]}) ${q.o[q.a]}\n\nUse exactly these headings:\n## Answer\n## Why it is correct (2–4 bullets)\n## Why the other options are wrong (one bullet each)\n## Concept to remember (1–2 lines)${FMT}`;
 
   /* ---------------- search ---------------- */
   const SEARCH = [];
@@ -4960,7 +5608,7 @@ window.PC_RESOURCES = [
   function addMinutes(m) { Store.change((s) => { const d = todayStr(); s.log[d] = Math.round(((s.log[d] || 0) + m) * 10) / 10; }, { silent: true }); }
   function startQuiz(pool, n) {
     if (!pool.length) { toast('No questions for that filter'); return; }
-    quizRun = { qs: shuffle(pool).slice(0, n || 10), i: 0, c: 0, answered: false, finished: false, wrong: [] };
+    quizRun = { qs: shuffle(pool).slice(0, n || 10), i: 0, c: 0, answered: false, finished: false, wrong: [], picks: [] };
     ui.prTab = 'quiz'; saveUi();
     if (current.name !== 'practice') location.hash = '#practice'; else rerender();
   }
@@ -5040,12 +5688,79 @@ window.PC_RESOURCES = [
     const act = a.dataset.act; const id = a.dataset.id;
     switch (act) {
       case 'cycle': ev.preventDefault(); cycleStatus(id, a); break;
-      case 'topic': location.hash = '#topic-' + id; break;
+      case 'topic': ui.tTab = 'learn'; location.hash = '#topic-' + id; break;
+      case 'topic-tab': ui.tTab = a.dataset.tab; saveUi(); if (location.hash === '#topic-' + id) openTopic(id); else location.hash = '#topic-' + id; break;
+      case 'ttab': {
+        const v = a.dataset.v; ui.tTab = v; saveUi();
+        $$('#drawer [data-pane]').forEach((p) => { p.hidden = p.dataset.pane !== v; });
+        $$('#drawer [data-act="ttab"][role="tab"]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.v === v)));
+        const tb = $('#drawer .ttabs'); if (tb) tb.scrollIntoView({ block: 'nearest' });
+        const on = $(`#drawer .ttabs [data-v="${v}"]`); if (on && tb) tb.scrollLeft = on.offsetLeft - tb.clientWidth / 2 + on.offsetWidth / 2;
+        break;
+      }
+      case 'quiz-go': {
+        const s = a.dataset.s || 'all'; closeDrawer(); ui.prTab = 'quiz'; ui.qzS = s; saveUi();
+        let pool = quizPool(s, s === 'all' ? 'mine' : 'all'); if (!pool.length) pool = s === 'all' ? allQuiz() : quizPool(s, 'all');
+        startQuiz(pool, +a.dataset.n || 10); break;
+      }
+      case 'wiz-user': {
+        const name = ($('#wz-name').value || '').trim().slice(0, 40);
+        if (!name) { toast('Type your name or a nickname'); $('#wz-name').focus(); break; }
+        if (!$('#wz-ok').checked) { toast('Please tick the box to agree to the privacy notice'); break; }
+        if (a.dataset.new) switchUser(Users.add(name)); else Users.rename(name);
+        Store.change((s) => { s.profile.name = name; s.profile.consent = todayStr(); }, { silent: true });
+        location.hash = '#start-2'; break;
+      }
+      case 'wiz-profile': {
+        const tr = $$('input[name="wz-track"]:checked').map((x) => x.value); const dob = $('#wz-dob').value; const st = $('#wz-state').value;
+        if (!dob || daysBetween(dob, todayStr()) < 365 * 14) { toast('Enter your date of birth'); break; }
+        if (!tr.length) { toast('Tick at least one exam'); break; }
+        Store.change((s) => { const p = s.profile; Object.assign(p, { dob, cat: $('#wz-cat').value, pwd: $('#wz-pwd').checked, state: st, local: st === 'tg' ? 'yes' : 'no', tracks: tr, primary: tr.includes(p.primary) ? p.primary : tr[0], wd: +$('#wz-wd').value || 2, we: +$('#wz-we').value || 6, vlang: $('#wz-vl').value, setup: true }); }, { silent: true });
+        renderUserChip(); location.hash = '#start-3'; break;
+      }
+      case 'users': openDrawer('Users on this device', usersHtml()); break;
+      case 'user-switch': { const u = Users.reg.list.find((x) => x.id === id); if (!u) break; closeDrawer(); switchUser(id); toast('Now using: ' + u.name); if (location.hash === '#today') rerender(); else location.hash = '#today'; break; }
+      case 'user-del': {
+        if (!a.dataset.confirm) { a.dataset.confirm = '1'; a.textContent = 'Tap again to delete permanently (cannot be undone)'; break; }
+        const gone = (Users.cur() || {}).name || 'User'; Users.remove(Users.active);
+        if (Users.active) switchUser(Users.active); else { Store.load(); CA.load(); AINotes.mem = {}; renderUserChip(); }
+        toast(gone + ' and their data were deleted from this device'); location.hash = isSetup() ? '#today' : '#start-1'; if (isSetup()) rerender(); break;
+      }
+      case 'hide-install': ui.hideInstall = true; saveUi(); rerender(); break;
+      case 'pap-all': ui.papAll = !!a.dataset.v; saveUi(); rerender(); break;
+      case 'pap-pyq': case 'pap-mock': {
+        const e = examsForPapers().find((x) => x.id === a.dataset.e) || (() => { const tr = TRACKS.find((t) => t.exam === a.dataset.e); return tr && Object.assign({ tr }, EXAM[tr.exam]); })(); if (!e) break;
+        if (act === 'pap-pyq') runPaper(e, 'pyq', $('#py-y-' + e.id).value, +$('#py-n-' + e.id).value || 20); else runPaper(e, 'mock', '', +a.dataset.n || 25);
+        break;
+      }
+      case 'pap-bank': case 'pap-mine': {
+        const tr = TRACKS.find((t) => t.exam === a.dataset.e); if (!tr) break; const tags = new Set(tr.tags);
+        const pool = act === 'pap-mine' ? custom().quiz.filter((q) => q.pk === a.dataset.e) : allQuiz().filter((q) => (q.ex || []).some((x) => tags.has(x)));
+        startQuiz(pool, act === 'pap-mine' ? 50 : +a.dataset.n || 25); if (quizRun) { quizRun.title = (EXAM[a.dataset.e] || {}).short + (act === 'pap-mine' ? ' · my saved papers' : ' · mock from the bank'); rerender(); }
+        break;
+      }
+      case 'tv-go': tvShow(+a.dataset.i); break;
+      case 'tv-prev': tvShow(tv.i - 1); break;
+      case 'tv-next': tvShow(tv.i + 1); break;
+      case 'tv-play': if (tv.on) { tv.on = false; tvStop(); $('#tv-play').textContent = 'Play'; $('#tv').classList.add('paused'); } else { tv.on = true; tvShow(a.textContent === 'Replay' ? 0 : tv.i); } break;
+      case 'share-tour': {
+        const link = appLink() + '#tour';
+        if (navigator.share) { try { await navigator.share({ title: 'MMJ Self-Coaching: video guide', url: link }); } catch (e) { /* closed */ } }
+        else { try { await navigator.clipboard.writeText(link); toast('Link to the video guide copied'); } catch (e) { toast(link); } }
+        break;
+      }
+      case 'install-now': if (deferredInstall) { deferredInstall.prompt(); deferredInstall.userChoice.finally(() => { deferredInstall = null; rerender(); }); } break;
+      case 'share-app': {
+        const link = appLink();
+        if (navigator.share) { try { await navigator.share({ title: 'MMJ Self-Coaching App', text: 'Free self-study app for competitive exams. Open the link and install it:', url: link }); } catch (e) { /* closed */ } }
+        else { try { await navigator.clipboard.writeText(link); toast('Link copied'); } catch (e) { toast(link); } }
+        break;
+      }
       case 'set-status': Store.change((s) => { s.topics[id] = Object.assign(s.topics[id] || {}, { s: +a.dataset.v, t: todayStr() }); }, { silent: true });
         $$('#drawer [data-act="set-status"]').forEach((b) => b.setAttribute('aria-pressed', String(b === a)));
         $$(`.omr[data-id="${id}"]`).forEach((b) => { b.dataset.s = a.dataset.v; b.style.setProperty('--p', a.dataset.v); }); break;
       case 'save-note': Store.change((s) => { s.topics[id] = Object.assign(s.topics[id] || {}, { n: $('#my-note').value, t: (s.topics[id] || {}).t || todayStr() }); }, { silent: true }); toast('Note saved'); break;
-      case 'more': openDrawer('All sections', `<nav class="nav">${NAV.map((n) => `<a href="#${n.id}">${icon(n.id)}<span>${esc(n.label)}</span></a>`).join('')}</nav><p class="foot-note">Data checked Nov 2026. Confirm dates on official notifications.</p>`); break;
+      case 'more': openDrawer('All sections', `${Users.cur() ? `<button class="btn btn-sm user-line" data-act="users"><span class="avatar">${esc(initials(Users.cur().name))}</span>${esc(Users.cur().name)} · switch or add user</button>` : ''}<nav class="nav">${NAV.map((n) => `<a href="#${n.id}">${icon(n.id)}<span>${esc(n.label)}</span></a>`).join('')}</nav><p class="foot-note">Data checked Nov 2026. Confirm dates on official notifications.</p>`); break;
       case 'log': addMinutes(+a.dataset.m); rerender(); toast('Logged ' + a.dataset.m + ' min'); break;
       case 'quick': {
         const k = a.dataset.k;
@@ -5074,7 +5789,7 @@ window.PC_RESOURCES = [
         $$('.opt', card).forEach((b, i) => { b.disabled = true; if (i === right) b.classList.add('right'); if (i === pick && pick !== right) b.classList.add('wrong'); });
         const ex = $('.explain', card); if (ex) ex.hidden = false;
         if (card.dataset.standalone || !quizRun) break;
-        const q = quizRun.qs[quizRun.i]; const ok = pick === right; quizRun.answered = true; if (ok) quizRun.c++;
+        const q = quizRun.qs[quizRun.i]; const ok = pick === right; quizRun.answered = true; if (ok) quizRun.c++; (quizRun.picks = quizRun.picks || [])[quizRun.i] = pick;
         Store.change((s) => { const w = s.quiz.wrong; if (ok) { if (w[q.id]) delete w[q.id]; } else w[q.id] = (w[q.id] || 0) + 1; }, { silent: true });
         const nb = $('[data-act="quiz-next"]'); if (nb) { nb.disabled = false; nb.focus(); }
         break;
@@ -5106,12 +5821,15 @@ window.PC_RESOURCES = [
         const s = $('#pl-s').value, e = $('#pl-e').value;
         if (!s || !e || daysBetween(s, e) < 7) { toast('Exam date must be at least a week after the start'); break; }
         const plan = buildPlan({ tracks, start: s, end: e, wd: +$('#pl-wd').value || 2, we: +$('#pl-we').value || 6, skipDone: $('#pl-skip').checked, focus: $('#pl-focus').value, revisionMode: $('#pl-rev').checked });
-        Store.change((st) => { st.plan = plan; }); toast('Plan built: ' + plan.weeks.length + ' weeks'); break;
+        Store.change((st) => { st.plan = plan; }, { silent: !!a.dataset.wiz }); toast('Plan built: ' + plan.weeks.length + ' weeks');
+        if (a.dataset.wiz) location.hash = '#start-4'; break;
       }
       case 'plan-clear': if (a.dataset.confirm) { Store.change((st) => { st.plan = null; }); toast('Plan deleted'); } else { a.dataset.confirm = '1'; a.textContent = 'Click again to delete'; } break;
       case 'profile-save': {
         const tr = $$('input[name="pf-track"]:checked').map((x) => x.value);
-        Store.change((s) => { Object.assign(s.profile, { name: $('#pf-name').value.trim(), dob: $('#pf-dob').value, local: $('#pf-local').value, primary: $('#pf-primary').value, examDate: $('#pf-date').value, attemptsUsed: +$('#pf-att').value || 0, optional: $('#pf-opt').value, wd: +$('#pf-wd').value || 2, we: +$('#pf-we').value || 6, branch: $('#pf-branch').value, tet: $('#pf-tet').value, tetScore: $('#pf-tets').value, ctet: $('#pf-ctet').value, tracks: tr.length ? tr : ['upsc'] }); });
+        const nm = $('#pf-name').value.trim().slice(0, 40);
+        Store.change((s) => { Object.assign(s.profile, { name: nm, dob: $('#pf-dob').value, cat: $('#pf-cat').value, state: $('#pf-state').value, pwd: $('#pf-pwd').value === 'yes', vlang: $('#pf-vl').value, local: $('#pf-local').value, primary: $('#pf-primary').value, examDate: $('#pf-date').value, attemptsUsed: +$('#pf-att').value || 0, optional: $('#pf-opt').value, wd: +$('#pf-wd').value || 2, we: +$('#pf-we').value || 6, branch: $('#pf-branch').value, tet: $('#pf-tet').value, tetScore: $('#pf-tets').value, ctet: $('#pf-ctet').value, tracks: tr.length ? tr : ['upsc'] }); });
+        if (nm) { Users.rename(nm); renderUserChip(); }
         toast('Profile saved'); break;
       }
       case 'ai-save': case 'ai-test': {
@@ -5131,7 +5849,14 @@ window.PC_RESOURCES = [
         Store.change((s) => { s.custom.events.push({ id: uid(), d, e }); }); toast('Date added'); break;
       }
       case 'event-del': Store.change((s) => { s.custom.events = s.custom.events.filter((x) => x.id !== id); }); break;
-      case 'backup-download': downloadText(`mmj-backup-${todayStr()}.json`, JSON.stringify(Object.assign({}, Store.state, { ca: CA.data }))); toast('Backup file saved to your downloads'); break;
+      case 'backup-download': {
+        const name = `mmj-backup-${slug(P().name || 'user') || 'user'}-${todayStr()}.json`; const txt = JSON.stringify(Object.assign({}, Store.state, { ca: CA.data }));
+        if (a.dataset.share && navigator.canShare) {
+          try { const f = new File([txt], name, { type: 'application/json' }); if (navigator.canShare({ files: [f] })) { await navigator.share({ files: [f], title: 'MMJ backup' }); break; } }
+          catch (e) { if (e && e.name === 'AbortError') break; }
+        }
+        downloadText(name, txt); toast('Backup file saved to your downloads'); break;
+      }
       case 'backup-copy': { const txt = JSON.stringify(Object.assign({}, Store.state, { ca: CA.data })); try { await navigator.clipboard.writeText(txt); toast('Backup copied — paste it into a note or file'); } catch (e) { $('#backup-area').innerHTML = `<textarea class="input" rows="4" readonly>${esc(txt)}</textarea><p class="small">Select all and copy this text.</p>`; $('#backup-area textarea').select(); } break; }
       case 'backup-show': $('#backup-area').innerHTML = `<div class="stack"><textarea id="backup-in" class="input" rows="4" placeholder="Paste a backup here"></textarea><div class="row"><button class="btn btn-sm btn-primary" data-act="backup-restore">Restore (replaces current progress)</button></div></div>`; break;
       case 'backup-restore': restoreFrom($('#backup-in').value); break;
@@ -5183,6 +5908,8 @@ window.PC_RESOURCES = [
       case 'ai-explain': runAI('explain', id); break;
       case 'ai-mcq': runAI('mcq', id); break;
       case 'ai-mains': runAI('mains', id); break;
+      case 'ai-examples': runAI('examples', id); break;
+      case 'ai-pyq': runAI('pyq', id); break;
       case 'ai-doubt': runAI('doubt', id); break;
       case 'ai-stop': if (aiCtl) aiCtl.abort(); if (evalCtl) evalCtl.abort(); break;
       default: break;
@@ -5211,15 +5938,15 @@ window.PC_RESOURCES = [
     const box = $('.md', out); const head = $('.sheet-head', out);
     const marks = (writeQ && writeQ.marks) || 15; const limit = (writeQ && writeQ.words) || 250;
     try {
-      const text = await AI.run(PROMPTS.evaluate(q.trim(), ans, marks, limit, words), { area: $('.bridge-slot', out), signal: evalCtl.signal, title: 'Evaluate my answer — with any AI chat (free)', onText: (tx) => { box.innerHTML = md(tx); } });
-      box.innerHTML = md(text); head.innerHTML = '<h4>Examiner feedback</h4>';
+      const text = await AI.run(PROMPTS.evaluate(q.trim(), ans, marks, limit, words), { area: $('.bridge-slot', out), signal: evalCtl.signal, title: 'Evaluate my answer — with any AI chat (free)', onText: (tx) => { box.innerHTML = aimd(tx); } });
+      box.innerHTML = aimd(text); head.innerHTML = '<h4>Examiner feedback</h4>';
       const m = text.match(/Score[^\d]{0,12}([\d.]+)\s*\/\s*(\d+)/i);
       Store.change((s) => { s.answers.push({ d: todayStr(), q: q.trim(), w: words, a: ans.slice(0, 6000), score: m ? m[1] + '/' + m[2] : null, fb: text.slice(0, 5000) }); s.answers = s.answers.slice(-60); }, { silent: true });
       if (mins) addMinutes(mins);
     } catch (e) {
       if (e && e.code === 'cancelled') { out.innerHTML = ''; return; }
       head.innerHTML = `<span class="small" style="color:var(--crit)">${esc(AI.errText(e))}</span>`;
-      if (e && e.text && e.code !== 'refused') box.innerHTML = md(e.text);
+      if (e && e.text && e.code !== 'refused') box.innerHTML = aimd(e.text);
     }
   }
   /* "paste" AI links: copy the stashed prompt, then let the link open the site */
@@ -5241,9 +5968,19 @@ window.PC_RESOURCES = [
       $('#ca-links').innerHTML = aiLinks(caPrompt(caUi.date || todayStr(), caUi.scope, caUi.n), { search: true });
     }
     if (t.id === 'ca-month') { caUi.month = t.value; rerender(); }
+    if (t.id === 'tv-voice') { tv.voice = t.checked; if (tv.voice) { tv.on = true; tvShow(tv.i); } else { try { speechSynthesis.cancel(); } catch (e) { /* none */ } if (tv.on) tvShow(tv.i); } }
     if (t.id === 'ca-tgf') { caUi.tg = t.checked; rerender(); }
     if (t.id === 'ca-q') { caUi.q = t.value.trim(); rerender(); }
-    if (t.id === 'backup-file' && t.files && t.files[0]) { restoreFrom(await readFile(t.files[0])); t.value = ''; }
+    if (t.id === 'backup-file' && t.files && t.files[0]) {
+      const ok = $('#wz-ok');
+      if (ok && !ok.checked) { toast('Please tick the box to agree to the privacy notice first'); t.value = ''; return; }
+      const text = await readFile(t.files[0]); t.value = '';
+      if (current.name === 'start') { try { const o = JSON.parse(text); if (!o || !o.profile) throw 0; } catch (e) { toast('That is not a valid backup'); return; } if (!Users.active || isSetup()) switchUser(Users.add('Me')); }
+      restoreFrom(text);
+      Store.change((s) => { if (!s.profile.consent) s.profile.consent = todayStr(); if (s.profile.dob) s.profile.setup = true; }, { silent: true });
+      Users.rename(P().name || 'Me'); renderUserChip();
+      if (current.name === 'start') location.hash = isSetup() ? '#today' : '#start-2';
+    }
     if (t.id === 'pack-file' && t.files && t.files[0]) { importPack(await readFile(t.files[0])); t.value = ''; }
     if (t.id === 'ai-provider') {
       const pv = PROVIDERS[t.value] || {};
@@ -5267,9 +6004,12 @@ window.PC_RESOURCES = [
 
   /* ---------------- boot ---------------- */
   document.body.classList.add('has-ai');
+  Users.load();
+  if (IN_VIEWER && !Users.active) { Users.reg.active = Users.add(''); Users.save(); }
   Store.load();
   CA.load();
   renderNav();
+  renderUserChip();
   route();
   Store.connect();
   AI.init().then(() => { if (AI.fn && current.name === 'profile') rerender(); });

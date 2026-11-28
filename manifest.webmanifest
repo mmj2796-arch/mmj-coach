@@ -1,7 +1,7 @@
 {
   "name": "MMJ Self-Coaching App",
   "short_name": "MMJ Coach",
-  "description": "Self-coaching for UPSC, TGPSC, SSC, DSC and engineering exams: syllabus tracker, notes, practice, planner and AI help from any AI tool.",
+  "description": "Free self-coaching for UPSC, TGPSC, APPSC, SSC, TET/DSC, engineering exams, CAT, MAT and CA: step-by-step plan, topic videos, PYQs, mock tests and notes.",
   "start_url": "./#today",
   "scope": "./",
   "display": "standalone",
